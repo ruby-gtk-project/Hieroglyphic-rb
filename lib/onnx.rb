@@ -8,9 +8,9 @@ module Hieroglyphic
   # run a forward pass. Ruby has no binding to ONNX Runtime in this app's gem
   # closure, so the engine is here, and it covers exactly the graph the shipped
   # model is: Conv, Relu, MaxPool, Reshape and Gemm, in NCHW layout, with
-  # float32 weights. An operator the model does not use is not implemented, and
-  # `Model#run` says so rather than guessing — the model is checked in beside
-  # the code, so the two cannot drift apart.
+  # float32 weights. An operator outside that set is refused rather than
+  # guessed at — the model is checked in beside the code, so the two cannot
+  # drift apart.
   #
   # The graph is eight nodes long (two 5x5 convolutions with 16 and 32 output
   # channels, each followed by a ReLU and a 2x2 max pool, then an 800x1098
@@ -256,7 +256,7 @@ module Hieroglyphic
             when "Reshape" then Operator.reshape(node, *operands)
             when "Gemm" then Operator.gemm(node, *operands)
             else
-              raise(NotImplementedError, "ONNX operator #{node.op_type} is not implemented")
+              raise(NotImplementedError, "this engine does not run the ONNX operator #{node.op_type}")
             end
           end
         end
@@ -278,7 +278,7 @@ module Hieroglyphic
           when FLOAT then raw.unpack("e*")
           when INT64 then raw.unpack("q<*")
           else
-            raise(NotImplementedError, "ONNX tensor data type #{data_type} is not implemented")
+            raise(NotImplementedError, "this engine does not read ONNX tensor data type #{data_type}")
           end
         end
 
