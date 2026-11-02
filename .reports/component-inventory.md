@@ -20,7 +20,7 @@ The launcher stays at `lib/hieroglyphic/application.rb` as it is today.
 lib/hieroglyphic.rb                 require_relative shim
 lib/hieroglyphic/application.rb     the application: actions, accels, CSS, icon theme, --show-only
 lib/hieroglyphic/rb/version.rb      version constant
-lib/window.rb                       the main window (616 lines)
+lib/window.rb                       the main window
 lib/drawing_area.rb                 the canvas
 lib/symbol_item.rb                  one symbol row
 lib/symbol_object.rb                list-store item
@@ -30,9 +30,12 @@ lib/about.rb                        about dialog
 lib/primary_menu.rb                 the primary menu model
 lib/settings.rb                     GSettings wrapper + markup-language mode
 lib/symbol.rb                       the symbol table, built from the YAML sources
+lib/classifier.rb                   strokes -> tensor -> the 25 likeliest symbol ids
+lib/onnx.rb                         the ONNX reader and forward pass behind it
 lib/stroke.rb  lib/point.rb  lib/rect.rb    geometry models
 lib/style.css                       the stylesheet
 data/symbols.yaml  data/typst-aliases.yaml  symbol-table sources
+data/model.onnx  data/labels.txt    the trained model and its 1098 output labels
 data/schemas/org.rubygtkproject.Hieroglyphic.gschema.xml (+ gschemas.compiled)
 data/icons/hicolor/scalable/{actions,apps}/  1134 icons (symbol previews + action icons)
 data/illustrations/pen-broadcast.svg
@@ -40,11 +43,9 @@ test/gtk_driver.rb  test/drive_window.rb     the drive harness
 ```
 
 **Every user-facing component of the window, its dialogs, its menu and its
-empty state now exists.** What is still missing is the recognition engine
-(`lib/classifier.rb`) and the translation catalogue (`po/`); without the
-classifier the drawing area records strokes and the symbol list only ever fills
-from `--show-only`, so the whole symbol-list path is reachable in a drive run
-but never from a real drawing.
+empty state now exists, and the recognition engine behind them is ported too**:
+drawing a symbol fills the symbol list for real. The translation catalogue
+(`po/`) is the one component still missing.
 
 ## Component map
 
@@ -60,7 +61,7 @@ but never from a real drawing.
 | 8 | `data/resources/ui/window.ui` → `menu id="primary-menu"` | `lib/primary_menu.rb` | menu model | yes |
 | 9 | `src/widgets/symbol_object.rs` | `lib/symbol_object.rb` | list-model item (GObject wrapper) | yes |
 | 10 | `src/classify/symbol.rs` + `symbols.yaml` + `typst-aliases.yaml` + `unicode_to_latex.yaml` | `lib/symbol.rb` | model / symbol table | yes (LaTeX side complete; Typst aliases partial) |
-| 11 | `src/classify/classifier.rs` + `data/model.onnx` | `lib/classifier.rb` | ONNX inference engine | **no** |
+| 11 | `src/classify/classifier.rs` + `data/model.onnx` | `lib/classifier.rb` (+ `lib/onnx.rb`, `data/model.onnx`, `data/labels.txt`) | ONNX inference engine | yes |
 | 12 | `src/classify/stroke.rs` | `lib/stroke.rb` | model | yes |
 | 13 | `src/classify/point.rs` | `lib/point.rb` | model | yes |
 | 14 | `src/classify/rect.rs` | `lib/rect.rb` | model | yes |
@@ -241,7 +242,8 @@ driven by the stateful window action.
 |---|---|---|
 | `src/widgets/symbol_object.rs` | `lib/symbol_object.rb` | bare `GObject` wrapping a `Symbol`, the `Gio::ListStore` item type |
 | `src/classify/symbol.rs` (+ `build.rs` codegen from `symbols.yaml`, `typst-aliases.yaml`, `unicode_to_latex.yaml`) | `lib/symbol.rb` | the ~1000-entry symbol table; base64 id from `package-encoding-command`; per-language `command` / `package` / `mode_description`; `SYMBOL_COUNT` |
-| `src/classify/classifier.rs` + `data/model.onnx` | `lib/classifier.rb` | ONNX session, strokes → 1×3×32×32 tensor, top-25 labels |
+| `src/classify/classifier.rs` + `data/model.onnx` | `lib/classifier.rb` | strokes → 1×3×32×32 tensor, forward pass, top-25 labels |
+| the `ort` crate (upstream's dependency, not a file of the project) | `lib/onnx.rb` | the ONNX reader and forward pass itself: Conv, Relu, MaxPool, Reshape, Gemm |
 | `src/classify/stroke.rs` | `lib/stroke.rb` | point list, length, bounding box, refit/dedup/aspect-ratio normalisation, JSON serialisation for upload |
 | `src/classify/point.rs` | `lib/point.rb` | x/y, dot, norm, distance, scale, angle, approx-eq |
 | `src/classify/rect.rs` | `lib/rect.rb` | two-point rect, width/height, map_points, encompass_point |
@@ -274,14 +276,16 @@ driven by the stateful window action.
 
 ## Blockers for the port
 
-1. **The classifier is the one component with no port at all.** Upstream runs
-   `data/model.onnx` through the `ort` crate. The fork's dev shell has no ONNX
-   runtime for Ruby, so either an FFI binding to `onnxruntime` is added to the
-   flake or `lib/classifier.rb` stays a stub. Today `Window#classify` only
-   records the strokes and re-displays the `--show-only` filter, so drawing a
-   symbol produces no symbols and the `symbol_list`, the bottom-bar preview, the
-   copy button and the stroke upload are only reachable through `--show-only`
-   or a drive script. Everything downstream of it is written and waiting.
+1. **Resolved: the classifier runs.** Upstream drives `data/model.onnx`
+   through the `ort` crate, and the fork's gem closure has no ONNX runtime for
+   Ruby, so the forward pass is `lib/onnx.rb` — a protobuf reader for the model
+   file plus the five operators its graph uses (Conv, Relu, MaxPool, Reshape,
+   Gemm). The graph is small enough (about three million multiply-accumulates)
+   that plain Ruby runs it in around a second, which is why `Window#classify`
+   hands the strokes to a worker thread and the result comes back through an
+   idle source, mirroring upstream's blocking task. `data/labels.txt` holds the
+   1098 output labels in the model's own order; all 1098 resolve against
+   `lib/symbol.rb`'s table.
 2. **The Typst half of the symbol table is incomplete.** `lib/symbol.rb` builds
    the same 1124 LaTeX symbols under the same base64 ids as upstream's
    `build.rs` table, but upstream also folds in the alias maps of the `mitex`

@@ -15,6 +15,9 @@ $LOAD_PATH.unshift(File.expand_path("../lib", __dir__))
 require "hieroglyphic"
 require_relative "gtk_driver"
 
+# How long the drive waits for a classification before giving up on it.
+CLASSIFIER_TIMEOUT = 30
+
 LATEX_SYMBOLS = %w[
   bGF0ZXgyZS1PVDEtX2JpZ2N1cA==
   YW1zc3ltYi1PVDEtX0N1cA==
@@ -45,6 +48,41 @@ GtkDriver.drive(app, shots: "tmp/shots") do |d, _app|
     d.check("stroke has points") { app.window.drawing_area.strokes.first.points.length == 2 }
     d.shot("02-stroke")
   end
+
+  # The classifier runs on a thread of its own and takes about a second, so the
+  # list is given a nested main loop to fill in rather than a fixed number of
+  # ticks to hope for.
+  d.step("waiting for the classifier") do
+    GLib::MainLoop.new.tap do |nested|
+      GLib::Timeout.add(50) do
+        if app.window.symbol_store.n_items.positive?
+          nested.quit
+          false
+        else
+          true
+        end
+      end
+
+      GLib::Timeout.add_seconds(CLASSIFIER_TIMEOUT) do
+        nested.quit
+        false
+      end
+
+      nested.run
+    end
+  end
+
+  d.step("the drawn stroke was classified") do
+    d.check("symbols page showing") { app.window.symbol_stack.visible_child_name == "symbols" }
+    d.check("the list filled up") { app.window.symbol_store.n_items == 25 }
+    d.check("every row carries a command") do
+      (0...app.window.symbol_store.n_items).all? do |position|
+        !app.window.symbol_store.get_item(position).symbol.command.to_s.empty?
+      end
+    end
+  end
+
+  d.step("a shot of the classification") { d.shot("03-classified") }
 
   d.step("symbols are displayed") do
     app.window.display_symbols(LATEX_SYMBOLS)

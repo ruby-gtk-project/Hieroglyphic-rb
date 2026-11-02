@@ -4,6 +4,7 @@ require "adwaita"
 require "json"
 require "net/http"
 require_relative "about"
+require_relative "classifier"
 require_relative "contribution_dialog"
 require_relative "drawing_area"
 require_relative "indicator_button"
@@ -89,6 +90,10 @@ module Hieroglyphic
           change_markup_language(string_of(mode))
         end
 
+        # started here rather than on the first drawing, so the model is read
+        # off the main loop while the window is still opening
+        classifier_thread
+
         indicator_button.show_indicator = @settings.show_contribution_nudge?
         @settings.on_change("show-contribution-nudge") do
           indicator_button.show_indicator = @settings.show_contribution_nudge?
@@ -132,13 +137,32 @@ module Hieroglyphic
       end
     end
 
-    # Records the strokes that have been drawn and shows the symbols they are
-    # recognised as. The strokes are kept so a copied symbol can label them for
-    # the dataset.
+    # Records the strokes that have been drawn and asks the classifier thread
+    # what they are. The strokes are kept so a copied symbol can label them for
+    # the dataset; the copy is what makes that safe, since the drawing area
+    # keeps adding to the list it handed over.
     def classify(strokes)
-      @symbol_strokes = strokes
-      unless @symbol_filter.empty?
-        display_symbols(@symbol_filter)
+      strokes.dup.then do |sample|
+        @symbol_strokes = sample
+
+        unless sample.empty?
+          classifier_requests.push(sample)
+        end
+      end
+    end
+
+    # The strokes waiting to be classified.
+    def classifier_requests = @classifier_requests ||= Thread::Queue.new
+
+    # The thread the classifications run on. Classifying a drawing is a second
+    # of arithmetic, which would stall the main loop; upstream puts it on a
+    # blocking task for the same reason and hands the result back to the main
+    # loop, which is what the idle source does here.
+    def classifier_thread
+      @classifier_thread ||= Thread.new do
+        Classifier.new.then do |classifier|
+          loop { publish_classifications(classifier.classify(classifier_requests.pop)) }
+        end
       end
     end
 
@@ -504,6 +528,18 @@ module Hieroglyphic
         classifications(ids)
           .filter_map { |id| Symbol.from_id(id) }
           .select { |symbol| symbol.command_for(language) }
+      end
+
+      # Shows a finished classification. It arrives on the classifier thread,
+      # and every widget it touches belongs to the main loop, so the display
+      # itself is queued as an idle source and runs there.
+      def publish_classifications(ids)
+        if ids
+          GLib::Idle.add do
+            display_symbols(ids)
+            false
+          end
+        end
       end
 
       def classifications(ids)
