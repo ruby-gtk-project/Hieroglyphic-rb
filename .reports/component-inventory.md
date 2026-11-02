@@ -18,40 +18,61 @@ The launcher stays at `lib/hieroglyphic/application.rb` as it is today.
 
 ```
 lib/hieroglyphic.rb                 require_relative shim
-lib/hieroglyphic/application.rb     stub: window + toolbar view + header bar + "not written yet" status page
+lib/hieroglyphic/application.rb     the application: actions, accels, CSS, icon theme, --show-only
 lib/hieroglyphic/rb/version.rb      version constant
+lib/window.rb                       the main window (616 lines)
+lib/drawing_area.rb                 the canvas
+lib/symbol_item.rb                  one symbol row
+lib/symbol_object.rb                list-store item
+lib/indicator_button.rb             the nudge button
+lib/contribution_dialog.rb          "Improve Hieroglyphic" dialog
+lib/about.rb                        about dialog
+lib/primary_menu.rb                 the primary menu model
+lib/settings.rb                     GSettings wrapper + markup-language mode
+lib/symbol.rb                       the symbol table, built from the YAML sources
+lib/stroke.rb  lib/point.rb  lib/rect.rb    geometry models
+lib/style.css                       the stylesheet
+data/symbols.yaml  data/typst-aliases.yaml  symbol-table sources
+data/schemas/org.rubygtkproject.Hieroglyphic.gschema.xml (+ gschemas.compiled)
+data/icons/hicolor/scalable/{actions,apps}/  1134 icons (symbol previews + action icons)
+data/illustrations/pen-broadcast.svg
+test/gtk_driver.rb  test/drive_window.rb     the drive harness
 ```
 
-Nothing else. **Every user-facing component below is missing.** The stub's
-`Adwaita::StatusPage` ("The Ruby port has not been written yet") is not an
-upstream component and should go when the real window lands.
+**Every user-facing component of the window, its dialogs, its menu and its
+empty state now exists.** What is still missing is the recognition engine
+(`lib/classifier.rb`) and the translation catalogue (`po/`); without the
+classifier the drawing area records strokes and the symbol list only ever fills
+from `--show-only`, so the whole symbol-list path is reachable in a drive run
+but never from a real drawing.
 
 ## Component map
 
 | # | Upstream file(s) | → port file | Kind | Exists |
 |--:|---|---|---|---|
-| 1 | `src/application.rs` | `lib/hieroglyphic/application.rb` | application (actions, accels, CSS) | partial (stub only) |
-| 2 | `src/window.rs` + `data/resources/ui/window.ui` | `lib/window.rb` | main window | no |
-| 3 | `src/widgets/drawing_area.rs` + `data/resources/ui/drawing-area.ui` | `lib/drawing_area.rb` | custom drawing widget | no |
-| 4 | `src/widgets/symbol_item.rs` + `data/resources/ui/symbol-item.ui` | `lib/symbol_item.rb` | list row / bottom-bar preview | no |
-| 5 | `src/widgets/indicator_button.rs` | `lib/indicator_button.rb` | header-bar button with custom snapshot | no |
-| 6 | `data/resources/ui/contribution-dialog.ui` (built in `src/window.rs`) | `lib/contribution_dialog.rb` | dialog | no |
-| 7 | `src/widgets/about.rs` | `lib/about.rb` | about dialog | no |
-| 8 | `data/resources/ui/window.ui` → `menu id="primary-menu"` | `lib/primary_menu.rb` | menu model | no |
-| 9 | `src/widgets/symbol_object.rs` | `lib/symbol_object.rb` | list-model item (GObject wrapper) | no |
-| 10 | `src/classify/symbol.rs` + `symbols.yaml` + `typst-aliases.yaml` + `unicode_to_latex.yaml` | `lib/symbol.rb` | model / symbol table | no |
-| 11 | `src/classify/classifier.rs` + `data/model.onnx` | `lib/classifier.rb` | ONNX inference engine | no |
-| 12 | `src/classify/stroke.rs` | `lib/stroke.rb` | model | no |
-| 13 | `src/classify/point.rs` | `lib/point.rb` | model | no |
-| 14 | `src/classify/rect.rs` | `lib/rect.rb` | model | no |
-| 15 | `src/window.rs` → `MarkupLanguageMode` + `SETTINGS` | `lib/settings.rb` | GSettings wrapper + enum | no |
-| 16 | `data/resources/style.css` | `lib/style.css` (loaded by the application) | stylesheet | no |
-| 17 | `data/io.github.finefindus.Hieroglyphic.gschema.xml.in` | `data/org.rubygtkproject.Hieroglyphic.gschema.xml` | GSettings schema | no |
-| 18 | `data/resources/resources.gresource.xml` + `data/resources/icons/*` (1000+) + `illustrations/pen-broadcast.svg` | `data/icons/`, loaded via `Gtk::IconTheme#add_search_path` | resources | no |
-| 19 | `po/` (36 languages, `po/POTFILES.in`) | `po/` | translations | no |
+| 1 | `src/application.rs` | `lib/hieroglyphic/application.rb` | application (actions, accels, CSS, icons) | yes |
+| 2 | `src/window.rs` + `data/resources/ui/window.ui` | `lib/window.rb` | main window | yes |
+| 3 | `src/widgets/drawing_area.rs` + `data/resources/ui/drawing-area.ui` | `lib/drawing_area.rb` | custom drawing widget | yes |
+| 4 | `src/widgets/symbol_item.rs` + `data/resources/ui/symbol-item.ui` | `lib/symbol_item.rb` | list row / bottom-bar preview | yes |
+| 5 | `src/widgets/indicator_button.rs` | `lib/indicator_button.rb` | header-bar button with indicator dot | yes |
+| 6 | `data/resources/ui/contribution-dialog.ui` (built in `src/window.rs`) | `lib/contribution_dialog.rb` | dialog (the app's only preferences surface) | yes |
+| 7 | `src/widgets/about.rs` | `lib/about.rb` | about dialog | yes |
+| 8 | `data/resources/ui/window.ui` → `menu id="primary-menu"` | `lib/primary_menu.rb` | menu model | yes |
+| 9 | `src/widgets/symbol_object.rs` | `lib/symbol_object.rb` | list-model item (GObject wrapper) | yes |
+| 10 | `src/classify/symbol.rs` + `symbols.yaml` + `typst-aliases.yaml` + `unicode_to_latex.yaml` | `lib/symbol.rb` | model / symbol table | yes (LaTeX side complete; Typst aliases partial) |
+| 11 | `src/classify/classifier.rs` + `data/model.onnx` | `lib/classifier.rb` | ONNX inference engine | **no** |
+| 12 | `src/classify/stroke.rs` | `lib/stroke.rb` | model | yes |
+| 13 | `src/classify/point.rs` | `lib/point.rb` | model | yes |
+| 14 | `src/classify/rect.rs` | `lib/rect.rb` | model | yes |
+| 15 | `src/window.rs` → `MarkupLanguageMode` + `SETTINGS` | `lib/settings.rb` | GSettings wrapper + enum | yes |
+| 16 | `data/resources/style.css` | `lib/style.css` (loaded by the application) | stylesheet | yes |
+| 17 | `data/io.github.finefindus.Hieroglyphic.gschema.xml.in` | `data/schemas/org.rubygtkproject.Hieroglyphic.gschema.xml` | GSettings schema | yes |
+| 18 | `data/resources/resources.gresource.xml` + `data/resources/icons/*` + `illustrations/pen-broadcast.svg` | `data/icons/`, `data/illustrations/`, via `Gtk::IconTheme#add_search_path` | resources | yes (1134 icons on disk) |
+| 19 | `po/` (36 languages, `po/POTFILES.in`) | `po/` | translations | **no** |
 
-Nothing in `lib/` on `ruby` is an extra the upstream does not have, apart from
-the placeholder status page.
+Nothing in `lib/` on `ruby` is an extra the upstream does not have. The
+placeholder `Adwaita::StatusPage` ("The Ruby port has not been written yet")
+noted in the first pass of this survey is gone.
 
 ---
 
@@ -253,28 +274,30 @@ driven by the stateful window action.
 
 ## Blockers for the port
 
-1. **The classifier.** Upstream runs `data/model.onnx` through the `ort` crate.
-   Ruby has no comparable in-tree ONNX runtime in this fork's dev shell, so
-   either an FFI binding to `onnxruntime` is added to the flake or the
-   classifier is stubbed and every symbol-list component is exercised with
-   canned classifications.
-2. **The symbol table is generated at build time** by `build.rs` from three
-   YAML files into a perfect-hash map. The port has to generate or load the
-   equivalent at runtime from `symbols.yaml`, `typst-aliases.yaml` and
-   `unicode_to_latex.yaml`.
-3. **1000+ generated symbol icons** live in the GResource, built by
-   `scripts/generate_icons.py` from LaTeX. The port needs them on disk plus an
-   icon search path; regenerating them needs a TeX toolchain.
-4. **`Adw.MultiLayoutView`, `Adw.Layout`, `Adw.LayoutSlot`, `Adw.BottomSheet`
-   and `Adw.Breakpoint` setters** are recent libadwaita; whether the fork's
-   Ruby bindings expose them (especially `Adwaita::Breakpoint#add_setter` and
-   the layout-slot API) must be checked in the dev shell before the window is
-   written.
-5. **`IndicatorButton` needs a real GObject subclass** with an overridden
-   `snapshot`, which the house style otherwise avoids; the `.ui` property
-   bindings (`bind-source` / `bind-flags`) also have to become explicit
-   `bind_property` calls.
-6. **`BoxedStrokes` is a custom boxed GType** carrying the strokes through the
-   `stroke-drawn` signal. In Ruby the signal can carry the Ruby object
-   directly, so the boxed type does not port — but a custom signal must still
-   be registered on the drawing area.
+1. **The classifier is the one component with no port at all.** Upstream runs
+   `data/model.onnx` through the `ort` crate. The fork's dev shell has no ONNX
+   runtime for Ruby, so either an FFI binding to `onnxruntime` is added to the
+   flake or `lib/classifier.rb` stays a stub. Today `Window#classify` only
+   records the strokes and re-displays the `--show-only` filter, so drawing a
+   symbol produces no symbols and the `symbol_list`, the bottom-bar preview, the
+   copy button and the stroke upload are only reachable through `--show-only`
+   or a drive script. Everything downstream of it is written and waiting.
+2. **The Typst half of the symbol table is incomplete.** `lib/symbol.rb` builds
+   the same 1124 LaTeX symbols under the same base64 ids as upstream's
+   `build.rs` table, but upstream also folds in the alias maps of the `mitex`
+   and `codex` crates, which are those crates' compile-time data and not files
+   of this project. `unicode_to_latex.yaml` is not yet used by the port.
+   Symbols whose only Typst spelling came from the crates are skipped in Typst
+   mode, which is a real parity gap in the `win.markup-language-mode` path.
+3. **No translations.** `po/` does not exist on `ruby` and no string in `lib/`
+   goes through gettext; upstream ships 36 languages. Every translatable string
+   listed in section 15–19 is currently a bare Ruby literal.
+4. **Resolved since the first pass, recorded so it is not re-litigated:**
+   `Adwaita::MultiLayoutView`, `Adwaita::Layout`, `Adwaita::BottomSheet` and
+   `Adwaita::Breakpoint#add_setter` all work in this fork's bindings and
+   `lib/window.rb` uses them; `IndicatorButton` is a plain Ruby class with an
+   overlay dot rather than a GObject subclass overriding `snapshot`; the
+   `stroke-drawn` signal carries the Ruby stroke array through a constructor
+   callback instead of a `BoxedStrokes` boxed GType; and the 1134 generated
+   icons are checked into `data/icons/` and found through an icon search path
+   rather than a GResource.
