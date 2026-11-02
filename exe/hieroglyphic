@@ -3,4 +3,4 @@
 
 require "hieroglyphic"
 
-Hieroglyphic::Application.new.build.run
+Hieroglyphic::Application.new.build.run([])
