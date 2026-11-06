@@ -1,0 +1,128 @@
+# Dutch translation for hieroglyphic.
+# Copyright (C) 2024 hieroglyphic's COPYRIGHT HOLDER
+# This file is distributed under the same license as the hieroglyphic package.
+# Nathan Follens <nfollens@gnome.org>,  2024-2025.
+# Dick Groskamp <dikgro@yahoo.co.uk>, 2025.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: hieroglyphic main\n"
+"Report-Msgid-Bugs-To: https://github.com/FineFindus/Hieroglyphic/issues\n"
+"POT-Creation-Date: 2026-11-06 21:30+0000\n"
+"PO-Revision-Date: 2025-10-11 23:31+0200\n"
+"Last-Translator: Nathan Follens <nfollens@gnome.org>\n"
+"Language-Team: GNOME-NL https://matrix.to/#/#nl:gnome.org\n"
+"Language: nl\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.6\n"
+
+#: ../lib/about.rb:47 ../lib/window.rb:177 ../lib/window.rb:405
+msgid "Hieroglyphic"
+msgstr "Hieroglyphic"
+
+#: ../lib/about.rb:55
+msgid "translator-credits"
+msgstr ""
+"Nathan Follens <nfollens@gnome.org>\n"
+"Dick Groskamp <dikgro@yahoo.co.uk>\n"
+"Meer info over GNOME-NL https://nl.gnome.org"
+
+#: ../lib/contribution_dialog.rb:57 ../lib/contribution_dialog.rb:102
+#: ../lib/window.rb:411
+msgid "Improve Hieroglyphic"
+msgstr "Verbeter Hieroglyphic"
+
+#: ../lib/contribution_dialog.rb:112
+msgid "Help make Hieroglyphic better at identifying symbols for everyone"
+msgstr ""
+"Help ons om Hieroglyphic voor iedereen nog beter te maken in het herkennen van"
+" symbolen"
+
+#: ../lib/contribution_dialog.rb:127
+msgid "Contribute Symbols"
+msgstr "Symbolen bijdragen"
+
+#: ../lib/contribution_dialog.rb:128
+msgid "Submit recognized drawings to Hieroglyphic’s dataset"
+msgstr "Zend herkende schetsen in naar de gegevensset van Hieroglyphic"
+
+#: ../lib/primary_menu.rb:15
+msgid "LaTeX"
+msgstr ""
+
+#: ../lib/primary_menu.rb:16
+msgid "Typst"
+msgstr ""
+
+#: ../lib/primary_menu.rb:21
+msgid "Markup language"
+msgstr ""
+
+#: ../lib/primary_menu.rb:31
+msgid "About Hieroglyphic"
+msgstr "Over Hieroglyphic"
+
+#: ../lib/symbol_item.rb:98
+msgid "Copy"
+msgstr "Kopiëren"
+
+#: ../lib/window.rb:134
+msgid "Copied “%{command}”"
+msgstr "‘%{command}’ gekopieerd"
+
+#: ../lib/window.rb:295 ../lib/window.rb:374
+msgid "No Symbols"
+msgstr "Geen symbolen"
+
+#: ../lib/window.rb:301 ../lib/window.rb:375
+msgid "Start by drawing a symbol"
+msgstr "Begin met een symbool te schetsen"
+
+#: ../lib/window.rb:325
+msgid "All Symbols"
+msgstr "Alle symbolen"
+
+#: ../lib/window.rb:352
+msgid "_Clear"
+msgstr "_Wissen"
+
+#: ../lib/window.rb:417
+msgid "Main Menu"
+msgstr ""
+
+#~ msgid "Search through over 1000 different LaTeX symbols by sketching"
+#~ msgstr "Zoek en vind meer dan 1.000 verschillende LaTeX-symbolen door ze te schetsen"
+#~ msgid "GTK;Tools;LaTeX;TeX;Symbols;"
+#~ msgstr "GTK;Tools;LaTeX;TeX;Symbols;Hulpmiddelen;Tekens;Karakters;Symbolen;Symbool;"
+#~ msgid "Whether to show a small nudge towards the contribution dialog"
+#~ msgstr ""
+#~ "Of er een kleine hint wordt gegeven richting het dialoogvenster om bij te drag"
+#~ "en"
+#~ msgid "Whether to contribute recognized strokes"
+#~ msgstr "Of herkende schetsen ingezonden mogen worden"
+#~ msgid "Find LaTeX symbols"
+#~ msgstr "Vind LaTeX-symbolen"
+#~ msgid ""
+#~ "If you work with LaTeX, you know it's difficult to memorize the names of all t"
+#~ "he symbols. Hieroglyphic allows you to search through over 1000 different LaTe"
+#~ "X symbols by sketching."
+#~ msgstr ""
+#~ "Als u LaTeX gebruikt, weet u hoe lastig het is om de namen van alle symbolen t"
+#~ "e onthouden. Met Hieroglyphic kunt u meer dan 1.000 verschillende LaTeX-symbol"
+#~ "en vinden door ze te schetsen."
+#~ msgid "Main Window"
+#~ msgstr "Hoofdvenster"
+#~ msgid "Placeholder"
+#~ msgstr "Opvultekst"
+#~ msgid ""
+#~ "No personal identifiable information is collected. <a href=\"https://github.com"
+#~ "/FineFindus/Hieroglyphic/blob/main/PRIVACY_POLICY.md\">Privacy policy</a>"
+#~ msgstr ""
+#~ "Er wordt geen persoonlijk identificeerbare informatie verzameld. <a href=\"http"
+#~ "s://github.com/FineFindus/Hieroglyphic/blob/main/PRIVACY_POLICY.md\">Privacybel"
+#~ "eid</a>"
+#~ msgid "Copied “{}”"
+#~ msgstr "‘{}’ gekopieerd"

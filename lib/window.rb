@@ -131,7 +131,7 @@ module Hieroglyphic
     def copy_symbol(symbol)
       symbol.command_for(@settings.markup_language).then do |command|
         window.clipboard.set(command)
-        show_toast("Copied “#{command}”")
+        show_toast(_("Copied “%{command}”") % {command: command})
         try_upload_data(symbol.id, @symbol_strokes)
         @symbol_strokes = []
       end
@@ -174,7 +174,7 @@ module Hieroglyphic
 
     def window
       @window ||= Adwaita::ApplicationWindow.new(@app).tap do |win|
-        win.title = "Hieroglyphic"
+        win.title = _("Hieroglyphic")
         win.set_default_size(DEFAULT_WIDTH, DEFAULT_HEIGHT)
         win.height_request = DEFAULT_HEIGHT
       end
@@ -292,13 +292,13 @@ module Hieroglyphic
     end
 
     def placeholder_title
-      @placeholder_title ||= Gtk::Inscription.new("No Symbols").tap do |inscription|
+      @placeholder_title ||= Gtk::Inscription.new(_("No Symbols")).tap do |inscription|
         inscription.add_css_class("title-3")
       end
     end
 
     def placeholder_subtitle
-      @placeholder_subtitle ||= Gtk::Inscription.new("Start by drawing a symbol").tap do |inscription|
+      @placeholder_subtitle ||= Gtk::Inscription.new(_("Start by drawing a symbol")).tap do |inscription|
         inscription.add_css_class("caption")
       end
     end
@@ -322,7 +322,7 @@ module Hieroglyphic
     def all_symbols_button
       @all_symbols_button ||= Gtk::ToggleButton.new.tap do |button|
         button.icon_name = "up-symbolic"
-        button.tooltip_text = "All Symbols"
+        button.tooltip_text = _("All Symbols")
         button.valign = :center
         button.add_css_class("flat")
       end
@@ -349,7 +349,7 @@ module Hieroglyphic
     def clear_button_content
       @clear_button_content ||= Adwaita::ButtonContent.new.tap do |content|
         content.icon_name = "eraser-symbolic"
-        content.label = "_Clear"
+        content.label = _("_Clear")
         content.use_underline = true
       end
     end
@@ -371,8 +371,8 @@ module Hieroglyphic
     def symbol_status_page
       @symbol_status_page ||= Adwaita::StatusPage.new.tap do |page|
         page.icon_name = "edit-symbolic"
-        page.title = "No Symbols"
-        page.description = "Start by drawing a symbol"
+        page.title = _("No Symbols")
+        page.description = _("Start by drawing a symbol")
         page.add_css_class("compact")
       end
     end
@@ -402,19 +402,19 @@ module Hieroglyphic
       end
     end
 
-    def window_title = @window_title ||= Adwaita::WindowTitle.new("Hieroglyphic", "")
+    def window_title = @window_title ||= Adwaita::WindowTitle.new(_("Hieroglyphic"), "")
 
     def indicator_button
       @indicator_button ||= IndicatorButton.new(
         action_name:  "win.show-contribution-dialog",
         icon_name:    "document-send-symbolic",
-        tooltip_text: "Improve Hieroglyphic",
+        tooltip_text: _("Improve Hieroglyphic"),
       )
     end
 
     def menu_button
       @menu_button ||= Gtk::MenuButton.new.tap do |button|
-        button.tooltip_text = "Main Menu"
+        button.tooltip_text = _("Main Menu")
         button.valign = :center
         button.icon_name = "open-menu-symbolic"
         button.primary = true

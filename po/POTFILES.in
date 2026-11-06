@@ -1,0 +1,5 @@
+lib/about.rb
+lib/contribution_dialog.rb
+lib/primary_menu.rb
+lib/symbol_item.rb
+lib/window.rb

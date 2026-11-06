@@ -1,0 +1,122 @@
+# British English translation for hieroglyphic.
+# Copyright (C) 2024 hieroglyphic's COPYRIGHT HOLDER
+# This file is distributed under the same license as the hieroglyphic package.
+# Andi Chandler <andi@gowling.com>,  2024.
+# Bruce Cowan <bruce@bcowan.me.uk>, 2025.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: hieroglyphic main\n"
+"Report-Msgid-Bugs-To: https://github.com/FineFindus/Hieroglyphic/issues\n"
+"POT-Creation-Date: 2026-11-06 21:30+0000\n"
+"PO-Revision-Date: 2025-09-25 10:25+0100\n"
+"Last-Translator: Bruce Cowan <bruce@bcowan.me.uk>\n"
+"Language-Team: British English <en@li.org>\n"
+"Language: en_GB\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Gtranslator 49.0\n"
+"X-DL-VCS-Web: https://github.com/FineFindus/Hieroglyphic\n"
+"X-DL-Lang: en_GB\n"
+"X-DL-Module: hieroglyphic\n"
+"X-DL-Branch: main\n"
+"X-DL-Domain: po\n"
+"X-DL-State: Translating\n"
+
+#: ../lib/about.rb:47 ../lib/window.rb:177 ../lib/window.rb:405
+msgid "Hieroglyphic"
+msgstr "Hieroglyphic"
+
+#: ../lib/about.rb:55
+msgid "translator-credits"
+msgstr ""
+"Andi Chandler <andi@gowling.com>\n"
+"Bruce Cowan <bruce@bcowan.me.uk>"
+
+#: ../lib/contribution_dialog.rb:57 ../lib/contribution_dialog.rb:102
+#: ../lib/window.rb:411
+msgid "Improve Hieroglyphic"
+msgstr "Improve Hieroglyphic"
+
+#: ../lib/contribution_dialog.rb:112
+msgid "Help make Hieroglyphic better at identifying symbols for everyone"
+msgstr "Help make Hieroglyphic better at identifying symbols for everyone"
+
+#: ../lib/contribution_dialog.rb:127
+msgid "Contribute Symbols"
+msgstr "Contribute Symbols"
+
+#: ../lib/contribution_dialog.rb:128
+msgid "Submit recognized drawings to Hieroglyphic’s dataset"
+msgstr "Submit recognised drawings to Hieroglyphic’s dataset"
+
+#: ../lib/primary_menu.rb:15
+msgid "LaTeX"
+msgstr ""
+
+#: ../lib/primary_menu.rb:16
+msgid "Typst"
+msgstr ""
+
+#: ../lib/primary_menu.rb:21
+msgid "Markup language"
+msgstr ""
+
+#: ../lib/primary_menu.rb:31
+msgid "About Hieroglyphic"
+msgstr "About Hieroglyphic"
+
+#: ../lib/symbol_item.rb:98
+msgid "Copy"
+msgstr "Copy"
+
+#: ../lib/window.rb:134
+msgid "Copied “%{command}”"
+msgstr "Copied “%{command}”"
+
+#: ../lib/window.rb:295 ../lib/window.rb:374
+msgid "No Symbols"
+msgstr "No Symbols"
+
+#: ../lib/window.rb:301 ../lib/window.rb:375
+msgid "Start by drawing a symbol"
+msgstr "Start by drawing a symbol"
+
+#: ../lib/window.rb:325
+msgid "All Symbols"
+msgstr "All Symbols"
+
+#: ../lib/window.rb:352
+msgid "_Clear"
+msgstr "_Clear"
+
+#: ../lib/window.rb:417
+msgid "Main Menu"
+msgstr ""
+
+#~ msgid "Search through over 1000 different LaTeX symbols by sketching"
+#~ msgstr "Search through over 1000 different LaTeX symbols by sketching"
+#~ msgid "GTK;Tools;LaTeX;TeX;Symbols;"
+#~ msgstr "GTK;Tools;LaTeX;TeX;Symbols;"
+#~ msgid "Whether to show a small nudge towards the contribution dialog"
+#~ msgstr "Whether to show a small nudge towards the contribution dialogue"
+#~ msgid "Whether to contribute recognized strokes"
+#~ msgstr "Whether to contribute recognised strokes"
+#~ msgid "Find LaTeX symbols"
+#~ msgstr "Find LaTeX symbols"
+#~ msgid ""
+#~ "If you work with LaTeX, you know it's difficult to memorize the names of all t"
+#~ "he symbols. Hieroglyphic allows you to search through over 1000 different LaTe"
+#~ "X symbols by sketching."
+#~ msgstr ""
+#~ "If you work with LaTeX, you know it's difficult to memorise the names of all t"
+#~ "he symbols. Hieroglyphic allows you to search through over 1000 different LaTe"
+#~ "X symbols by sketching."
+#~ msgid "Main Window"
+#~ msgstr "Main Window"
+#~ msgid "Placeholder"
+#~ msgstr "Placeholder"
+#~ msgid "Copied “{}”"
+#~ msgstr "Copied “{}”"

@@ -1,0 +1,147 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the hieroglyphic package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# Julián Villodre <jvillodrede@gmail.com>, 2024-2025.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: hieroglyphic\n"
+"Report-Msgid-Bugs-To: https://github.com/FineFindus/Hieroglyphic/issues\n"
+"POT-Creation-Date: 2026-11-06 21:30+0000\n"
+"PO-Revision-Date: 2025-12-26 23:58+0100\n"
+"Last-Translator: Julián Villodre <jvillodrede@gmail.com>\n"
+"Language-Team: es_ES\n"
+"Language: es_ES\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Gtranslator 49.0\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: ../lib/about.rb:47 ../lib/window.rb:177 ../lib/window.rb:405
+msgid "Hieroglyphic"
+msgstr "Hieroglyphic"
+
+#: ../lib/about.rb:55
+msgid "translator-credits"
+msgstr ""
+"Julián Villodre <jvillodrede@gmail.com>, 2024 - 2025\n"
+"haggen88"
+
+#: ../lib/contribution_dialog.rb:57 ../lib/contribution_dialog.rb:102
+#: ../lib/window.rb:411
+msgid "Improve Hieroglyphic"
+msgstr "Ayude a mejorar Hieroglyphic"
+
+#: ../lib/contribution_dialog.rb:112
+msgid "Help make Hieroglyphic better at identifying symbols for everyone"
+msgstr "Ayude a que Hieroglyphic sea mejor identificando símbolos para todos"
+
+#: ../lib/contribution_dialog.rb:127
+msgid "Contribute Symbols"
+msgstr "Contribuya con nuevos símbolos"
+
+#: ../lib/contribution_dialog.rb:128
+msgid "Submit recognized drawings to Hieroglyphic’s dataset"
+msgstr "Envíe trazos familiares al conjunto de datos de Hieroglyphic"
+
+#: ../lib/primary_menu.rb:15
+msgid "LaTeX"
+msgstr "LaTeX"
+
+#: ../lib/primary_menu.rb:16
+msgid "Typst"
+msgstr "Typst"
+
+#: ../lib/primary_menu.rb:21
+msgid "Markup language"
+msgstr "Lenguaje de marcado"
+
+#: ../lib/primary_menu.rb:31
+msgid "About Hieroglyphic"
+msgstr "Acerca de Hieroglyphic"
+
+#: ../lib/symbol_item.rb:98
+msgid "Copy"
+msgstr "Copiar"
+
+#: ../lib/window.rb:134
+msgid "Copied “%{command}”"
+msgstr "“%{command}” copiado"
+
+#: ../lib/window.rb:295 ../lib/window.rb:374
+msgid "No Symbols"
+msgstr "Sin símbolo"
+
+#: ../lib/window.rb:301 ../lib/window.rb:375
+msgid "Start by drawing a symbol"
+msgstr "Comience dibujando un símbolo"
+
+#: ../lib/window.rb:325
+msgid "All Symbols"
+msgstr "Todos los símbolos"
+
+#: ../lib/window.rb:352
+msgid "_Clear"
+msgstr "_Limpiar"
+
+#: ../lib/window.rb:417
+msgid "Main Menu"
+msgstr "Menú principal"
+
+#~ msgid "Search through over 1000 different LaTeX symbols by sketching"
+#~ msgstr "Busque entre más de 1.000 símbolos LaTeX diferentes dibujando"
+#~ msgid "GTK;Tools;LaTeX;TeX;Symbols;"
+#~ msgstr "GTK;Tools;LaTeX;TeX;Símbolos;"
+#~ msgid "Whether to show a small nudge towards the contribution dialog"
+#~ msgstr "Indica si se debería hacer más llamativo el diálogo de contribución"
+#~ msgid "Whether to contribute recognized strokes"
+#~ msgstr "Indica si se desea contribuir con trazos familiares"
+#~ msgid "Markup language to suggest symbols for"
+#~ msgstr "Sugerir símbolos para lenguaje de marcado"
+#~ msgid "Find LaTeX and Typst symbols"
+#~ msgstr "Encuentre símbolos LaTeX y Typst"
+#~ msgid ""
+#~ "If you work with LaTeX or Typst, you know it's difficult to memorize the names"
+#~ " of all the symbols. Hieroglyphic allows you to search through over 1000 diffe"
+#~ "rent symbols by sketching."
+#~ msgstr ""
+#~ "Si trabaja con LaTeX o con Typst, sabrá que es difícil memorizar los nombres d"
+#~ "e todos los símbolos. Hieroglyphic le permite buscar entre más de 1000 símbolo"
+#~ "s diferentes mediante bocetos."
+#~ msgid "Symbol selection for LaTeX symbols"
+#~ msgstr "Seleccione símbolos LaTeX"
+#~ msgid "Symbol selection for Typst symbols"
+#~ msgstr "Seleccione símbolos Typst"
+#~ msgid "Placeholder"
+#~ msgstr "Marcador de posición"
+#~ msgid ""
+#~ "No personal identifiable information is collected. <a href=\"https://github.com"
+#~ "/FineFindus/Hieroglyphic/blob/main/PRIVACY_POLICY.md\">Privacy policy</a>"
+#~ msgstr ""
+#~ "No se recopila ninguna información personal identificable. <a href=\"https://gi"
+#~ "thub.com/FineFindus/Hieroglyphic/blob/main/PRIVACY_POLICY.md\">Política de priv"
+#~ "acidad</a>"
+#~ msgid "Copied “{}”"
+#~ msgstr "“{}” copiado"
+#~ msgid "FineFindus"
+#~ msgstr "FineFindus"
+#~ msgid "This update refines the user interface:"
+#~ msgstr "Esta actualización perfecciona la interfaz de usuario:"
+#~ msgid "New icon"
+#~ msgstr "Nuevo icono"
+#~ msgid "Updated to the latest GNOME components"
+#~ msgstr "Actualizado a los últimos componentes de GNOME"
+#~ msgid "Improved recognition speed and overall application responsiveness"
+#~ msgstr ""
+#~ "Mayor velocidad de reconocimiento y capacidad de respuesta general de la "
+#~ "aplicación"
+#~ msgid "Shortcut to quickly delete the drawn symbol"
+#~ msgstr "Acceso directo para eliminar rápidamente el símbolo dibujado"
+#~ msgid "Various minor UI improvements and tweaks"
+#~ msgstr "Mejoras y ajustes menores de la interfaz de usuario"
+#~ msgid "Fixed failing appstream metadata"
+#~ msgstr "Se corrigieron los metadatos de appstream"
+#~ msgid "Initial release"
+#~ msgstr "Versión inicial"

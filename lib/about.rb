@@ -44,7 +44,7 @@ module Hieroglyphic
     def dialog
       @dialog ||= Adwaita::AboutDialog.new.tap do |about|
         about.application_icon = APP_ID
-        about.application_name = "Hieroglyphic"
+        about.application_name = _("Hieroglyphic")
         about.developer_name = DEVELOPER_NAME
         about.developers = DEVELOPERS
         about.designers = DESIGNERS
@@ -52,7 +52,7 @@ module Hieroglyphic
         # Translators: This should not be translate, Please enter your credits
         # here instead (format: "Name https://example.com" or
         # "Name <email@example.com>", no quotes)
-        about.translator_credits = "translator-credits"
+        about.translator_credits = _("translator-credits")
         about.license_type = Gtk::License::GPL_3_0
         about.version = Rb::Version::VERSION
         about.website = WEBSITE

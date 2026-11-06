@@ -1,0 +1,126 @@
+# Swedish translation for hieroglyphic.
+# Copyright © 2024-2026 hieroglyphic's COPYRIGHT HOLDER
+# This file is distributed under the same license as the hieroglyphic package.
+# Anders Jonsson <anders.jonsson@norsjovallen.se>,  2024, 2025, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: hieroglyphic main\n"
+"Report-Msgid-Bugs-To: https://github.com/FineFindus/Hieroglyphic/issues\n"
+"POT-Creation-Date: 2026-11-06 21:30+0000\n"
+"PO-Revision-Date: 2026-04-09 18:06+0200\n"
+"Last-Translator: Anders Jonsson <anders.jonsson@norsjovallen.se>\n"
+"Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
+"Language: sv\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.9\n"
+"X-DamnedLies-Scope: partial\n"
+
+#: ../lib/about.rb:47 ../lib/window.rb:177 ../lib/window.rb:405
+msgid "Hieroglyphic"
+msgstr "Hieroglyphic"
+
+#: ../lib/about.rb:55
+msgid "translator-credits"
+msgstr "Anders Jonsson <anders.jonsson@norsjovallen.se>, 2024"
+
+#: ../lib/contribution_dialog.rb:57 ../lib/contribution_dialog.rb:102
+#: ../lib/window.rb:411
+msgid "Improve Hieroglyphic"
+msgstr "Förbättra Hieroglyphic"
+
+#: ../lib/contribution_dialog.rb:112
+msgid "Help make Hieroglyphic better at identifying symbols for everyone"
+msgstr "Hjälp till att göra Hieroglyphic bättre på att känna igen symboler för alla"
+
+#: ../lib/contribution_dialog.rb:127
+msgid "Contribute Symbols"
+msgstr "Bidra med symboler"
+
+#: ../lib/contribution_dialog.rb:128
+msgid "Submit recognized drawings to Hieroglyphic’s dataset"
+msgstr "Skicka in igenkända teckningar till Hieroglyphics datamängd"
+
+#: ../lib/primary_menu.rb:15
+msgid "LaTeX"
+msgstr "LaTeX"
+
+#: ../lib/primary_menu.rb:16
+msgid "Typst"
+msgstr "Typst"
+
+#: ../lib/primary_menu.rb:21
+msgid "Markup language"
+msgstr "Märkspråk"
+
+#: ../lib/primary_menu.rb:31
+msgid "About Hieroglyphic"
+msgstr "Om Hieroglyphic"
+
+#: ../lib/symbol_item.rb:98
+msgid "Copy"
+msgstr "Kopiera"
+
+#: ../lib/window.rb:134
+msgid "Copied “%{command}”"
+msgstr "Kopierade ”%{command}”"
+
+#: ../lib/window.rb:295 ../lib/window.rb:374
+msgid "No Symbols"
+msgstr "Inga symboler"
+
+#: ../lib/window.rb:301 ../lib/window.rb:375
+msgid "Start by drawing a symbol"
+msgstr "Starta genom att rita en symbol"
+
+#: ../lib/window.rb:325
+msgid "All Symbols"
+msgstr "Alla symboler"
+
+#: ../lib/window.rb:352
+msgid "_Clear"
+msgstr "_Töm"
+
+#: ../lib/window.rb:417
+msgid "Main Menu"
+msgstr "Huvudmeny"
+
+#~ msgid "Search through over 1000 different LaTeX symbols by sketching"
+#~ msgstr "Sök genom över 1000 olika LaTeX-symboler genom att skissa"
+#~ msgid "GTK;Tools;LaTeX;TeX;Symbols;Typst;Math;"
+#~ msgstr "GTK;Verktyg;LaTeX;TeX;Symboler;Typst;Matematik;"
+#~ msgid "Whether to show a small nudge towards the contribution dialog"
+#~ msgstr "Huruvida en liten antydan till bidragsdialogen ska visas"
+#~ msgid "Whether to contribute recognized strokes"
+#~ msgstr "Huruvida du ska bidra med igenkända streck"
+#~ msgid "Markup language to suggest symbols for"
+#~ msgstr "Märkspråk att föreslå symboler för"
+#~ msgid "Find LaTeX and Typst symbols"
+#~ msgstr "Hitta LaTeX- och Typst-symboler"
+#~ msgid ""
+#~ "If you work with LaTeX or Typst, you know it's difficult to memorize the names"
+#~ " of all the symbols. Hieroglyphic allows you to search through over 1000 diffe"
+#~ "rent symbols by sketching."
+#~ msgstr ""
+#~ "Om du arbetar med LaTeX eller Typst så vet du att det är svårt att komma ihåg "
+#~ "namnen på alla symboler. Hieroglyphic låter dig söka genom över 1000 olika sym"
+#~ "boler genom att skissa."
+#~ msgid "Symbol selection for LaTeX symbols"
+#~ msgstr "Symbolval för LaTeX-symboler"
+#~ msgid "Symbol selection for Typst symbols"
+#~ msgstr "Symbolval för Typst-symboler"
+#~ msgid "Placeholder"
+#~ msgstr "Platshållare"
+#~ msgid ""
+#~ "No personal identifiable information is collected. <a href=\"https://github.com"
+#~ "/FineFindus/Hieroglyphic/blob/main/PRIVACY_POLICY.md\">Privacy policy</a>"
+#~ msgstr ""
+#~ "Ingen personligt identifierbar information samlas in. <a href=\"https://github."
+#~ "com/FineFindus/Hieroglyphic/blob/main/PRIVACY_POLICY.md\">Sekretesspolicy</a>"
+#~ msgid "Copied “{}”"
+#~ msgstr "Kopierade ”{}”"
+#~ msgid "Main Window"
+#~ msgstr "Huvudfönster"

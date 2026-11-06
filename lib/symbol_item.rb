@@ -95,7 +95,7 @@ module Hieroglyphic
     def copy_button
       @copy_button ||= Gtk::Button.new.tap do |button|
         button.icon_name = "copy-symbolic"
-        button.tooltip_text = "Copy"
+        button.tooltip_text = _("Copy")
         button.valign = :center
         button.add_css_class("flat")
       end

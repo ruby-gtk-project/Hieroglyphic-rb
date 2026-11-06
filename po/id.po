@@ -1,0 +1,117 @@
+# Indonesian translation for hieroglyphic.
+# Copyright (C) 2025 hieroglyphic's COPYRIGHT HOLDER
+# This file is distributed under the same license as the hieroglyphic package.
+# Ega <ega8642@gmail.com>, 2025.
+# Ega Natha <ega8642@gmail.com>, 2025.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: hieroglyphic main\n"
+"Report-Msgid-Bugs-To: https://github.com/FineFindus/Hieroglyphic/issues\n"
+"POT-Creation-Date: 2026-11-06 21:30+0000\n"
+"PO-Revision-Date: 2025-03-15 21:04+0700\n"
+"Last-Translator: Ega Natha <ega8642@gmail.com>\n"
+"Language-Team: Indonesian\n"
+"Language: id\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Gtranslator 47.1\n"
+
+#: ../lib/about.rb:47 ../lib/window.rb:177 ../lib/window.rb:405
+msgid "Hieroglyphic"
+msgstr "Hieroglyphic"
+
+#: ../lib/about.rb:55
+msgid "translator-credits"
+msgstr "Ega Natha <ega8642@gmail.com>"
+
+#: ../lib/contribution_dialog.rb:57 ../lib/contribution_dialog.rb:102
+#: ../lib/window.rb:411
+msgid "Improve Hieroglyphic"
+msgstr "Tingkatkan Hieroglyphic"
+
+#: ../lib/contribution_dialog.rb:112
+msgid "Help make Hieroglyphic better at identifying symbols for everyone"
+msgstr ""
+"Bantu Hieroglyphic agar lebih baik dalam megidentifikasikan simbol untuk semua"
+" orang"
+
+#: ../lib/contribution_dialog.rb:127
+msgid "Contribute Symbols"
+msgstr "Kontribusi Simbol"
+
+#: ../lib/contribution_dialog.rb:128
+msgid "Submit recognized drawings to Hieroglyphic’s dataset"
+msgstr "Mengajukan coretan tangan yang dikenal ke kumpulan data Hieroglyphic"
+
+#: ../lib/primary_menu.rb:15
+msgid "LaTeX"
+msgstr ""
+
+#: ../lib/primary_menu.rb:16
+msgid "Typst"
+msgstr ""
+
+#: ../lib/primary_menu.rb:21
+msgid "Markup language"
+msgstr ""
+
+#: ../lib/primary_menu.rb:31
+msgid "About Hieroglyphic"
+msgstr "Tentang Hieroglyphic"
+
+#: ../lib/symbol_item.rb:98
+msgid "Copy"
+msgstr ""
+
+#: ../lib/window.rb:134
+msgid "Copied “%{command}”"
+msgstr "\"%{command}\" Tersalin"
+
+#: ../lib/window.rb:295 ../lib/window.rb:374
+msgid "No Symbols"
+msgstr "Tidak Ada Simbol"
+
+#: ../lib/window.rb:301 ../lib/window.rb:375
+msgid "Start by drawing a symbol"
+msgstr "Mulai dengan menggambar simbol"
+
+#: ../lib/window.rb:325
+#, fuzzy
+msgid "All Symbols"
+msgstr "Tidak Ada Simbol"
+
+#: ../lib/window.rb:352
+msgid "_Clear"
+msgstr "_Bersihkan"
+
+#: ../lib/window.rb:417
+msgid "Main Menu"
+msgstr ""
+
+#~ msgid "Search through over 1000 different LaTeX symbols by sketching"
+#~ msgstr "Cari lebih dari 1000 simbol LaTeX yang berbeda dengan mensketsa."
+#~ msgid "GTK;Tools;LaTeX;TeX;Symbols;"
+#~ msgstr "GTK;Alat;LaTeX;TeX;Simbol;GTK;"
+#~ msgid "Whether to show a small nudge towards the contribution dialog"
+#~ msgstr "Apakah akan menunjukan dorongan kecil terhadap dialog kontribusi"
+#~ msgid "Whether to contribute recognized strokes"
+#~ msgstr "Apakah akan mengontribusi coretan tangan yang dikenal"
+#~ msgid "Find LaTeX symbols"
+#~ msgstr "Cari simbol LaTeX"
+#~ msgid ""
+#~ "If you work with LaTeX, you know it's difficult to memorize the names of all t"
+#~ "he symbols. Hieroglyphic allows you to search through over 1000 different LaTe"
+#~ "X symbols by sketching."
+#~ msgstr ""
+#~ "Jika Anda menggunakan LaTeX, Anda akan tahu betapa sulitnya mengingat semua na"
+#~ "ma simbolnya. Hieroglyphic mempermudah dalam mencari lebih dari 1000 simbol La"
+#~ "TeX yang berbeda dengan hanya mensketsa."
+#~ msgid "Main Window"
+#~ msgstr "Jendela Utama"
+#~ msgid "Placeholder"
+#~ msgstr "Pewakil"
+#~ msgid "Copied “{}”"
+#~ msgstr "\"{}\" Tersalin"

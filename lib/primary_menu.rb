@@ -12,23 +12,23 @@ module Hieroglyphic
   # win.markup-language-mode action, which is what makes them a radio group.
   class PrimaryMenu
     LANGUAGE_LABELS = {
-      MarkupLanguage::LATEX => "LaTeX",
-      MarkupLanguage::TYPST => "Typst",
+      MarkupLanguage::LATEX => N_("LaTeX"),
+      MarkupLanguage::TYPST => N_("Typst"),
     }.freeze
 
     def build
       menu.tap do |m|
-        m.append_section("Markup language", language_section)
+        m.append_section(_("Markup language"), language_section)
         m.append_section(nil, about_section)
 
         language_section.tap do |section|
           LANGUAGE_LABELS.each do |language, label|
-            section.append(label, "win.markup-language-mode('#{language}')")
+            section.append(_(label), "win.markup-language-mode('#{language}')")
           end
         end
 
         about_section.tap do |section|
-          section.append("About Hieroglyphic", "app.about")
+          section.append(_("About Hieroglyphic"), "app.about")
         end
       end
     end

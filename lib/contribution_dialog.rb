@@ -54,7 +54,7 @@ module Hieroglyphic
 
     def dialog
       @dialog ||= Adwaita::Dialog.new.tap do |d|
-        d.title = "Improve Hieroglyphic"
+        d.title = _("Improve Hieroglyphic")
         d.content_width = 500
         d.content_height = 500
       end
@@ -99,7 +99,7 @@ module Hieroglyphic
     end
 
     def title_label
-      @title_label ||= Gtk::Label.new("Improve Hieroglyphic").tap do |label|
+      @title_label ||= Gtk::Label.new(_("Improve Hieroglyphic")).tap do |label|
         label.justify = :center
         label.wrap = true
         label.margin_top = 24
@@ -109,7 +109,7 @@ module Hieroglyphic
 
     def description_label
       @description_label ||=
-        Gtk::Label.new("Help make Hieroglyphic better at identifying symbols for everyone").tap do |label|
+        Gtk::Label.new(_("Help make Hieroglyphic better at identifying symbols for everyone")).tap do |label|
           label.justify = :center
           label.wrap = true
           label.margin_top = 12
@@ -124,8 +124,8 @@ module Hieroglyphic
 
     def switch_row
       @switch_row ||= Adwaita::SwitchRow.new.tap do |row|
-        row.title = "Contribute Symbols"
-        row.subtitle = "Submit recognized drawings to Hieroglyphic’s dataset"
+        row.title = _("Contribute Symbols")
+        row.subtitle = _("Submit recognized drawings to Hieroglyphic’s dataset")
       end
     end
 

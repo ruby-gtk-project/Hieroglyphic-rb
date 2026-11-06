@@ -1,0 +1,127 @@
+# Hebrew translation for hieroglyphic.
+# Copyright (C) 2024 hieroglyphic's COPYRIGHT HOLDER
+# This file is distributed under the same license as the hieroglyphic package.
+# Yosef Or Boczko <yoseforb@gmail.com>, 2024-2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: hieroglyphic main\n"
+"Report-Msgid-Bugs-To: https://github.com/FineFindus/Hieroglyphic/issues\n"
+"POT-Creation-Date: 2026-11-06 21:30+0000\n"
+"PO-Revision-Date: 2026-08-23 09:28+0300\n"
+"Last-Translator: Yosef Or Boczko <yoseforb@gmail.com>\n"
+"Language-Team: Hebrew\n"
+"Language: he\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : n==2 ? 1 : n>10 && n%10==0 ? 2 : "
+"3)\n"
+"X-Generator: Gtranslator 50.0\n"
+
+#: ../lib/about.rb:47 ../lib/window.rb:177 ../lib/window.rb:405
+msgid "Hieroglyphic"
+msgstr "הירוגליפי"
+
+#: ../lib/about.rb:55
+msgid "translator-credits"
+msgstr "יוסף אור בוצ׳קו <yoseforb@gmail.com>"
+
+#: ../lib/contribution_dialog.rb:57 ../lib/contribution_dialog.rb:102
+#: ../lib/window.rb:411
+msgid "Improve Hieroglyphic"
+msgstr "שיפור הירוגליפי"
+
+#: ../lib/contribution_dialog.rb:112
+msgid "Help make Hieroglyphic better at identifying symbols for everyone"
+msgstr "אפשר לסייע בשיפור הירוגליפי בזיהוי סמלים לכולם"
+
+#: ../lib/contribution_dialog.rb:127
+msgid "Contribute Symbols"
+msgstr "תרומת סמלים"
+
+#: ../lib/contribution_dialog.rb:128
+msgid "Submit recognized drawings to Hieroglyphic’s dataset"
+msgstr "הגשת הציורים המזוהים לערכת הנתונים של הירוגליפי"
+
+#: ../lib/primary_menu.rb:15
+msgid "LaTeX"
+msgstr "LaTeX"
+
+#: ../lib/primary_menu.rb:16
+msgid "Typst"
+msgstr "Typst"
+
+#: ../lib/primary_menu.rb:21
+msgid "Markup language"
+msgstr "שפת סימון"
+
+#: ../lib/primary_menu.rb:31
+msgid "About Hieroglyphic"
+msgstr "על הירוגליפי"
+
+#: ../lib/symbol_item.rb:98
+msgid "Copy"
+msgstr "העתקה"
+
+#: ../lib/window.rb:134
+msgid "Copied “%{command}”"
+msgstr "‏‎„%{command}” הועתק"
+
+#: ../lib/window.rb:295 ../lib/window.rb:374
+msgid "No Symbols"
+msgstr "אין סמלים"
+
+#: ../lib/window.rb:301 ../lib/window.rb:375
+msgid "Start by drawing a symbol"
+msgstr "התחלה על ידי ציור סמל"
+
+#: ../lib/window.rb:325
+msgid "All Symbols"
+msgstr "כל הסמלים"
+
+#: ../lib/window.rb:352
+msgid "_Clear"
+msgstr "_ניקוי"
+
+#: ../lib/window.rb:417
+msgid "Main Menu"
+msgstr "תפריט ראשי"
+
+#~ msgid "Search through over 1000 different LaTeX symbols by sketching"
+#~ msgstr "חיפוש מתוך למעלה מ־1000 סמלי LaTeX שונים באמצעות רישום בכתב יד"
+#~ msgid "GTK;Tools;LaTeX;TeX;Symbols;Typst;Math;"
+#~ msgstr "GTK;כלים;לאטך;לטקס;לטך;LaTeX;TeX;סמלים;מתמטיקה;Typst;"
+#~ msgid "Whether to show a small nudge towards the contribution dialog"
+#~ msgstr "האם להציג סימון מפנה קטן לעבר חלונית התרומה"
+#~ msgid "Whether to contribute recognized strokes"
+#~ msgstr "האם לתרום את הצורות שזוהו"
+#~ msgid "Markup language to suggest symbols for"
+#~ msgstr "שפת סימון עבורה להציע סמלים"
+#~ msgid "Find LaTeX and Typst symbols"
+#~ msgstr "חיפוש סמלי LaTeX ו־Typst"
+#~ msgid ""
+#~ "If you work with LaTeX or Typst, you know it's difficult to memorize the names"
+#~ " of all the symbols. Hieroglyphic allows you to search through over 1000 diffe"
+#~ "rent symbols by sketching."
+#~ msgstr ""
+#~ "אם עבדת עם LaTeX או עם Typst, בוודאי מוכר לך הקושי לזכור את השמות של הסמלים הש"
+#~ "ונים. היישום הירוגליפי מאפשר לך לחפש מתוך למעלה מ־1000 סמלים באמצעות רישום בכת"
+#~ "ב יד."
+#~ msgid "Symbol selection for LaTeX symbols"
+#~ msgstr "בחירת סמלים לסמלי LaTeX"
+#~ msgid "Symbol selection for Typst symbols"
+#~ msgstr "בחירת סמל לסמלי Typst"
+#~ msgid "Placeholder"
+#~ msgstr "ממלא מקום"
+#~ msgid ""
+#~ "No personal identifiable information is collected. <a href=\"https://github.com"
+#~ "/FineFindus/Hieroglyphic/blob/main/PRIVACY_POLICY.md\">Privacy policy</a>"
+#~ msgstr ""
+#~ "לא נאספים פרטים שעלולים לחשוף את זהותך. <a href=\"https://github.com/FineFindus"
+#~ "/Hieroglyphic/blob/main/PRIVACY_POLICY.md\">מדיניות פרטיות</a>"
+#~ msgid "Copied “{}”"
+#~ msgstr "‏‎„{}” הועתק"
+#~ msgid ""
+#~ "Help improve Hieroglyphic by automatically contributing recognized symbols"
+#~ msgstr "לעזור בשיפור היגורליף על ידי תרומה לזיהוי סמלים באופן אוטומטי"
