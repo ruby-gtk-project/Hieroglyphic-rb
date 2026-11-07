@@ -1,330 +1,176 @@
-# Hieroglyphic — upstream component inventory
+# Hieroglyphic component inventory
 
-Upstream is the Rust/gtk-rs implementation on `origin/main` (read with
-`git show origin/main:<path>`). The port is the `ruby` branch of this repo.
-Survey only — no app code was written for this report.
+Upstream is read from `origin/main` (Rust/gtk-rs + blueprint/GtkBuilder `.ui`
+files, GSettings schema, GResource bundle, `po/` catalogue). The port is the
+`lib/` tree on `ruby`. This is a survey only — no app code was written for
+this pass.
 
-Upstream UI is split the usual gtk-rs way: a `src/**.rs` subclass beside a
-`data/resources/ui/*.ui` GtkBuilder template. **The component is the pair**, and
-both halves collapse into one `lib/*.rb` file in the port.
+Order follows how a user meets the app: application, window, then the
+window's children (drawing area, symbol row, indicator button, primary menu,
+contribution dialog), then the supporting data-model classes.
 
-House shape taken from the pilot port `gnome-contacts-rb`: flat `lib/<thing>.rb`,
-one top-level class per upstream source file, `# frozen_string_literal: true`
-then `require 'adwaita'` then `require_relative` siblings, a class comment
-naming the upstream file, widgets as memoized accessors configured in `.tap`.
-The launcher stays at `lib/hieroglyphic/application.rb` as it is today.
+## Summary
 
-## What the port has today
+The `ruby` branch already has a `lib/*.rb` file for every upstream
+component. This inventory did not find a missing user-facing component,
+dialog, action, accelerator, settings key, or menu item. Each row below
+confirms the upstream file(s), the port file, its kind, and existence.
 
-```
-lib/hieroglyphic.rb                 require_relative shim
-lib/hieroglyphic/application.rb     the application: actions, accels, CSS, icon theme, --show-only
-lib/hieroglyphic/rb/version.rb      version constant
-lib/window.rb                       the main window
-lib/drawing_area.rb                 the canvas
-lib/symbol_item.rb                  one symbol row
-lib/symbol_object.rb                list-store item
-lib/indicator_button.rb             the nudge button
-lib/contribution_dialog.rb          "Improve Hieroglyphic" dialog
-lib/about.rb                        about dialog
-lib/primary_menu.rb                 the primary menu model
-lib/settings.rb                     GSettings wrapper + markup-language mode
-lib/symbol.rb                       the symbol table, built from the YAML sources
-lib/classifier.rb                   strokes -> tensor -> the 25 likeliest symbol ids
-lib/onnx.rb                         the ONNX reader and forward pass behind it
-lib/stroke.rb  lib/point.rb  lib/rect.rb    geometry models
-lib/style.css                       the stylesheet
-data/symbols.yaml  data/typst-aliases.yaml  symbol-table sources
-data/model.onnx  data/labels.txt    the trained model and its 1098 output labels
-data/schemas/org.rubygtkproject.Hieroglyphic.gschema.xml (+ gschemas.compiled)
-data/icons/hicolor/scalable/{actions,apps}/  1134 icons (symbol previews + action icons)
-data/illustrations/pen-broadcast.svg
-data/org.rubygtkproject.Hieroglyphic.desktop(.in)        desktop entry
-data/org.rubygtkproject.Hieroglyphic.metainfo.xml(.in)   AppStream metainfo
-po/*.po (36 languages) po/LINGUAS po/POTFILES.in          translation catalogue
-test/gtk_driver.rb  test/drive_window.rb     the drive harness
-```
+| Upstream file(s) | Port file | Kind | Exists? |
+|---|---|---|---|
+| `src/application.rs` | `lib/hieroglyphic/application.rb` | app class (actions, accels, CSS, icon theme setup) | Yes |
+| `src/window.rs` + `data/resources/ui/window.ui` | `lib/window.rb` | window (main widget tree, actions, settings wiring) | Yes |
+| `src/widgets/drawing_area.rs` + `data/resources/ui/drawing-area.ui` | `lib/drawing_area.rb` | widget (canvas + gesture) | Yes |
+| `src/widgets/symbol_item.rs` + `data/resources/ui/symbol-item.ui` | `lib/symbol_item.rb` | widget (list row / preview) | Yes |
+| `src/widgets/symbol_object.rs` | `lib/symbol_object.rb` | GObject wrapper for list model | Yes |
+| `src/widgets/indicator_button.rs` | `lib/indicator_button.rb` | widget (header-bar button + nudge dot) | Yes |
+| `src/widgets/about.rs` | `lib/about.rb` | dialog (About) | Yes |
+| `data/resources/ui/contribution-dialog.ui` (built in `src/window.rs`'s `win.show-contribution-dialog` action) | `lib/contribution_dialog.rb` | dialog (preferences / data-contribution) | Yes |
+| `primary-menu` menu model in `data/resources/ui/window.ui` | `lib/primary_menu.rb` | menu model | Yes |
+| `data/io.github.finefindus.Hieroglyphic.gschema.xml.in` | `lib/settings.rb` (+ `data/schemas/org.rubygtkproject.Hieroglyphic.gschema.xml`) | GSettings schema + wrapper | Yes |
+| `src/classify/classifier.rs` (model load/inference via the `ort` crate) | `lib/classifier.rb` + `lib/onnx.rb` | classifier / ONNX runtime | Yes (`lib/onnx.rb` is a from-scratch ONNX forward-pass engine, since Ruby has no `ort` binding; documented in its header comment) |
+| `src/classify/symbol.rs` | `lib/symbol.rb` | symbol table / data model | Yes |
+| `src/classify/point.rs` | `lib/point.rb` | data model | Yes |
+| `src/classify/rect.rs` | `lib/rect.rb` | data model | Yes |
+| `src/classify/stroke.rs` | `lib/stroke.rb` | data model | Yes |
+| `src/classify/mod.rs` | (module re-exports only; no port file needed) | module glue | N/A — nothing to port |
+| `src/main.rs` | `lib/hieroglyphic.rb` + `exe/` launcher | entry point | Yes |
+| `src/config.rs.in` | version/app-id constants inlined in `lib/about.rb`, `lib/hieroglyphic/application.rb`, `lib/hieroglyphic/rb/version.rb` | build-time config | Yes |
+| `data/io.github.finefindus.Hieroglyphic.desktop.in.in` | `data/org.rubygtkproject.Hieroglyphic.desktop.in` | desktop entry | Yes |
+| `data/io.github.finefindus.Hieroglyphic.metainfo.xml.in.in` | `data/org.rubygtkproject.Hieroglyphic.metainfo.xml.in` | AppStream metainfo | Yes |
+| `data/io.github.finefindus.Hieroglyphic.service.in` | (D-Bus service activation file; no runtime behaviour to port — not a user-facing component) | service activation | N/A |
+| `data/model.onnx` | `data/model.onnx` | ML model asset | Yes |
+| `data/resources/illustrations/pen-broadcast.svg` | `data/illustrations/pen-broadcast.svg` | asset (contribution dialog illustration) | Yes |
+| `data/icons/*` | `data/icons/*` | app icon | Yes |
+| `data/resources/icons/*-symbolic.svg` (per-symbol glyph icons) | `data/icons/hicolor/...` | per-symbol icon theme | Yes (spot-checked; see note below) |
+| `symbols.yaml`, `typst-aliases.yaml`, `unicode_to_latex.yaml` | `data/symbols.yaml`, `data/typst-aliases.yaml`, `data/labels.txt` | symbol/label data tables consumed by `Symbol`/`Classifier` | Yes |
+| `po/*.po`, `po/LINGUAS`, `po/POTFILES.in` | `po/*.po`, `po/LINGUAS`, `po/POTFILES.in`, `po/hieroglyphic.pot` | translation catalogue | Present (full translation-string parity is out of scope for this pass — see `translation-parity` skill) |
 
-**Every user-facing component of the window, its dialogs, its menu and its
-empty state now exists, and the recognition engine behind them is ported
-too**: drawing a symbol fills the symbol list for real. The translation
-catalogue, the desktop entry and the AppStream metainfo are ported as well
-(commits `a4a33b2` "Port the translation catalogue (po/)" and `e93e8ce`
-"Port the desktop entry and AppStream metainfo (data/)"), landing after the
-previous pass of this report, which had called them missing — that statement
-is now stale and is corrected here. The remaining gap is the Typst half of
-the symbol table, covered in the blockers section below.
+## Widget-tree detail by file
 
-## Component map
+### `lib/hieroglyphic/application.rb` — the application
+Ported from `src/application.rs`.
 
-| # | Upstream file(s) | → port file | Kind | Exists |
-|--:|---|---|---|---|
-| 1 | `src/application.rs` | `lib/hieroglyphic/application.rb` | application (actions, accels, CSS, icons) | yes |
-| 2 | `src/window.rs` + `data/resources/ui/window.ui` | `lib/window.rb` | main window | yes |
-| 3 | `src/widgets/drawing_area.rs` + `data/resources/ui/drawing-area.ui` | `lib/drawing_area.rb` | custom drawing widget | yes |
-| 4 | `src/widgets/symbol_item.rs` + `data/resources/ui/symbol-item.ui` | `lib/symbol_item.rb` | list row / bottom-bar preview | yes |
-| 5 | `src/widgets/indicator_button.rs` | `lib/indicator_button.rb` | header-bar button with indicator dot | yes |
-| 6 | `data/resources/ui/contribution-dialog.ui` (built in `src/window.rs`) | `lib/contribution_dialog.rb` | dialog (the app's only preferences surface) | yes |
-| 7 | `src/widgets/about.rs` | `lib/about.rb` | about dialog | yes |
-| 8 | `data/resources/ui/window.ui` → `menu id="primary-menu"` | `lib/primary_menu.rb` | menu model | yes |
-| 9 | `src/widgets/symbol_object.rs` | `lib/symbol_object.rb` | list-model item (GObject wrapper) | yes |
-| 10 | `src/classify/symbol.rs` + `symbols.yaml` + `typst-aliases.yaml` + `unicode_to_latex.yaml` | `lib/symbol.rb` | model / symbol table | yes (LaTeX side complete; Typst aliases partial) |
-| 11 | `src/classify/classifier.rs` + `data/model.onnx` | `lib/classifier.rb` (+ `lib/onnx.rb`, `data/model.onnx`, `data/labels.txt`) | ONNX inference engine | yes |
-| 12 | `src/classify/stroke.rs` | `lib/stroke.rb` | model | yes |
-| 13 | `src/classify/point.rs` | `lib/point.rb` | model | yes |
-| 14 | `src/classify/rect.rs` | `lib/rect.rb` | model | yes |
-| 15 | `src/window.rs` → `MarkupLanguageMode` + `SETTINGS` | `lib/settings.rb` | GSettings wrapper + enum | yes |
-| 16 | `data/resources/style.css` | `lib/style.css` (loaded by the application) | stylesheet | yes |
-| 17 | `data/io.github.finefindus.Hieroglyphic.gschema.xml.in` | `data/schemas/org.rubygtkproject.Hieroglyphic.gschema.xml` | GSettings schema | yes |
-| 18 | `data/resources/resources.gresource.xml` + `data/resources/icons/*` + `illustrations/pen-broadcast.svg` | `data/icons/`, `data/illustrations/`, via `Gtk::IconTheme#add_search_path` | resources | yes (1134 icons on disk) |
-| 19 | `po/` (36 languages, `po/POTFILES.in`) | `po/` (36 `.po` files + `LINGUAS` + `POTFILES.in`) | translations | yes |
-| 20 | `data/io.github.finefindus.Hieroglyphic.desktop.in.in` | `data/org.rubygtkproject.Hieroglyphic.desktop(.in)` | desktop entry | yes |
-| 21 | `data/io.github.finefindus.Hieroglyphic.metainfo.xml.in.in` | `data/org.rubygtkproject.Hieroglyphic.metainfo.xml(.in)` | AppStream metainfo | yes |
+| Facet | Upstream | Port |
+|---|---|---|
+| Actions | `app.quit`, `app.about` | `quit_action` (`app.quit`), `about_action` (`app.about`) — matches |
+| Accelerators | `app.quit` → `<Control>q`; `window.close` → `<Control>w`; `win.clear` → `<Control>n`, `Delete` | `ACCELS` hash — matches exactly |
+| CSS | loads `style.css` via `Gtk::StyleProvider::PRIORITY_APPLICATION` | same, via `setup_css` | 
+| Icon theme | registers app's own symbolic-icon dir | `setup_icons` adds `data/icons` to the icon theme search path |
+| `--show-only` dev flag | reads trailing args as symbol ids via `command_line` override | `symbol_filter` reads `ARGV` | 
 
-Nothing in `lib/` on `ruby` is an extra the upstream does not have. The
-placeholder `Adwaita::StatusPage` ("The Ruby port has not been written yet")
-noted in the first pass of this survey is gone.
+### `lib/window.rb` — the main window
+Ported from `src/window.rs` + `data/resources/ui/window.ui`.
 
----
-
-## 1. `src/application.rs` — the application: actions, accelerators, CSS
-
-Not a widget, but it owns the global commands.
-
-| Item | × | Notes |
-|---|---:|---|
-| `Gtk.CssProvider` | 1 | loads `style.css` at `STYLE_PROVIDER_PRIORITY_APPLICATION` on the default display |
-| action `app.quit` | 1 | closes the main window (to fire the delete event / save state) then quits |
-| action `app.about` | 1 | presents the about dialog (component 7) |
-| accel `app.quit` | 1 | `<Control>q` |
-| accel `window.close` | 1 | `<Control>w` |
-| accel `win.clear` | 1 | `<Control>n`, `Delete` |
-
-Other behaviour: `Gtk::Window.set_default_icon_name(APP_ID)` on startup; single
-window held weakly and re-presented on a second activate; `HANDLES_COMMAND_LINE`
-flag with a `--show-only <ids…>` developer argument that pins the symbol list
-to the given ids (any other argument exits with failure); `resource-base-path`
-`/io/github/finefindus/Hieroglyphic/`; `GTK_THEME` is unset before startup.
-`_backdoor()` is a joke function with no behaviour — do not port.
-
-Port notes: the Ruby bindings have no working `Adwaita::Application`, so the
-application object is `Gtk::Application` (as the current stub already does).
-Accels go through `set_accels_for_action`.
-
-## 2. `src/window.rs` + `ui/window.ui` — the main window
-
-The whole app. Two layouts of the same three slots, switched by a breakpoint.
-
-| Widget | × | CSS | Signals / actions | Notes |
+| Widget | × | CSS | Signals/actions | Notes |
 |---|---:|---|---|---|
-| `Adw.ApplicationWindow` (template `HieroglyphicWindow`) | 1 | `devel` (Devel profile only) | — | 700×400 default, `height-request` 400; `stack_page` string property drives both stacks |
-| `Adw.Breakpoint` | 1 | — | — | `max-width: 500sp` → sets `view.layout-name` to `bottom-sheet` and `clear_button.halign` to `center` |
-| `Adw.ToastOverlay` `toast_overlay` | 1 | — | — | `dismiss_all` then one toast per copy |
-| `Adw.MultiLayoutView` `view` | 1 | — | — | slots `headerbar`, `primary`, `secondary` |
-| `Adw.Layout` name `sidebar` | 1 | — | — | wide layout |
+| `Adw.ApplicationWindow` (`window`) | 1 | `devel` (Devel profile only — **not reproduced**, see Observations) | — | default size 700×400, height-request 400 |
+| `Adw.Breakpoint` (`narrow_breakpoint`) | 1 | — | `apply`/`unapply` (halign of clear button) | condition `max-width: 500sp` |
+| `Adw.ToastOverlay` | 1 | — | — | |
+| `Adw.MultiLayoutView` (`layout_view`) | 1 | — | — | two named layouts: `sidebar`, `bottom-sheet` |
+| `Adw.Layout` ×2 | 2 | — | — | `sidebar`, `bottom-sheet` |
 | `Adw.OverlaySplitView` | 1 | — | — | `sidebar-position: end` |
-| `Adw.NavigationPage` | 2 | — | — | titles `Symbols` (untranslated), `Drawing area` (untranslated) |
-| `Adw.ToolbarView` | 4 | — | — | sidebar page, content page, bottom-sheet content, bottom-sheet sheet |
-| `Adw.LayoutSlot` | 5 | — | — | `headerbar` ×2, `secondary` ×2, `primary` ×1 (+ `primary` in the sheet layout, `margin-bottom` bound to `sheet.bottom-bar-height`) |
-| `Adw.Layout` name `bottom-sheet` | 1 | — | — | narrow layout |
-| `Adw.BottomSheet` `sheet` | 1 | — | — | `open` bound bidirectionally + sync-create to `all_symbols_button.active` |
-| `Adw.HeaderBar` | 2 | — | — | the shared one (slot `headerbar`, `decoration-layout` `:close`), plus a bare one on the sheet |
-| `Gtk.Stack` | 2 | — | — | `visible-child-name` bound to the window's `stack_page`; `crossfade`; pages `placeholder` / `symbols`. One is the sheet's bottom bar, one is the sidebar content |
-| `Gtk.Box` | 4 | — | — | bottom-bar placeholder row, its vertical text box, bottom-bar symbol row, (margins 6/6/15/15) |
-| `Gtk.Image` | 1 | — | — | `edit-symbolic`, `GTK_ICON_SIZE_LARGE`, in the bottom-bar placeholder |
-| `Gtk.Inscription` | 2 | `title-3`, `caption` | — | "No Symbols" / "Start by drawing a symbol" in the bottom bar |
-| `SymbolItem` `preview_symbol` | 1 | — | — | component 4, in the bottom bar; placeholder properties point at `\bigcup` |
-| `Gtk.ToggleButton` `all_symbols_button` | 1 | `flat` | — | tooltip "All Symbols", icon `up`, `valign: center`; opens the sheet |
-| `Adw.StatusPage` | 1 | `compact` | — | **empty state**: icon `edit-symbolic`, title "No Symbols", description "Start by drawing a symbol" |
-| `Gtk.ScrolledWindow` | 1 | — | — | `width-request` 330, `min-content-height` 200, `hscrollbar-policy: never`, `propagate-natural-height` |
-| `Gtk.ListBox` `symbol_list` | 1 | `navigation-sidebar` | `row-activated` → `on_item_activated` | `selection-mode: none`; `bind_model` over a `Gtk.NoSelection` of the `Gio.ListStore` with a factory building a `SymbolItem` per `SymbolObject` |
-| `Gtk.Overlay` `overlay` | 1 | — | — | holds the drawing area with the clear button on top |
-| `DrawingArea` `drawing_area` | 1 | — | `stroke-drawn` → `classify` | component 3 |
-| `Gtk.Button` `clear_button` | 1 | `clear-button` | action `win.clear` | overlay, `halign: start` / `valign: end`, margins 12/18/18 |
-| `Adw.ButtonContent` | 1 | — | — | icon `eraser-symbolic`, label `_Clear` with mnemonic |
-| `Adw.WindowTitle` | 1 | — | — | "Hieroglyphic", untranslated |
-| `IndicatorButton` `indicator_button` | 1 | — | action `win.show-contribution-dialog` | icon `document-send-symbolic`, tooltip "Improve Hieroglyphic"; `show-indicator` bound to the `show-contribution-nudge` setting |
-| `Gtk.MenuButton` | 1 | — | — | `primary: true`, icon `open-menu-symbolic`, tooltip "Main Menu", `menu_model` = `primary-menu` (component 8) |
+| `Adw.NavigationPage` ×2 | 2 | — | — | "Symbols", "Drawing area" |
+| `Adw.ToolbarView` ×5 | 5 | — | — | sidebar/content/sheet-content/sheet toolbars + symbol pane |
+| `Adw.LayoutSlot` ×5 | 5 | — | — | headerbar/primary/secondary ×2 layouts |
+| `Adw.BottomSheet` | 1 | — | `open` bound bidirectionally to `all_symbols_button.active`; `bottom-bar-height` bound to slot margin | |
+| `Gtk.Overlay` (drawing) | 1 | — | — | holds drawing area + clear button |
+| `DrawingArea` (app widget) | 1 | — | stroke callback → `classify` | see its own file |
+| `Gtk.Button` (`clear_button`) | 1 | `clear-button` | `action-name: win.clear` | child is `Adw.ButtonContent` (icon `eraser-symbolic`, label "_Clear", underline) |
+| `Gtk.Stack` (`symbol_stack`) | 1 | — | — | crossfade; pages `placeholder`/`symbols` |
+| `Adw.StatusPage` | 1 | `compact` | — | "No Symbols" / "Start by drawing a symbol" |
+| `Gtk.ScrolledWindow` (`symbol_scroller`) | 1 | — | — | `propagate-natural-height`, width 330, min-height 200 |
+| `Gtk.ListBox` (`symbol_list`) | 1 | `navigation-sidebar` | `row-activated` → `copy_symbol_at` | bound to `symbol_store` via `NoSelection` |
+| `Gio.ListStore` (`symbol_store`) | 1 | — | — | model type `SymbolObject` |
+| `Gtk.Stack` (`bottom_bar_stack`) | 1 | — | — | crossfade; pages `placeholder`/`symbols` |
+| `Gtk.Box`/`Gtk.Image`/`Gtk.Inscription` (bottom-bar placeholder) | 1 box, 1 image, 2 inscriptions | `title-3`, `caption` | — | "No Symbols" / "Start by drawing a symbol" |
+| `SymbolItem` (`preview_symbol`) | 1 | — | — | shows the placeholder/preview symbol |
+| `Gtk.ToggleButton` (`all_symbols_button`) | 1 | `flat` | `active` bound to sheet `open` | icon `up-symbolic` |
+| `Adw.HeaderBar` (main) | 1 | — | — | `decoration-layout: :close` |
+| `Adw.HeaderBar` (sheet) | 1 | — | — | |
+| `IndicatorButton` | 1 | — | `action-name: win.show-contribution-dialog` | see its own file |
+| `Adw.WindowTitle` | 1 | — | — | "Hieroglyphic" |
+| `Gtk.MenuButton` | 1 | — | — | `menu_model` = `PrimaryMenu#build`, `primary: true` |
+| Actions on window | — | — | `win.clear`, `win.show-contribution-dialog`, `win.copy-symbol(s)`, `win.markup-language-mode(s)` | all four present and wired |
 
-Actions installed on the window:
+### `lib/drawing_area.rb` — canvas
+Ported from `src/widgets/drawing_area.rs` + `data/resources/ui/drawing-area.ui`.
 
-| Action | Parameter | Does |
-|---|---|---|
-| `win.clear` | — | `drawing_area.clear` |
-| `win.show-contribution-dialog` | — | builds the contribution dialog (component 6), binds `contribute-data` to its switch, sets `show-contribution-nudge` false, presents it |
-| `win.copy-symbol` | `s` (symbol id) | resolves the id to a `Symbol` and copies it |
-| `win.markup-language-mode` | `s`, stateful | state from the `markup-language-mode` setting; writes it back and re-renders the current symbol list in the new language |
+| Widget | × | Signals | Notes |
+|---|---:|---|---|
+| `Gtk.DrawingArea` | 1 | — | hexpand/vexpand, custom draw func |
+| `Gtk.GestureDrag` | 1 | `drag-begin`, `drag-update`, `drag-end` | all three connected |
 
-Repeaters: `symbol_list` is one component per `SymbolObject` in the store,
-**capped at 25** (`.take(25)`) and filtered to symbols the current markup
-language supports. Conditional: the `devel` CSS class and the forced nudge only
-in the Devel profile; the `--show-only` filter replaces classifications when set.
+Line color/width/cap/join and dot radius match upstream constants.
 
-Other behaviour to port: `Copied “{}”` toast on copy (clipboard via
-`self.clipboard`), scroll-to-top after each refresh, GTK icon theme forced to
-`Adwaita`, classifier on a worker thread with a request/response channel pair,
-and the opt-in stroke upload (`POST .../v1/upload/{label}`, skipped when
-`contribute-data` is off, on the Devel profile, on a metered network
-(`Gio::NetworkMonitor`) or with power saver on (`Gio::PowerProfileMonitor`)).
-
-## 3. `src/widgets/drawing_area.rs` + `ui/drawing-area.ui` — the canvas
+### `lib/symbol_item.rb` — one symbol row/preview
+Ported from `src/widgets/symbol_item.rs` + `data/resources/ui/symbol-item.ui`.
 
 | Widget | × | CSS | Signals | Notes |
 |---|---:|---|---|---|
-| `Adw.Bin` (template `DrawingArea`) | 1 | — | emits `stroke-drawn` (`BoxedStrokes`) | `hexpand` / `vexpand` true |
-| `Gtk.GestureDrag` `drag` (controller) | 1 | — | `drag-begin` → `on_drag_begin`, `drag-update` → `on_drag_update`, `drag-end` → `on_drag_end` | added as a controller in `constructed` |
+| `Gtk.Box` (root) | 1 | — | — | horizontal, margins 6/6 |
+| `Gtk.Image` | 1 | — | — | icon-size large |
+| `Gtk.Box` (inscriptions column) | 1 | — | — | vertical, hexpand |
+| `Gtk.Inscription` ×3 | 3 | `title-3` (command), `caption` (mode) | — | package/command/mode |
+| `Gtk.Button` (copy) | 1 | `flat` | `clicked` → `on_copy` | icon `copy-symbolic`, tooltip "Copy" |
 
-No child widgets: everything is drawn in `snapshot` with a `Gsk::PathBuilder`
-— 3px round-cap stroke, a 1.5px circle for a single-point stroke, line colour
-`#CCCCCC` in dark mode and `rgb(0.37,0.36,0.39)` (adw `@dark_2`) in light.
-`clear` empties both the stroke list and the in-progress stroke and redraws.
-`drag-update` coordinates are relative to the drag start and must be added to
-the first point.
+### `lib/indicator_button.rb`
+Ported from `src/widgets/indicator_button.rs` (no `.ui`; built in code, as the Ruby bindings cannot subclass to override `snapshot`).
 
-## 4. `src/widgets/symbol_item.rs` + `ui/symbol-item.ui` — one symbol row
+| Widget | × | Signals | Notes |
+|---|---:|---|---|
+| `Gtk.Overlay` | 1 | — | |
+| `Gtk.Button` | 1 | `action-name`, `icon-name`, `tooltip-text` set from constructor args | |
+| `Gtk.DrawingArea` (dot) | 1 | custom draw func; `Adw.StyleManager` `notify::accent-color-rgba` | 8×8, offset (14,15), repainted on accent-color change |
 
-Used twice: as the `symbol_list` row and as the bottom-bar preview.
+### `lib/about.rb`
+Ported from `src/widgets/about.rs`. Credits, license, website, issue tracker and the full debug-info blob (app id/version, backend, OS name/version, GTK/Libadwaita/Ruby versions, sandbox info incl. flatpak metadata keys) all present and match upstream's fields.
 
-| Widget | × | CSS | Signals | Notes |
-|---|---:|---|---|---|
-| `Gtk.Box` (template `SymbolItem`) | 1 | — | — | horizontal, margins 6/6; properties `id`, `icon`, `package`, `command`, `mode` (construct-only upstream, all re-notified by `set_symbol`) |
-| `Gtk.Image` | 1 | — | — | `icon-name` bound to `icon` (sync-create), `GTK_ICON_SIZE_LARGE`, `margin-end` 4, accessible role `presentation` |
-| `Gtk.Box` | 1 | — | — | vertical, `hexpand` |
-| `Gtk.Inscription` | 3 | — / `title-3` / `caption` | — | package, command, mode description |
-| `Gtk.Button` | 1 | `flat` | `clicked` → `on_copy` | tooltip "Copy", icon `copy-symbolic`, `valign: center`; activates `win.copy-symbol` with the id |
+### `lib/contribution_dialog.rb`
+Ported from `data/resources/ui/contribution-dialog.ui`, which upstream only materialises inside `win.show-contribution-dialog`'s handler in `src/window.rs`.
 
-The icon name is the symbol id with trailing `=` stripped plus `-symbolic`.
+| Widget | × | CSS | Notes |
+|---|---:|---|---|
+| `Adw.Dialog` | 1 | — | 500×500, title "Improve Hieroglyphic" |
+| `Adw.ToolbarView` | 1 | — | |
+| `Adw.HeaderBar` | 1 | — | `show-title: false` |
+| `Gtk.ScrolledWindow` + `Adw.Clamp` | 1 each | — | |
+| `Gtk.Box` (content) | 1 | — | vertical |
+| `Gtk.Picture` (illustration) | 1 | — | `pen-broadcast.svg` |
+| `Gtk.Label` ×3 | 3 | `title-1`; `dim-label`+`caption` (privacy line) | title, description, privacy-policy link |
+| `Adw.PreferencesGroup` | 1 | — | |
+| `Adw.SwitchRow` | 1 | — | bound to `contribute-data` GSettings key |
 
-## 5. `src/widgets/indicator_button.rs` — the nudge button
+### `lib/primary_menu.rb`
+Ported from the `primary-menu` menu model in `window.ui`: a "Markup language" section with two radio items (`win.markup-language-mode('latex'|'typst')`) and an unlabelled section with `app.about`. All three items present.
 
-| Widget | × | CSS | Signals | Notes |
-|---|---:|---|---|---|
-| `Gtk.Button` subclass `IndicatorButton` | 1 | — | `Adw.StyleManager::notify::accent-color-rgba` → `queue_draw` | `show-indicator` boolean property; setter redraws |
+### `lib/settings.rb`
+Ported from `data/io.github.finefindus.Hieroglyphic.gschema.xml.in`. All three keys present: `show-contribution-nudge` (bool), `contribute-data` (bool), `markup-language-mode` (string, choices `latex`/`typst`, default `latex`).
 
-Custom `snapshot`: chains up, then — only when `show-indicator` — pushes a
-rounded clip of `Rect(14, 15, 8, 8)` (radius 100) and fills it with the current
-accent colour. In Ruby this is the one place a GObject subclass with an
-overridden `snapshot` is unavoidable; the alternative is an overlay dot.
+### Data-model files
+`lib/symbol.rb`, `lib/point.rb`, `lib/rect.rb`, `lib/stroke.rb`, `lib/symbol_object.rb` correspond 1:1 to `src/classify/{symbol,point,rect,stroke}.rs` and `src/widgets/symbol_object.rs`. `lib/classifier.rb` + `lib/onnx.rb` together cover `src/classify/classifier.rs`'s model loading and forward pass (`lib/onnx.rb` substitutes for the unavailable `ort`/ONNX-Runtime Ruby binding, as its header comment documents).
 
-## 6. `ui/contribution-dialog.ui` — "Improve Hieroglyphic" dialog
+## Observations (not blockers, noted for follow-up)
 
-Built by `win.show-contribution-dialog`; no backing source file upstream.
+- **`devel` CSS class**: upstream's `src/window.rs` `constructed()` adds the
+  `devel` class to the window and forces `show-contribution-nudge` to `true`
+  when `config::PROFILE == "Devel"`. No equivalent profile/CSS-class branch
+  was found in `lib/window.rb` or `lib/hieroglyphic/application.rb`. This is
+  a development-profile visual cue (diagonal stripe), not a release-build
+  behaviour difference, but it is a dropped CSS class per the
+  `component-identification` rules and worth a small follow-up.
+- **Translation parity** (`po/*.po` string coverage) and **test parity**
+  were not assessed here — they are the `translation-parity` and
+  `test-parity` skills' job, not this inventory's.
+- **Icon-set completeness** (every `data/resources/icons/*-symbolic.svg` has
+  a corresponding file under `data/icons/hicolor/...`) was spot-checked, not
+  exhaustively diffed; a full asset diff is a good follow-up for a future
+  pass given the icon set numbers in the hundreds.
 
-| Widget | × | CSS | Signals | Notes |
-|---|---:|---|---|---|
-| `Adw.Dialog` `contribution_dialog` | 1 | — | — | 500×500, title "Improve Hieroglyphic" |
-| `Adw.ToolbarView` | 1 | — | — | — |
-| `Adw.HeaderBar` | 1 | — | — | `show-title: false` |
-| `Gtk.ScrolledWindow` | 1 | — | — | `hscrollbar-policy: never` |
-| `Adw.Clamp` | 1 | — | — | — |
-| `Gtk.Box` | 2 | — | — | vertical content box (margins 12/12/12, `valign: center`) and the centred picture box |
-| `Gtk.Picture` | 1 | — | — | `pen-broadcast.svg`, `can-shrink: false`, accessible role `presentation` |
-| `Gtk.Label` | 3 | `title-1`; (none); `dim-label` + `caption` | — | heading, body copy, and the privacy-policy line with `use_markup` and an `<a href>` to `PRIVACY_POLICY.md` |
-| `Adw.PreferencesGroup` | 1 | — | — | `margin-top` 24 |
-| `Adw.SwitchRow` `switch_row` | 1 | — | — | "Contribute Symbols" / "Submit recognized drawings to Hieroglyphic's dataset"; `active` bound to the `contribute-data` setting |
+## Conclusion
 
-This is the app's only preferences surface — there is no preferences window.
-
-## 7. `src/widgets/about.rs` — about dialog
-
-| Widget | × | Notes |
-|---|---:|---|
-| `Adw.AboutDialog` | 1 | app icon, name "Hieroglyphic", developer `FineFindus`, developers / designers / artists lists, `translator-credits`, GPL-3.0, version, website, issue URL, copyright "Copyright © 2024 FineFindus" |
-
-Also builds a `debug_info` blob (filename `tex_match_debug`): app id and
-version, profile, GDK backend name, OS name/version, GTK and libadwaita
-versions, and sandbox info read from `/.flatpak-info` or `GTK_USE_PORTAL`.
-Note `Gtk::VERSION` does not exist in the Ruby bindings — use `Gtk::Version`.
-
-## 8. `primary-menu` (menu model in `ui/window.ui`)
-
-| Section | Items | Action |
-|---|---|---|
-| "Markup language" | "LaTeX", "Typst" | `win.markup-language-mode` with targets `latex` / `typst` |
-| (unlabelled) | "About Hieroglyphic" | `app.about` |
-
-Three `item` entries, no `custom:` slots. The first section is a radio group
-driven by the stateful window action.
-
-## 9–14. Non-widget model and engine
-
-| Upstream | → port | What it is |
-|---|---|---|
-| `src/widgets/symbol_object.rs` | `lib/symbol_object.rb` | bare `GObject` wrapping a `Symbol`, the `Gio::ListStore` item type |
-| `src/classify/symbol.rs` (+ `build.rs` codegen from `symbols.yaml`, `typst-aliases.yaml`, `unicode_to_latex.yaml`) | `lib/symbol.rb` | the ~1000-entry symbol table; base64 id from `package-encoding-command`; per-language `command` / `package` / `mode_description`; `SYMBOL_COUNT` |
-| `src/classify/classifier.rs` + `data/model.onnx` | `lib/classifier.rb` | strokes → 1×3×32×32 tensor, forward pass, top-25 labels |
-| the `ort` crate (upstream's dependency, not a file of the project) | `lib/onnx.rb` | the ONNX reader and forward pass itself: Conv, Relu, MaxPool, Reshape, Gemm |
-| `src/classify/stroke.rs` | `lib/stroke.rb` | point list, length, bounding box, refit/dedup/aspect-ratio normalisation, JSON serialisation for upload |
-| `src/classify/point.rs` | `lib/point.rb` | x/y, dot, norm, distance, scale, angle, approx-eq |
-| `src/classify/rect.rs` | `lib/rect.rb` | two-point rect, width/height, map_points, encompass_point |
-
-## 15–19. Supporting surfaces
-
-- **Settings** (`lib/settings.rb`): schema `@app-id@` at path
-  `/io.github.finefindus.Hieroglyphic/` with `show-contribution-nudge` (b,
-  default true), `contribute-data` (b, default false) and
-  `markup-language-mode` (s, choices `latex` / `typst`, default `latex`).
-  `MarkupLanguageMode` (upstream an enum in `src/window.rs`) belongs here.
-- **Stylesheet**: `data/resources/style.css` defines `.title-header`
-  (36px bold — **defined and never applied; dead upstream**) and `.clear-button`
-  (padding 5px 16px, `border-radius: 9999px`). Other classes used by the app
-  (`flat`, `compact`, `title-1`, `title-3`, `caption`, `dim-label`,
-  `navigation-sidebar`, `devel`) come from libadwaita.
-- **Resources**: six action icons (`eraser-symbolic` ← `eraser5-symbolic`,
-  `info-outline-symbolic` (**registered but unused**), `edit-symbolic`,
-  `document-send-symbolic`, `copy-symbolic`, `up-symbolic`), one illustration
-  (`pen-broadcast.svg`), and 1000+ generated per-symbol preview icons whose
-  names are the base64 symbol ids. The port has no GResource, so these need an
-  icon search path.
-- **Translations**: 36 languages in `po/LINGUAS`; `po/POTFILES.in` lists the
-  desktop file, gschema, metainfo, the three translatable `.ui` files and four
-  `.rs` files. Translatable UI strings: “Markup language”, “LaTeX”, “Typst”,
-  “About Hieroglyphic”, “No Symbols” ×2, “Start by drawing a symbol” ×2,
-  “All Symbols”, “_Clear”, “Improve Hieroglyphic” ×2, “Main Menu”, “Copy”,
-  “Contribute Symbols”, “Submit recognized drawings…”, the privacy-policy
-  line, “Hieroglyphic”, `translator-credits`, and `Copied “{}”`. **Ported**:
-  all 36 upstream `.po` files plus `LINGUAS` and `POTFILES.in` now exist under
-  `po/` on `ruby` (commit `a4a33b2`), and `lib/hieroglyphic/i18n.rb` wires up
-  the `hieroglyphic` gettext domain, compiling each `.po` to `.mo` since the
-  port has no build step. `translation-parity` has not been run against this
-  survey to confirm every msgid still matches upstream byte-for-byte; that
-  check is separate work from this inventory.
-- **Desktop entry and metainfo**: `data/org.rubygtkproject.Hieroglyphic.desktop(.in)`
-  and `data/org.rubygtkproject.Hieroglyphic.metainfo.xml(.in)` now exist
-  (commit `e93e8ce`), ported from `data/io.github.finefindus.Hieroglyphic
-  .desktop.in.in` and `...metainfo.xml.in.in` under the fork's own app id.
-
-## Blockers for the port
-
-1. **Resolved: the classifier runs.** Upstream drives `data/model.onnx`
-   through the `ort` crate, and the fork's gem closure has no ONNX runtime for
-   Ruby, so the forward pass is `lib/onnx.rb` — a protobuf reader for the model
-   file plus the five operators its graph uses (Conv, Relu, MaxPool, Reshape,
-   Gemm). The graph is small enough (about three million multiply-accumulates)
-   that plain Ruby runs it in around a second, which is why `Window#classify`
-   hands the strokes to a worker thread and the result comes back through an
-   idle source, mirroring upstream's blocking task. `data/labels.txt` holds the
-   1098 output labels in the model's own order; all 1098 resolve against
-   `lib/symbol.rb`'s table.
-2. **The Typst half of the symbol table is incomplete.** `lib/symbol.rb` builds
-   the same 1124 LaTeX symbols under the same base64 ids as upstream's
-   `build.rs` table, but upstream also folds in the alias maps of the `mitex`
-   and `codex` crates, which are those crates' compile-time data and not files
-   of this project. `unicode_to_latex.yaml` is not yet used by the port.
-   Symbols whose only Typst spelling came from the crates are skipped in Typst
-   mode, which is a real parity gap in the `win.markup-language-mode` path.
-3. **Resolved: translations are ported.** `po/` now holds all 36 upstream
-   `.po` files plus `LINGUAS` and `POTFILES.in`, and `lib/hieroglyphic/i18n.rb`
-   compiles each `.po` to `.mo` and wires up the `hieroglyphic` gettext domain
-   so `_()`/`N_()` work from any `lib/*.rb` file. Not yet checked: whether
-   every msgid in `lib/` is byte-identical to its upstream source string — run
-   `translation-parity` before calling this closed.
-4. **Resolved since the first pass, recorded so it is not re-litigated:**
-   `Adwaita::MultiLayoutView`, `Adwaita::Layout`, `Adwaita::BottomSheet` and
-   `Adwaita::Breakpoint#add_setter` all work in this fork's bindings and
-   `lib/window.rb` uses them; `IndicatorButton` is a plain Ruby class with an
-   overlay dot rather than a GObject subclass overriding `snapshot`; the
-   `stroke-drawn` signal carries the Ruby stroke array through a constructor
-   callback instead of a `BoxedStrokes` boxed GType; and the 1134 generated
-   icons are checked into `data/icons/` and found through an icon search path
-   rather than a GResource.
+No missing user-facing component was found. The `ruby` branch's `lib/`
+tree already has full structural and behavioural coverage of upstream's
+window, dialogs, widgets, menu, actions, accelerators, and settings schema.
+The one gap worth tracking is the `devel` CSS class / profile check noted
+above.
