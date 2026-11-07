@@ -35,6 +35,10 @@ module Hieroglyphic
     PLACEHOLDER_SYMBOL_ID = "bGF0ZXgyZS1PVDEtX2JpZ2N1cA=="
     NARROW_CONDITION = "max-width: 500sp"
     UPLOAD_URL = "https://hieroglyphic-server.apps.openshift.gnome.org/v1/upload"
+    # Upstream's meson build stamps this at compile time from the `profile`
+    # option; the gem has no build step, so a development checkout is marked
+    # the same way, through the `HIEROGLYPHIC_PROFILE` environment variable.
+    DEVEL_PROFILE = "Devel"
 
     # The ids of the layouts and of the slots they fill.
     SIDEBAR_LAYOUT = "sidebar"
@@ -108,6 +112,11 @@ module Hieroglyphic
         # started here rather than on the first drawing, so the model is read
         # off the main loop while the window is still opening
         classifier_thread
+
+        if devel_profile?
+          win.add_css_class("devel")
+          @settings.show_contribution_nudge = true
+        end
 
         indicator_button.show_indicator = @settings.show_contribution_nudge?
         @settings.on_change("show-contribution-nudge") do
@@ -471,6 +480,13 @@ module Hieroglyphic
     end
 
     private
+
+      # Mirrors upstream's `config::PROFILE == "Devel"` check, which meson
+      # bakes in at compile time; the gem has no build step, so a development
+      # checkout opts in by setting this variable in its own environment.
+      def devel_profile?
+        ENV["HIEROGLYPHIC_PROFILE"] == DEVEL_PROFILE
+      end
 
       def build_drawing_overlay
         drawing_overlay.tap do |overlay|
