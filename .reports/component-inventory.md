@@ -39,13 +39,21 @@ data/model.onnx  data/labels.txt    the trained model and its 1098 output labels
 data/schemas/org.rubygtkproject.Hieroglyphic.gschema.xml (+ gschemas.compiled)
 data/icons/hicolor/scalable/{actions,apps}/  1134 icons (symbol previews + action icons)
 data/illustrations/pen-broadcast.svg
+data/org.rubygtkproject.Hieroglyphic.desktop(.in)        desktop entry
+data/org.rubygtkproject.Hieroglyphic.metainfo.xml(.in)   AppStream metainfo
+po/*.po (36 languages) po/LINGUAS po/POTFILES.in          translation catalogue
 test/gtk_driver.rb  test/drive_window.rb     the drive harness
 ```
 
 **Every user-facing component of the window, its dialogs, its menu and its
-empty state now exists, and the recognition engine behind them is ported too**:
-drawing a symbol fills the symbol list for real. The translation catalogue
-(`po/`) is the one component still missing.
+empty state now exists, and the recognition engine behind them is ported
+too**: drawing a symbol fills the symbol list for real. The translation
+catalogue, the desktop entry and the AppStream metainfo are ported as well
+(commits `a4a33b2` "Port the translation catalogue (po/)" and `e93e8ce`
+"Port the desktop entry and AppStream metainfo (data/)"), landing after the
+previous pass of this report, which had called them missing — that statement
+is now stale and is corrected here. The remaining gap is the Typst half of
+the symbol table, covered in the blockers section below.
 
 ## Component map
 
@@ -69,7 +77,9 @@ drawing a symbol fills the symbol list for real. The translation catalogue
 | 16 | `data/resources/style.css` | `lib/style.css` (loaded by the application) | stylesheet | yes |
 | 17 | `data/io.github.finefindus.Hieroglyphic.gschema.xml.in` | `data/schemas/org.rubygtkproject.Hieroglyphic.gschema.xml` | GSettings schema | yes |
 | 18 | `data/resources/resources.gresource.xml` + `data/resources/icons/*` + `illustrations/pen-broadcast.svg` | `data/icons/`, `data/illustrations/`, via `Gtk::IconTheme#add_search_path` | resources | yes (1134 icons on disk) |
-| 19 | `po/` (36 languages, `po/POTFILES.in`) | `po/` | translations | **no** |
+| 19 | `po/` (36 languages, `po/POTFILES.in`) | `po/` (36 `.po` files + `LINGUAS` + `POTFILES.in`) | translations | yes |
+| 20 | `data/io.github.finefindus.Hieroglyphic.desktop.in.in` | `data/org.rubygtkproject.Hieroglyphic.desktop(.in)` | desktop entry | yes |
+| 21 | `data/io.github.finefindus.Hieroglyphic.metainfo.xml.in.in` | `data/org.rubygtkproject.Hieroglyphic.metainfo.xml(.in)` | AppStream metainfo | yes |
 
 Nothing in `lib/` on `ruby` is an extra the upstream does not have. The
 placeholder `Adwaita::StatusPage` ("The Ruby port has not been written yet")
@@ -268,11 +278,21 @@ driven by the stateful window action.
   icon search path.
 - **Translations**: 36 languages in `po/LINGUAS`; `po/POTFILES.in` lists the
   desktop file, gschema, metainfo, the three translatable `.ui` files and four
-  `.rs` files. Translatable UI strings: "Markup language", "LaTeX", "Typst",
-  "About Hieroglyphic", "No Symbols" ×2, "Start by drawing a symbol" ×2,
-  "All Symbols", "_Clear", "Improve Hieroglyphic" ×2, "Main Menu", "Copy",
-  "Contribute Symbols", "Submit recognized drawings…", the privacy-policy
-  line, "Hieroglyphic", `translator-credits`, and `Copied “{}”`.
+  `.rs` files. Translatable UI strings: “Markup language”, “LaTeX”, “Typst”,
+  “About Hieroglyphic”, “No Symbols” ×2, “Start by drawing a symbol” ×2,
+  “All Symbols”, “_Clear”, “Improve Hieroglyphic” ×2, “Main Menu”, “Copy”,
+  “Contribute Symbols”, “Submit recognized drawings…”, the privacy-policy
+  line, “Hieroglyphic”, `translator-credits`, and `Copied “{}”`. **Ported**:
+  all 36 upstream `.po` files plus `LINGUAS` and `POTFILES.in` now exist under
+  `po/` on `ruby` (commit `a4a33b2`), and `lib/hieroglyphic/i18n.rb` wires up
+  the `hieroglyphic` gettext domain, compiling each `.po` to `.mo` since the
+  port has no build step. `translation-parity` has not been run against this
+  survey to confirm every msgid still matches upstream byte-for-byte; that
+  check is separate work from this inventory.
+- **Desktop entry and metainfo**: `data/org.rubygtkproject.Hieroglyphic.desktop(.in)`
+  and `data/org.rubygtkproject.Hieroglyphic.metainfo.xml(.in)` now exist
+  (commit `e93e8ce`), ported from `data/io.github.finefindus.Hieroglyphic
+  .desktop.in.in` and `...metainfo.xml.in.in` under the fork's own app id.
 
 ## Blockers for the port
 
@@ -293,9 +313,12 @@ driven by the stateful window action.
    of this project. `unicode_to_latex.yaml` is not yet used by the port.
    Symbols whose only Typst spelling came from the crates are skipped in Typst
    mode, which is a real parity gap in the `win.markup-language-mode` path.
-3. **No translations.** `po/` does not exist on `ruby` and no string in `lib/`
-   goes through gettext; upstream ships 36 languages. Every translatable string
-   listed in section 15–19 is currently a bare Ruby literal.
+3. **Resolved: translations are ported.** `po/` now holds all 36 upstream
+   `.po` files plus `LINGUAS` and `POTFILES.in`, and `lib/hieroglyphic/i18n.rb`
+   compiles each `.po` to `.mo` and wires up the `hieroglyphic` gettext domain
+   so `_()`/`N_()` work from any `lib/*.rb` file. Not yet checked: whether
+   every msgid in `lib/` is byte-identical to its upstream source string — run
+   `translation-parity` before calling this closed.
 4. **Resolved since the first pass, recorded so it is not re-litigated:**
    `Adwaita::MultiLayoutView`, `Adwaita::Layout`, `Adwaita::BottomSheet` and
    `Adwaita::Breakpoint#add_setter` all work in this fork's bindings and
