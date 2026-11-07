@@ -7,8 +7,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: hieroglyphic\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-06 21:30+0000\n"
+"Report-Msgid-Bugs-To: https://github.com/ruby-gtk-project/Hieroglyphic-rb/"
+"issues\n"
+"POT-Creation-Date: 2026-11-07 03:16+0000\n"
 "PO-Revision-Date: 2024-05-07 20:22+0530\n"
 "Last-Translator: Scrambled777 <weblate.scrambled777@simplelogin.com>\n"
 "Language-Team: Hindi\n"
@@ -19,9 +20,64 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Generator: Gtranslator 46.1\n"
 
-#: ../lib/about.rb:47 ../lib/window.rb:177 ../lib/window.rb:405
+#: ../data/org.rubygtkproject.Hieroglyphic.desktop.in:2
+#: ../data/org.rubygtkproject.Hieroglyphic.metainfo.xml.in:8 ../lib/about.rb:47
+#: ../lib/window.rb:177 ../lib/window.rb:405
 msgid "Hieroglyphic"
 msgstr "Hieroglyphic"
+
+#: ../data/org.rubygtkproject.Hieroglyphic.desktop.in:3
+msgid "Search through over 1000 different LaTeX symbols by sketching"
+msgstr "रेखाचित्रण द्वारा 1000 से अधिक विभिन्न LaTeX प्रतीकों को खोजें"
+
+#. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
+#: ../data/org.rubygtkproject.Hieroglyphic.desktop.in:9
+#, fuzzy
+msgid "GTK;Tools;LaTeX;TeX;Symbols;Typst;Math;"
+msgstr "GTK;औजार;LaTeX;TeX;प्रतीक;"
+
+#. Translators: nudge means here a gentle prompt, i.e. the colored dot on the button
+#: ../data/schemas/org.rubygtkproject.Hieroglyphic.gschema.xml:7
+msgid "Whether to show a small nudge towards the contribution dialog"
+msgstr ""
+
+#: ../data/schemas/org.rubygtkproject.Hieroglyphic.gschema.xml:11
+msgid "Whether to contribute recognized strokes"
+msgstr ""
+
+#. Translators: the name of the markup language (latex, typst) for which symbols are suggested
+#: ../data/schemas/org.rubygtkproject.Hieroglyphic.gschema.xml:21
+msgid "Markup language to suggest symbols for"
+msgstr ""
+
+#: ../data/org.rubygtkproject.Hieroglyphic.metainfo.xml.in:9
+#, fuzzy
+msgid "Find LaTeX and Typst symbols"
+msgstr "LaTeX प्रतीक खोजें"
+
+#: ../data/org.rubygtkproject.Hieroglyphic.metainfo.xml.in:18
+#, fuzzy
+msgid ""
+"If you work with LaTeX or Typst, you know it's difficult to memorize the "
+"names of all the symbols. Hieroglyphic allows you to search through over "
+"1000 different symbols by sketching."
+msgstr ""
+"यदि आप LaTeX के साथ काम करते हैं, तो आप जानते हैं कि सभी प्रतीकों के नाम याद रखना "
+"मुश्किल है। Hieroglyphic आपको रेखाचित्रण द्वारा 1000 से अधिक विभिन्न LaTeX प्रतीकों को "
+"खोजने की अनुमति देता है।"
+
+#: ../data/org.rubygtkproject.Hieroglyphic.metainfo.xml.in:30
+#, fuzzy
+msgid "Symbol selection for LaTeX symbols"
+msgstr "LaTeX प्रतीक खोजें"
+
+#: ../data/org.rubygtkproject.Hieroglyphic.metainfo.xml.in:34
+msgid "Symbol selection for Typst symbols"
+msgstr ""
+
+#: ../data/org.rubygtkproject.Hieroglyphic.metainfo.xml.in:38
+msgid "Placeholder"
+msgstr "स्थानधारक"
 
 #: ../lib/about.rb:55
 msgid "translator-credits"
@@ -92,41 +148,35 @@ msgstr "साफ करे (_C)"
 msgid "Main Menu"
 msgstr ""
 
-#~ msgid "Search through over 1000 different LaTeX symbols by sketching"
-#~ msgstr "रेखाचित्रण द्वारा 1000 से अधिक विभिन्न LaTeX प्रतीकों को खोजें"
-#~ msgid "GTK;Tools;LaTeX;TeX;Symbols;"
-#~ msgstr "GTK;औजार;LaTeX;TeX;प्रतीक;"
-#~ msgid "Find LaTeX symbols"
-#~ msgstr "LaTeX प्रतीक खोजें"
 #~ msgid "FineFindus"
 #~ msgstr "FineFindus"
-#~ msgid ""
-#~ "If you work with LaTeX, you know it's difficult to memorize the names of all t"
-#~ "he symbols. Hieroglyphic allows you to search through over 1000 different LaTe"
-#~ "X symbols by sketching."
-#~ msgstr ""
-#~ "यदि आप LaTeX के साथ काम करते हैं, तो आप जानते हैं कि सभी प्रतीकों के नाम याद र"
-#~ "खना मुश्किल है। Hieroglyphic आपको रेखाचित्रण द्वारा 1000 से अधिक विभिन्न LaTeX"
-#~ " प्रतीकों को खोजने की अनुमति देता है।"
+
 #~ msgid "Main Window"
 #~ msgstr "मुख्य विंडो"
-#~ msgid "Placeholder"
-#~ msgstr "स्थानधारक"
+
 #~ msgid "This update refines the user interface:"
 #~ msgstr "यह अद्यतन UI को परिष्कृत करता है:"
+
 #~ msgid "New icon"
 #~ msgstr "नया चिह्न"
+
 #~ msgid "Updated to the latest GNOME components"
 #~ msgstr "नवीनतम GNOME घटकों में अद्यतन किया गया"
+
 #~ msgid "Improved recognition speed and overall application responsiveness"
 #~ msgstr "बेहतर पहचान गति और समग्र अनुप्रयोग प्रतिक्रियाशीलता"
+
 #~ msgid "Shortcut to quickly delete the drawn symbol"
 #~ msgstr "खींचे गए प्रतीक को तुरंत हटाने के लिए शॉर्टकट"
+
 #~ msgid "Various minor UI improvements and tweaks"
 #~ msgstr "कई छोटे UI सुधार और बदलाव"
+
 #~ msgid "Fixed failing appstream metadata"
 #~ msgstr "असफल ऐपस्ट्रीम मेटाडेटा को ठीक किया गया"
+
 #~ msgid "Initial release"
 #~ msgstr "प्रारंभिक रिलीज़"
+
 #~ msgid "Copied “{}”"
 #~ msgstr "“{}” कॉपी किया गया"

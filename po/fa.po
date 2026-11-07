@@ -6,8 +6,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: hieroglyphic main\n"
-"Report-Msgid-Bugs-To: https://github.com/FineFindus/Hieroglyphic/issues\n"
-"POT-Creation-Date: 2026-11-06 21:30+0000\n"
+"Report-Msgid-Bugs-To: https://github.com/ruby-gtk-project/Hieroglyphic-rb/"
+"issues\n"
+"POT-Creation-Date: 2026-11-07 03:16+0000\n"
 "PO-Revision-Date: 2026-08-08 02:42+0330\n"
 "Last-Translator: Danial Behzadi <dani.behzi@ubuntu.com>\n"
 "Language-Team: Persian <fa@li.org>\n"
@@ -17,9 +18,59 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 3.9\n"
 
-#: ../lib/about.rb:47 ../lib/window.rb:177 ../lib/window.rb:405
+#: ../data/org.rubygtkproject.Hieroglyphic.desktop.in:2
+#: ../data/org.rubygtkproject.Hieroglyphic.metainfo.xml.in:8 ../lib/about.rb:47
+#: ../lib/window.rb:177 ../lib/window.rb:405
 msgid "Hieroglyphic"
 msgstr "هیروگلیفی"
+
+#: ../data/org.rubygtkproject.Hieroglyphic.desktop.in:3
+msgid "Search through over 1000 different LaTeX symbols by sketching"
+msgstr "جست‌وجو میان بیش از ۱۰۰۰ نماد متفاوت لاتک با رسم کردن"
+
+#. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
+#: ../data/org.rubygtkproject.Hieroglyphic.desktop.in:9
+msgid "GTK;Tools;LaTeX;TeX;Symbols;Typst;Math;"
+msgstr "GTK;Tools;LaTeX;TeX;Symbols;Typst;Math;ابزار;تک;لاتک;نماد;تیپست;ریاضی;"
+
+#. Translators: nudge means here a gentle prompt, i.e. the colored dot on the button
+#: ../data/schemas/org.rubygtkproject.Hieroglyphic.gschema.xml:7
+msgid "Whether to show a small nudge towards the contribution dialog"
+msgstr "این که حرکتی کوچک به گفت‌وگوی مشارکت نشان داده شود یا نه"
+
+#: ../data/schemas/org.rubygtkproject.Hieroglyphic.gschema.xml:11
+msgid "Whether to contribute recognized strokes"
+msgstr "این که خطوط شناخته شده فرستاده شوند یا نه"
+
+#. Translators: the name of the markup language (latex, typst) for which symbols are suggested
+#: ../data/schemas/org.rubygtkproject.Hieroglyphic.gschema.xml:21
+msgid "Markup language to suggest symbols for"
+msgstr "زبان نشانه گذاری برای پیشنهاد نمادها"
+
+#: ../data/org.rubygtkproject.Hieroglyphic.metainfo.xml.in:9
+msgid "Find LaTeX and Typst symbols"
+msgstr "یافتن نمادهای لاتک و تیپست"
+
+#: ../data/org.rubygtkproject.Hieroglyphic.metainfo.xml.in:18
+msgid ""
+"If you work with LaTeX or Typst, you know it's difficult to memorize the "
+"names of all the symbols. Hieroglyphic allows you to search through over "
+"1000 different symbols by sketching."
+msgstr ""
+"اگر با لاتک یا تیپست کار کنید می‌دانید که به خاطر سپردن نام همهٔ نمادها دشوار "
+"است. هیروگلیفی می‌گذارد بیش از ۱۰۰۰ نماد متفاوت را با رسم کردن بجویید."
+
+#: ../data/org.rubygtkproject.Hieroglyphic.metainfo.xml.in:30
+msgid "Symbol selection for LaTeX symbols"
+msgstr "گزینش نماد برای نمادهای لاتک"
+
+#: ../data/org.rubygtkproject.Hieroglyphic.metainfo.xml.in:34
+msgid "Symbol selection for Typst symbols"
+msgstr "گزینش نماد برای نمادهای تیپست"
+
+#: ../data/org.rubygtkproject.Hieroglyphic.metainfo.xml.in:38
+msgid "Placeholder"
+msgstr "جانگه‌دار"
 
 #: ../lib/about.rb:55
 msgid "translator-credits"
@@ -86,41 +137,20 @@ msgstr "_پاک کردن"
 msgid "Main Menu"
 msgstr "فهرست اصلی"
 
-#~ msgid "Search through over 1000 different LaTeX symbols by sketching"
-#~ msgstr "جست‌وجو میان بیش از ۱۰۰۰ نماد متفاوت لاتک با رسم کردن"
-#~ msgid "GTK;Tools;LaTeX;TeX;Symbols;Typst;Math;"
-#~ msgstr "GTK;Tools;LaTeX;TeX;Symbols;Typst;Math;ابزار;تک;لاتک;نماد;تیپست;ریاضی;"
-#~ msgid "Whether to show a small nudge towards the contribution dialog"
-#~ msgstr "این که حرکتی کوچک به گفت‌وگوی مشارکت نشان داده شود یا نه"
-#~ msgid "Whether to contribute recognized strokes"
-#~ msgstr "این که خطوط شناخته شده فرستاده شوند یا نه"
-#~ msgid "Markup language to suggest symbols for"
-#~ msgstr "زبان نشانه گذاری برای پیشنهاد نمادها"
-#~ msgid "Find LaTeX and Typst symbols"
-#~ msgstr "یافتن نمادهای لاتک و تیپست"
 #~ msgid "FineFindus"
 #~ msgstr "فاین‌فیندوس"
+
 #~ msgid ""
-#~ "If you work with LaTeX or Typst, you know it's difficult to memorize the names"
-#~ " of all the symbols. Hieroglyphic allows you to search through over 1000 diffe"
-#~ "rent symbols by sketching."
+#~ "No personal identifiable information is collected. <a href=\"https://"
+#~ "github.com/FineFindus/Hieroglyphic/blob/main/PRIVACY_POLICY.md\">Privacy "
+#~ "policy</a>"
 #~ msgstr ""
-#~ "اگر با لاتک یا تیپست کار کنید می‌دانید که به خاطر سپردن نام همهٔ نمادها دشوار "
-#~ "است. هیروگلیفی می‌گذارد بیش از ۱۰۰۰ نماد متفاوت را با رسم کردن بجویید."
-#~ msgid "Symbol selection for LaTeX symbols"
-#~ msgstr "گزینش نماد برای نمادهای لاتک"
-#~ msgid "Symbol selection for Typst symbols"
-#~ msgstr "گزینش نماد برای نمادهای تیپست"
-#~ msgid "Placeholder"
-#~ msgstr "جانگه‌دار"
-#~ msgid ""
-#~ "No personal identifiable information is collected. <a href=\"https://github.com"
-#~ "/FineFindus/Hieroglyphic/blob/main/PRIVACY_POLICY.md\">Privacy policy</a>"
-#~ msgstr ""
-#~ "هیچ اطّلاعات قابل هویت‌سنجی‌ای جمع نمی‌شود. <a href=\"https://github.com/FineFi"
-#~ "ndus/Hieroglyphic/blob/main/PRIVACY_POLICY.md\">سیاست محرمانگی</a>"
+#~ "هیچ اطّلاعات قابل هویت‌سنجی‌ای جمع نمی‌شود. <a href=\"https://github.com/"
+#~ "FineFindus/Hieroglyphic/blob/main/PRIVACY_POLICY.md\">سیاست محرمانگی</a>"
+
 #~ msgid "Copied “{}”"
 #~ msgstr "«{}» رونوشت شد"
+
 #~ msgid ""
 #~ "Help improve Hieroglyphic by automatically contributing recognized symbols"
 #~ msgstr "کمک به بهبود هیروگلیفی با فرستادن خودکار نمادهای شناخته شده"

@@ -8,8 +8,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: hieroglyphic\n"
-"Report-Msgid-Bugs-To: https://github.com/FineFindus/Hieroglyphic/issues\n"
-"POT-Creation-Date: 2026-11-06 21:30+0000\n"
+"Report-Msgid-Bugs-To: https://github.com/ruby-gtk-project/Hieroglyphic-rb/"
+"issues\n"
+"POT-Creation-Date: 2026-11-07 03:16+0000\n"
 "PO-Revision-Date: 2026-09-01 22:29+0200\n"
 "Last-Translator: Balázs Úr <ur.balazs at fsf dot hu>\n"
 "Language-Team: Hungarian <openscope at fsf dot hu>\n"
@@ -20,9 +21,60 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Lokalize 25.12.3\n"
 
-#: ../lib/about.rb:47 ../lib/window.rb:177 ../lib/window.rb:405
+#: ../data/org.rubygtkproject.Hieroglyphic.desktop.in:2
+#: ../data/org.rubygtkproject.Hieroglyphic.metainfo.xml.in:8 ../lib/about.rb:47
+#: ../lib/window.rb:177 ../lib/window.rb:405
 msgid "Hieroglyphic"
 msgstr "Hieroglifák"
+
+#: ../data/org.rubygtkproject.Hieroglyphic.desktop.in:3
+msgid "Search through over 1000 different LaTeX symbols by sketching"
+msgstr "Keressen több mint 1000 különböző LaTeX-szimbólum között skicceléssel"
+
+#. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
+#: ../data/org.rubygtkproject.Hieroglyphic.desktop.in:9
+msgid "GTK;Tools;LaTeX;TeX;Symbols;Typst;Math;"
+msgstr "GTK;eszközök;LaTeX;TeX;szimbólumok;Typst;matematika;"
+
+#. Translators: nudge means here a gentle prompt, i.e. the colored dot on the button
+#: ../data/schemas/org.rubygtkproject.Hieroglyphic.gschema.xml:7
+msgid "Whether to show a small nudge towards the contribution dialog"
+msgstr "Megjelenítsen-e egy apró felhívást a közreműködési párbeszédablakra"
+
+#: ../data/schemas/org.rubygtkproject.Hieroglyphic.gschema.xml:11
+msgid "Whether to contribute recognized strokes"
+msgstr "Közre legyenek-e adva a felismert vonalrajzolatok"
+
+#. Translators: the name of the markup language (latex, typst) for which symbols are suggested
+#: ../data/schemas/org.rubygtkproject.Hieroglyphic.gschema.xml:21
+msgid "Markup language to suggest symbols for"
+msgstr "Jelölőnyelv szimbólumok javaslatához"
+
+#: ../data/org.rubygtkproject.Hieroglyphic.metainfo.xml.in:9
+msgid "Find LaTeX and Typst symbols"
+msgstr "LaTeX- és Typst-szimbólumok keresése"
+
+#: ../data/org.rubygtkproject.Hieroglyphic.metainfo.xml.in:18
+msgid ""
+"If you work with LaTeX or Typst, you know it's difficult to memorize the "
+"names of all the symbols. Hieroglyphic allows you to search through over "
+"1000 different symbols by sketching."
+msgstr ""
+"Ha LaTeX vagy Typst használatával dolgozik, akkor tudhatja, hogy milyen "
+"nehéz megjegyezni az összes szimbólum nevét. A Hieroglifák segítségével több "
+"mint 1000 különböző szimbólum között kereshet skicceléssel."
+
+#: ../data/org.rubygtkproject.Hieroglyphic.metainfo.xml.in:30
+msgid "Symbol selection for LaTeX symbols"
+msgstr "Szimbólumkiválasztás LaTeX-szimbólumokhoz"
+
+#: ../data/org.rubygtkproject.Hieroglyphic.metainfo.xml.in:34
+msgid "Symbol selection for Typst symbols"
+msgstr "Szimbólumkiválasztás Typst-szimbólumokhoz"
+
+#: ../data/org.rubygtkproject.Hieroglyphic.metainfo.xml.in:38
+msgid "Placeholder"
+msgstr "Helykitöltő"
 
 #: ../lib/about.rb:55
 msgid "translator-credits"
@@ -38,8 +90,8 @@ msgstr "A Hieroglifák tökéletesítése"
 #: ../lib/contribution_dialog.rb:112
 msgid "Help make Hieroglyphic better at identifying symbols for everyone"
 msgstr ""
-"Segítsen a Hieroglifák szimbólum-azonosításának jobbá tételében mindenki számá"
-"ra"
+"Segítsen a Hieroglifák szimbólum-azonosításának jobbá tételében mindenki "
+"számára"
 
 #: ../lib/contribution_dialog.rb:127
 msgid "Contribute Symbols"
@@ -93,38 +145,14 @@ msgstr "_Törlés"
 msgid "Main Menu"
 msgstr "Főmenü"
 
-#~ msgid "Search through over 1000 different LaTeX symbols by sketching"
-#~ msgstr "Keressen több mint 1000 különböző LaTeX-szimbólum között skicceléssel"
-#~ msgid "GTK;Tools;LaTeX;TeX;Symbols;Typst;Math;"
-#~ msgstr "GTK;eszközök;LaTeX;TeX;szimbólumok;Typst;matematika;"
-#~ msgid "Whether to show a small nudge towards the contribution dialog"
-#~ msgstr "Megjelenítsen-e egy apró felhívást a közreműködési párbeszédablakra"
-#~ msgid "Whether to contribute recognized strokes"
-#~ msgstr "Közre legyenek-e adva a felismert vonalrajzolatok"
-#~ msgid "Markup language to suggest symbols for"
-#~ msgstr "Jelölőnyelv szimbólumok javaslatához"
-#~ msgid "Find LaTeX and Typst symbols"
-#~ msgstr "LaTeX- és Typst-szimbólumok keresése"
 #~ msgid ""
-#~ "If you work with LaTeX or Typst, you know it's difficult to memorize the names"
-#~ " of all the symbols. Hieroglyphic allows you to search through over 1000 diffe"
-#~ "rent symbols by sketching."
+#~ "No personal identifiable information is collected. <a href=\"https://"
+#~ "github.com/FineFindus/Hieroglyphic/blob/main/PRIVACY_POLICY.md\">Privacy "
+#~ "policy</a>"
 #~ msgstr ""
-#~ "Ha LaTeX vagy Typst használatával dolgozik, akkor tudhatja, hogy milyen nehéz "
-#~ "megjegyezni az összes szimbólum nevét. A Hieroglifák segítségével több mint 10"
-#~ "00 különböző szimbólum között kereshet skicceléssel."
-#~ msgid "Symbol selection for LaTeX symbols"
-#~ msgstr "Szimbólumkiválasztás LaTeX-szimbólumokhoz"
-#~ msgid "Symbol selection for Typst symbols"
-#~ msgstr "Szimbólumkiválasztás Typst-szimbólumokhoz"
-#~ msgid "Placeholder"
-#~ msgstr "Helykitöltő"
-#~ msgid ""
-#~ "No personal identifiable information is collected. <a href=\"https://github.com"
-#~ "/FineFindus/Hieroglyphic/blob/main/PRIVACY_POLICY.md\">Privacy policy</a>"
-#~ msgstr ""
-#~ "Személyes azonosításra alkalmas információk nem kerülnek gyűjtésre. <a href=\"h"
-#~ "ttps://github.com/FineFindus/Hieroglyphic/blob/main/PRIVACY_POLICY.md\">Adatvéd"
-#~ "elmi irányelv</a>"
+#~ "Személyes azonosításra alkalmas információk nem kerülnek gyűjtésre. <a "
+#~ "href=\"https://github.com/FineFindus/Hieroglyphic/blob/main/"
+#~ "PRIVACY_POLICY.md\">Adatvédelmi irányelv</a>"
+
 #~ msgid "Copied “{}”"
 #~ msgstr "A(z) „{}” másolva"

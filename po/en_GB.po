@@ -7,8 +7,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: hieroglyphic main\n"
-"Report-Msgid-Bugs-To: https://github.com/FineFindus/Hieroglyphic/issues\n"
-"POT-Creation-Date: 2026-11-06 21:30+0000\n"
+"Report-Msgid-Bugs-To: https://github.com/ruby-gtk-project/Hieroglyphic-rb/"
+"issues\n"
+"POT-Creation-Date: 2026-11-07 03:16+0000\n"
 "PO-Revision-Date: 2025-09-25 10:25+0100\n"
 "Last-Translator: Bruce Cowan <bruce@bcowan.me.uk>\n"
 "Language-Team: British English <en@li.org>\n"
@@ -25,9 +26,64 @@ msgstr ""
 "X-DL-Domain: po\n"
 "X-DL-State: Translating\n"
 
-#: ../lib/about.rb:47 ../lib/window.rb:177 ../lib/window.rb:405
+#: ../data/org.rubygtkproject.Hieroglyphic.desktop.in:2
+#: ../data/org.rubygtkproject.Hieroglyphic.metainfo.xml.in:8 ../lib/about.rb:47
+#: ../lib/window.rb:177 ../lib/window.rb:405
 msgid "Hieroglyphic"
 msgstr "Hieroglyphic"
+
+#: ../data/org.rubygtkproject.Hieroglyphic.desktop.in:3
+msgid "Search through over 1000 different LaTeX symbols by sketching"
+msgstr "Search through over 1000 different LaTeX symbols by sketching"
+
+#. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
+#: ../data/org.rubygtkproject.Hieroglyphic.desktop.in:9
+#, fuzzy
+msgid "GTK;Tools;LaTeX;TeX;Symbols;Typst;Math;"
+msgstr "GTK;Tools;LaTeX;TeX;Symbols;"
+
+#. Translators: nudge means here a gentle prompt, i.e. the colored dot on the button
+#: ../data/schemas/org.rubygtkproject.Hieroglyphic.gschema.xml:7
+msgid "Whether to show a small nudge towards the contribution dialog"
+msgstr "Whether to show a small nudge towards the contribution dialogue"
+
+#: ../data/schemas/org.rubygtkproject.Hieroglyphic.gschema.xml:11
+msgid "Whether to contribute recognized strokes"
+msgstr "Whether to contribute recognised strokes"
+
+#. Translators: the name of the markup language (latex, typst) for which symbols are suggested
+#: ../data/schemas/org.rubygtkproject.Hieroglyphic.gschema.xml:21
+msgid "Markup language to suggest symbols for"
+msgstr ""
+
+#: ../data/org.rubygtkproject.Hieroglyphic.metainfo.xml.in:9
+#, fuzzy
+msgid "Find LaTeX and Typst symbols"
+msgstr "Find LaTeX symbols"
+
+#: ../data/org.rubygtkproject.Hieroglyphic.metainfo.xml.in:18
+#, fuzzy
+msgid ""
+"If you work with LaTeX or Typst, you know it's difficult to memorize the "
+"names of all the symbols. Hieroglyphic allows you to search through over "
+"1000 different symbols by sketching."
+msgstr ""
+"If you work with LaTeX, you know it's difficult to memorise the names of all "
+"the symbols. Hieroglyphic allows you to search through over 1000 different "
+"LaTeX symbols by sketching."
+
+#: ../data/org.rubygtkproject.Hieroglyphic.metainfo.xml.in:30
+#, fuzzy
+msgid "Symbol selection for LaTeX symbols"
+msgstr "Find LaTeX symbols"
+
+#: ../data/org.rubygtkproject.Hieroglyphic.metainfo.xml.in:34
+msgid "Symbol selection for Typst symbols"
+msgstr ""
+
+#: ../data/org.rubygtkproject.Hieroglyphic.metainfo.xml.in:38
+msgid "Placeholder"
+msgstr "Placeholder"
 
 #: ../lib/about.rb:55
 msgid "translator-credits"
@@ -96,27 +152,8 @@ msgstr "_Clear"
 msgid "Main Menu"
 msgstr ""
 
-#~ msgid "Search through over 1000 different LaTeX symbols by sketching"
-#~ msgstr "Search through over 1000 different LaTeX symbols by sketching"
-#~ msgid "GTK;Tools;LaTeX;TeX;Symbols;"
-#~ msgstr "GTK;Tools;LaTeX;TeX;Symbols;"
-#~ msgid "Whether to show a small nudge towards the contribution dialog"
-#~ msgstr "Whether to show a small nudge towards the contribution dialogue"
-#~ msgid "Whether to contribute recognized strokes"
-#~ msgstr "Whether to contribute recognised strokes"
-#~ msgid "Find LaTeX symbols"
-#~ msgstr "Find LaTeX symbols"
-#~ msgid ""
-#~ "If you work with LaTeX, you know it's difficult to memorize the names of all t"
-#~ "he symbols. Hieroglyphic allows you to search through over 1000 different LaTe"
-#~ "X symbols by sketching."
-#~ msgstr ""
-#~ "If you work with LaTeX, you know it's difficult to memorise the names of all t"
-#~ "he symbols. Hieroglyphic allows you to search through over 1000 different LaTe"
-#~ "X symbols by sketching."
 #~ msgid "Main Window"
 #~ msgstr "Main Window"
-#~ msgid "Placeholder"
-#~ msgstr "Placeholder"
+
 #~ msgid "Copied “{}”"
 #~ msgstr "Copied “{}”"

@@ -1,0 +1,325 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright 2024 FineFindus -->
+<component type="desktop-application">
+  <id>org.rubygtkproject.Hieroglyphic</id>
+  <metadata_license>CC0</metadata_license>
+  <project_license>GPL-3.0</project_license>
+  <name>Hieroglyphic</name>
+  <name xml:lang="zh-Hans-CN">Hieroglyphic</name>
+  <name xml:lang="uz-Latn">Iyeroglifik</name>
+  <name xml:lang="uk">Ієрогліфік</name>
+  <name xml:lang="tr">Hieroglyphic</name>
+  <name xml:lang="th">Hieroglyphic</name>
+  <name xml:lang="sv">Hieroglyphic</name>
+  <name xml:lang="sr-Cyrl">Хијероглифик</name>
+  <name xml:lang="sl">Hieroglifik</name>
+  <name xml:lang="ru">Hieroglyphic</name>
+  <name xml:lang="pt-BR">Hieróglifo</name>
+  <name xml:lang="nl">Hieroglyphic</name>
+  <name xml:lang="nb">Hieroglyphic</name>
+  <name xml:lang="kw">Hiroglyfek</name>
+  <name xml:lang="kk-Cyrl">Hieroglyphic</name>
+  <name xml:lang="ka">Hieroglyphic</name>
+  <name xml:lang="ja">Hieroglyphic</name>
+  <name xml:lang="it">Geroglifico</name>
+  <name xml:lang="id">Hieroglyphic</name>
+  <name xml:lang="ia">Hieroglyphic</name>
+  <name xml:lang="hu">Hieroglifák</name>
+  <name xml:lang="hr">Hieroglyphic</name>
+  <name xml:lang="hi">Hieroglyphic</name>
+  <name xml:lang="he">הירוגליפי</name>
+  <name xml:lang="fr">Hiéroglyphe</name>
+  <name xml:lang="fi">Hieroglyphic</name>
+  <name xml:lang="fa">هیروگلیفی</name>
+  <name xml:lang="eu">Hieroglyphic</name>
+  <name xml:lang="es">Hieroglyphic</name>
+  <name xml:lang="eo">Hieroglyphic</name>
+  <name xml:lang="en-GB">Hieroglyphic</name>
+  <name xml:lang="el">Hieroglyphic</name>
+  <name xml:lang="de">Hieroglyphic</name>
+  <name xml:lang="cs">Hieroglyfy</name>
+  <name xml:lang="ca">Jeroglífic</name>
+  <name xml:lang="bg">Йероглиф</name>
+  <name xml:lang="be-Cyrl">Hieroglyphic</name>
+  <summary>Find LaTeX and Typst symbols</summary>
+  <summary xml:lang="zh-Hans-CN">查找 LaTeX 和 Typst 符号</summary>
+  <summary xml:lang="uk">Пошук символів LaTeX або Typst</summary>
+  <summary xml:lang="tr">LaTeX ve Typst simgelerini bul</summary>
+  <summary xml:lang="th">ค้นหาสัญลักษณ์ LaTeX และ Typst</summary>
+  <summary xml:lang="sv">Hitta LaTeX- och Typst-symboler</summary>
+  <summary xml:lang="sr-Cyrl">Нађите LaTeX и Typst симболе</summary>
+  <summary xml:lang="sl">Iskanje simbolov LaTeX in Typst</summary>
+  <summary xml:lang="ru">Поиск символов LaTeX и Typst</summary>
+  <summary xml:lang="pt-BR">Encontre símbolos de LaTeX e Typst</summary>
+  <summary xml:lang="kw">Kavos arwodhyow LaTeX ha Typst</summary>
+  <summary xml:lang="kk-Cyrl">LaTeX және Typst таңбаларын табу</summary>
+  <summary xml:lang="ka">იპოვეთ LaTeX და Typst სიმბოლოები</summary>
+  <summary xml:lang="ja">LaTeX や Typst の記号を探す</summary>
+  <summary xml:lang="it">Ricerca di simboli di LaTeX e Typst</summary>
+  <summary xml:lang="ia">Cerca symbolos LaTeX e Typst</summary>
+  <summary xml:lang="hu">LaTeX- és Typst-szimbólumok keresése</summary>
+  <summary xml:lang="he">חיפוש סמלי LaTeX ו־Typst</summary>
+  <summary xml:lang="fr">Rechercher des symboles LaTeX et Typst</summary>
+  <summary xml:lang="fi">Löydä LaTeX- ja Typst-symboleja</summary>
+  <summary xml:lang="fa">یافتن نمادهای لاتک و تیپست</summary>
+  <summary xml:lang="eu">Bilatu LaTeX eta Typst ikurrak</summary>
+  <summary xml:lang="es">Encuentre símbolos LaTeX y Typst</summary>
+  <summary xml:lang="eo">Trovi LaTeX- kaj Typst-simbolojn</summary>
+  <summary xml:lang="el">Εύρεση συμβόλων LaTeX και Typst</summary>
+  <summary xml:lang="cs">Najděte symboly Latex a Typst</summary>
+  <summary xml:lang="ca">Trobeu símbols de LaTeX i Typst</summary>
+  <summary xml:lang="bg">Търсене на знаци в „LaTeX“ и „Typst“</summary>
+  <summary xml:lang="be-Cyrl">Пошук сімвалаў LaTeX і Typst</summary>
+  <!-- developer_name tag deprecated with Appstream 1.0 -->
+  <developer_name translate="no">FineFindus</developer_name>
+  <developer id="io.github.finefindus">
+    <name translate="no">FineFindus</name>
+  </developer>
+  <update_contact>finefindus@proton.me</update_contact>
+  <description>
+    <p>If you work with LaTeX or Typst, you know it's difficult to memorize the names of all the symbols. Hieroglyphic allows you to search through over 1000 different symbols by sketching.</p>
+    <p xml:lang="zh-Hans-CN">如果您使用 LaTeX 或 Typst 则应知道记忆所有符号的名称非常困难。Hieroglyphic 可让您通过画草图来搜索 1000 多种不同的符号。</p>
+    <p xml:lang="uk">Якщо ви працювали з LaTeX або Typst, вам відомі ці проблеми із запам'ятовуванням назв усіх символів. За допомогою «Ієрогліфік» ви зможете виконувати пошук за ескізом серед понад 1000 різних символів.</p>
+    <p xml:lang="tr">LaTeX ya da Typst ile çalışıyorsanız tüm simgelerin adlarını ezberlemenin zor olduğunu bilirsiniz. Hiyeroglif, 1000ʼden çok simge arasında çizim yaparak arama yapmanızı sağlar.</p>
+    <p xml:lang="th">ถ้าคุณทำงานกับ LaTeX หรือ Typst คุณจะรู้ว่ามันยากที่จะจดจำชื่อของสัญลักษณ์ทั้งหมด Hieroglyphic ให้คุณค้นหาสัญลักษณ์ต่าง ๆ กว่า 1000 ตัวได้ด้วยการวาด</p>
+    <p xml:lang="sv">Om du arbetar med LaTeX eller Typst så vet du att det är svårt att komma ihåg namnen på alla symboler. Hieroglyphic låter dig söka genom över 1000 olika symboler genom att skissa.</p>
+    <p xml:lang="sr-Cyrl">Ако радите са ЛаТеКсом или Типстом, знате да је тешко запамтити називе свих симбола. Хијероглифик вам омогућава да претражујете преко 1000 различитих симбола цртањем.</p>
+    <p xml:lang="sl">Če delate z LaTeXom ali Typstom, veste, da si je težko zapomniti imena vseh simbolov. Hieroglifik vam omogoča iskanje po več kot 1000 različnih simbolih s skiciranjem.</p>
+    <p xml:lang="ru">Если вы работаете с LaTeX или Typst, то знаете, что запомнить названия всех символов непросто. Hieroglyphic позволяет выполнять поиск по более чем 1000 различным символам с помощью простых зарисовок.</p>
+    <p xml:lang="pt-BR">Se você trabalha com LaTeX ou Typst, sabe que é difícil memorizar os nomes de todos os símbolos. O Hieróglifo permite que você pesquise mais de 1000 símbolos diferentes por meio de esboços.</p>
+    <p xml:lang="kw">Mar ty oberi gans LaTeX po Typst, ty aswon yth yw kales dhe kevenna an henwyn oll an arwodhyow. Hiroglyfek gasa ty hwilas dres moy es 1000 arwodhyow gans ow linenna.</p>
+    <p xml:lang="kk-Cyrl">Егер сіз LaTeX немесе Typst-пен жұмыс істесеңіз, барлық таңбалардың атауын есте сақтау қиын екенін білесіз. Hieroglyphic сізге 1000-нан астам әртүрлі таңбаны сурет салу арқылы іздеуге мүмкіндік береді.</p>
+    <p xml:lang="ka">თუ LaTeX–თან, ან Typst მუშაობთ, იცით, რომ ძნელია ყველა სიმბოლოს სახელების დამახსოვრება. Hieroglyphic საშუალებას გაძლევთ მოძებნოთ 1000-ზე მეტი სხვადასხვა სიმბოლო ესკიზით.</p>
+    <p xml:lang="ja">あなたが LaTeX や Typst を使っているとき、使用するすべての記号の名前を思い出すのは難しいですよね。Hieroglyphic を使うと、 1000 の記号を手書きすることで検索できます。</p>
+    <p xml:lang="it">Lavorando con LaTeX o Typst, si sa, è difficile memorizzare i nomi di tutti i simboli. Geroglifico permette di cercare tra oltre 1000 diversi simboli LaTeX con uno schizzo.</p>
+    <p xml:lang="ia">Si tu travalia con LaTeX o Typst, tu sape le difficultate de memorisar le nomine de tote le symbolos. Hieroglyphic te permitte cercar per plus de 1000 symbolos differente facente designos</p>
+    <p xml:lang="hu">Ha LaTeX vagy Typst használatával dolgozik, akkor tudhatja, hogy milyen nehéz megjegyezni az összes szimbólum nevét. A Hieroglifák segítségével több mint 1000 különböző szimbólum között kereshet skicceléssel.</p>
+    <p xml:lang="he">אם עבדת עם LaTeX או עם Typst, בוודאי מוכר לך הקושי לזכור את השמות של הסמלים השונים. היישום הירוגליפי מאפשר לך לחפש מתוך למעלה מ־1000 סמלים באמצעות רישום בכתב יד.</p>
+    <p xml:lang="fr">Si vous utilisez LaTeX ou Typst pour votre travail, vous savez à quel point il est difficile de mémoriser les noms de tous les symboles. Hiéroglyphe vous permet de rechercher parmi plus de 1000 symboles différents en les dessinant.</p>
+    <p xml:lang="fi">Jos työskentelet käyttäen LaTeXia tai Typstia, tiedät että kaikkien symbolien nimien muistaminen on vaikeaa. Hieroglyphic mahdollistaa hakemisen yli 1000 eri symbolin joukosta piirtämällä.</p>
+    <p xml:lang="fa">اگر با لاتک یا تیپست کار کنید می‌دانید که به خاطر سپردن نام همهٔ نمادها دشوار است. هیروگلیفی می‌گذارد بیش از ۱۰۰۰ نماد متفاوت را با رسم کردن بجویید.</p>
+    <p xml:lang="eu">LaTeX edo Typst aplikazioekin lan egiten baduzu, badakizu zaila dela ikur guztien izenak buruz ikastea. Hieroglyphic aplikazioaren bidez, 1000 ikur baino gehiagoren artean egin ahal izango dituzu bilaketak haiek pantailan marraztuz.</p>
+    <p xml:lang="es">Si trabaja con LaTeX o con Typst, sabrá que es difícil memorizar los nombres de todos los símbolos. Hieroglyphic le permite buscar entre más de 1000 símbolos diferentes mediante bocetos.</p>
+    <p xml:lang="el">Αν εργάζεστε με το LaTeX ή το Typst, γνωρίζετε πως είναι δύσκολο να απομνημονεύσετε τα ονόματα όλων των συμβόλων. Το Hieroglyphic σάς επιτρέπει να κάνετε αναζήτηση ανάμεσα από περισσότερα από 1000 διαφορετικά σύμβολα σχεδιάζοντας.</p>
+    <p xml:lang="cs">Pokud pracujete s LaTeX nebo Typst, víte, že je těžké si zapamatovat názvy všech symbolů. Hieroglyfy umožňují prohledat přes 1000 různých symbolů jen podle náčrtu.</p>
+    <p xml:lang="ca">Si treballeu amb LaTeX o Typst, sabeu que és difícil memoritzar els noms de tots els símbols. El Jeroglífic us permet cercar més de 1000 símbols diferents dibuixant.</p>
+    <p xml:lang="bg">Ако работите с „LaTeX“ или „Typst“, знаете, че е трудно да се запомнят имената на всички знаци. „Йероглиф“ ви позволява да търсите в над 1000 различни знака чрез изчертаване.</p>
+    <p xml:lang="be-Cyrl">Калі вы працавалі з LaTeX або Typst, ведаеце як складана помніць назвы ўсіх сімвалаў. З дапамогай Hieroglyphic можна знайсці па нарысаванаму абрысу больш за 1000 сімвалаў.</p>
+  </description>
+  <categories>
+    <category>Math</category>
+    <category>Science</category>
+    <category>Utility</category>
+  </categories>
+  <screenshots>
+    <screenshot type="default">
+      <image>https://raw.githubusercontent.com/FineFindus/Hieroglyphic/main/data/resources/screenshots/window_latex.png</image>
+      <caption>Symbol selection for LaTeX symbols</caption>
+      <caption xml:lang="zh-Hans-CN">用于 LaTeX 符号的选区</caption>
+      <caption xml:lang="uk">Вибір символів для символів LaTeX</caption>
+      <caption xml:lang="tr">LaTeX simgeleri için simge seçimi</caption>
+      <caption xml:lang="th">การเลือกสัญลักษณ์สำหรับสัญลักษณ์ LaTeX</caption>
+      <caption xml:lang="sv">Symbolval för LaTeX-symboler</caption>
+      <caption xml:lang="sr-Cyrl">Избор симбола за ЛаТеКс симболе</caption>
+      <caption xml:lang="sl">Izbor simbolov za simbole LaTeX</caption>
+      <caption xml:lang="ru">Выбор символов для символов LaTeX</caption>
+      <caption xml:lang="pt-BR">Seleção de símbolos para os símbolos LaTeX</caption>
+      <caption xml:lang="kw">Dewis arwodh rag arwodhyow LaTeX</caption>
+      <caption xml:lang="kk-Cyrl">LaTeX таңбалары үшін таңбаларды таңдау</caption>
+      <caption xml:lang="ka">სიმბოლოს არჩევანი LaTeX სიმბოლოებისთვის</caption>
+      <caption xml:lang="ja">LaTeX の記号を選択している画面</caption>
+      <caption xml:lang="it">Selezione di simboli di LaTeX</caption>
+      <caption xml:lang="ia">Selection de symbolos pro symbolos LaTeX</caption>
+      <caption xml:lang="hu">Szimbólumkiválasztás LaTeX-szimbólumokhoz</caption>
+      <caption xml:lang="he">בחירת סמלים לסמלי LaTeX</caption>
+      <caption xml:lang="fr">Sélection des symboles pour LaTeX</caption>
+      <caption xml:lang="fi">LaTeX-symbolien valinta</caption>
+      <caption xml:lang="fa">گزینش نماد برای نمادهای لاتک</caption>
+      <caption xml:lang="eu">Ikur-hautapena LaTeX ikurrentzat</caption>
+      <caption xml:lang="es">Seleccione símbolos LaTeX</caption>
+      <caption xml:lang="eo">Simbola elekto por LaTeX-simboloj</caption>
+      <caption xml:lang="el">Επιλογή συμβόλων για σύμβολα LaTeX</caption>
+      <caption xml:lang="cs">Výběr symbolů LaTeX</caption>
+      <caption xml:lang="ca">Selecció de símbols per als símbols de LaTeX</caption>
+      <caption xml:lang="bg">Избор на знаци в „LaTeX“</caption>
+      <caption xml:lang="be-Cyrl">Выбар сімвалаў LaTeX</caption>
+    </screenshot>
+    <screenshot>
+      <image>https://raw.githubusercontent.com/FineFindus/Hieroglyphic/main/data/resources/screenshots/window_typst.png</image>
+      <caption>Symbol selection for Typst symbols</caption>
+      <caption xml:lang="zh-Hans-CN">用于 Typst 符号的选区</caption>
+      <caption xml:lang="uk">Вибір символів для символів Typst</caption>
+      <caption xml:lang="tr">Typst simgeleri için simge seçimi</caption>
+      <caption xml:lang="th">การเลือกสัญลักษณ์สำหรับสัญลักษณ์ Typst</caption>
+      <caption xml:lang="sv">Symbolval för Typst-symboler</caption>
+      <caption xml:lang="sr-Cyrl">Избор симбола за Типст симболе</caption>
+      <caption xml:lang="sl">Izbor simbolov za simbole Typst</caption>
+      <caption xml:lang="ru">Выбор символов для символов Typst</caption>
+      <caption xml:lang="pt-BR">Seleção de símbolos para os símbolos Typst</caption>
+      <caption xml:lang="kw">Dewis arwodh rag arwodhyow Typst</caption>
+      <caption xml:lang="kk-Cyrl">Typst таңбалары үшін таңбаларды таңдау</caption>
+      <caption xml:lang="ka">სიმბოლოს არჩევანი Typst სიმბოლოებისთვის</caption>
+      <caption xml:lang="ja">Typst の記号を選択している画面</caption>
+      <caption xml:lang="it">Selezione di simboli di Typst</caption>
+      <caption xml:lang="ia">Selection de symbolo pro symbolos Typst</caption>
+      <caption xml:lang="hu">Szimbólumkiválasztás Typst-szimbólumokhoz</caption>
+      <caption xml:lang="he">בחירת סמל לסמלי Typst</caption>
+      <caption xml:lang="fr">Sélection des symboles pour Typst</caption>
+      <caption xml:lang="fi">Typst-symbolien valinta</caption>
+      <caption xml:lang="fa">گزینش نماد برای نمادهای تیپست</caption>
+      <caption xml:lang="eu">Ikur-hautapena Typst ikurrentzat</caption>
+      <caption xml:lang="es">Seleccione símbolos Typst</caption>
+      <caption xml:lang="eo">Simbola elekto por Typst-simboloj</caption>
+      <caption xml:lang="el">Επιλογή συμβόλων για σύμβολα Typst</caption>
+      <caption xml:lang="cs">Výběr symbolů Typst</caption>
+      <caption xml:lang="ca">Selecció de símbols per als símbols de Typst</caption>
+      <caption xml:lang="bg">Избор на знаци в „Typst“</caption>
+      <caption xml:lang="be-Cyrl">Выбар сімвалаў Typst</caption>
+    </screenshot>
+    <screenshot>
+      <image>https://raw.githubusercontent.com/FineFindus/Hieroglyphic/main/data/resources/screenshots/placeholder.png</image>
+      <caption>Placeholder</caption>
+      <caption xml:lang="zh-Hans-CN">占位符</caption>
+      <caption xml:lang="uz-Latn">To‘ldirgich</caption>
+      <caption xml:lang="uk">Замінник</caption>
+      <caption xml:lang="tr">Yer Tutucu</caption>
+      <caption xml:lang="th">ตัวยึดตำแหน่ง</caption>
+      <caption xml:lang="sv">Platshållare</caption>
+      <caption xml:lang="sr-Cyrl">Чувар места</caption>
+      <caption xml:lang="sl">Ograda</caption>
+      <caption xml:lang="ru">Заполнитель</caption>
+      <caption xml:lang="pt-BR">Espaço reservado</caption>
+      <caption xml:lang="nl">Opvultekst</caption>
+      <caption xml:lang="nb">Plassholder</caption>
+      <caption xml:lang="kw">Ensampel</caption>
+      <caption xml:lang="kk-Cyrl">Толтырғыш</caption>
+      <caption xml:lang="ka">ადგილმჭერი</caption>
+      <caption xml:lang="ja">プレースホルダー</caption>
+      <caption xml:lang="it">Segnaposto</caption>
+      <caption xml:lang="id">Pewakil</caption>
+      <caption xml:lang="ia">Marcator de position</caption>
+      <caption xml:lang="hu">Helykitöltő</caption>
+      <caption xml:lang="hr">Mjesto za crtanje</caption>
+      <caption xml:lang="hi">स्थानधारक</caption>
+      <caption xml:lang="he">ממלא מקום</caption>
+      <caption xml:lang="fr">Caractère fictif</caption>
+      <caption xml:lang="fa">جانگه‌دار</caption>
+      <caption xml:lang="eu">Leku-marka</caption>
+      <caption xml:lang="es">Marcador de posición</caption>
+      <caption xml:lang="eo">Loktenilo</caption>
+      <caption xml:lang="en-GB">Placeholder</caption>
+      <caption xml:lang="el">Σύμβολο κράτησης θέσης</caption>
+      <caption xml:lang="de">Platzhalter</caption>
+      <caption xml:lang="cs">Žádný symbol</caption>
+      <caption xml:lang="ca">Marcador</caption>
+      <caption xml:lang="bg">Заместител</caption>
+      <caption xml:lang="be-Cyrl">Запаўняльнік</caption>
+    </screenshot>
+  </screenshots>
+  <url type="homepage">https://apps.gnome.org/Hieroglyphic/</url>
+  <url type="bugtracker">https://github.com/FineFindus/Hieroglyphic/issues</url>
+  <url type="help">https://github.com/FineFindus/Hieroglyphic/issues</url>
+  <url type="vcs-browser">https://github.com/ruby-gtk-project/Hieroglyphic-rb</url>
+  <url type="contribute">https://github.com/FineFindus/Hieroglyphic#contributing</url>
+  <url type="translate">https://github.com/FineFindus/Hieroglyphic#translation</url>
+  <content_rating type="oars-1.1"/>
+  <releases>
+    <release version="2.3.0" date="2026-04-07">
+      <description>
+        <ul>
+          <li>Support Typst symbols</li>
+          <li>Use hardware-acceleration (NPUs) when available</li>
+          <li>Updated to newest GNOME styling</li>
+        </ul>
+      </description>
+    </release>
+    <release version="2.2.0" date="2025-10-01">
+      <description>
+        <p>This update brings a adaptive redesign, improving the app on mobile devices.</p>
+        <ul>
+          <li>Added blackboard bold (mathbb) symbols</li>
+          <li>Accessibility improvements</li>
+          <li>Updated to newest GNOME styling</li>
+        </ul>
+      </description>
+    </release>
+    <release version="2.1.0" date="2025-01-25">
+      <description>
+        <p>This updates improves symbols classification, as fixing some bugs.</p>
+        <ul>
+          <li>Updates the drawing area to use GPU rendering</li>
+          <li>Shortcuts to clear the drawing area should now work again</li>
+          <li>Updated translations</li>
+          <li>Improved metadata for app stores</li>
+        </ul>
+      </description>
+    </release>
+    <release version="2.0.0" date="2024-10-08">
+      <description>
+        <p>This update brings significant improvements to the classification system:</p>
+        <ul>
+          <li>Powered by a new machine learning model</li>
+          <li>Faster classification speed</li>
+          <li>Reduced application size</li>
+          <li>Improved overall accuracy</li>
+          <li>Option to contribute recognized symbols to improve future model performance</li>
+        </ul>
+      </description>
+    </release>
+    <release version="1.1.0" date="2024-04-24">
+      <description>
+        <p>This update refines the user interface:</p>
+        <ul>
+          <li>New icon</li>
+          <li>Updated to the latest GNOME components</li>
+          <li>Improved recognition speed and overall application responsiveness</li>
+          <li>Shortcut to quickly delete the drawn symbol</li>
+          <li>Various minor UI improvements and tweaks</li>
+        </ul>
+      </description>
+    </release>
+    <release version="1.0.1" date="2024-03-13">
+      <description>
+        <p>Fixed failing appstream metadata</p>
+      </description>
+    </release>
+    <release version="1.0.0" date="2024-03-13">
+      <description>
+        <p>Initial release</p>
+      </description>
+    </release>
+  </releases>
+  <kudos>
+    <!--
+    GNOME Software kudos:
+    https://gitlab.gnome.org/GNOME/gnome-software/blob/master/doc/kudos.md
+    -->
+    <kudo>ModernToolkit</kudo>
+    <kudo>HiDpiIcon</kudo>
+  </kudos>
+  <translation type="gettext">hieroglyphic</translation>
+  <launchable type="desktop-id">org.rubygtkproject.Hieroglyphic.desktop</launchable>
+  <provides>
+    <binary>hieroglyphic</binary>
+  </provides>
+  <supports>
+    <!-- works without internet, but cannot upload stroke data-->
+    <internet>offline-only</internet>
+  </supports>
+  <recommends>
+    <control>keyboard</control>
+    <control>pointing</control>
+    <control>touch</control>
+    <control>tablet</control>
+  </recommends>
+  <requires>
+    <display_length compare="ge">360</display_length>
+  </requires>
+  <custom>
+    <value key="GnomeSoftware::key-colors">[(126, 224, 180)]</value>
+  </custom>
+  <branding>
+    <color type="primary" scheme_preference="light">#f7f29d</color>
+    <color type="primary" scheme_preference="dark">#865e3c</color>
+  </branding>
+</component>

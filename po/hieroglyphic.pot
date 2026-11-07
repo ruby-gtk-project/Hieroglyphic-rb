@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: hieroglyphic-rb\n"
 "Report-Msgid-Bugs-To: https://github.com/ruby-gtk-project/Hieroglyphic-rb/issues\n"
-"POT-Creation-Date: 2026-11-06 21:30+0000\n"
-"PO-Revision-Date: 2026-11-06 21:30+0000\n"
+"POT-Creation-Date: 2026-11-07 03:16+0000\n"
+"PO-Revision-Date: 2026-11-07 03:16+0000\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -16,8 +16,53 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 
+#: ../data/org.rubygtkproject.Hieroglyphic.desktop.in:2
+#: ../data/org.rubygtkproject.Hieroglyphic.metainfo.xml.in:8
 #: ../lib/about.rb:47 ../lib/window.rb:177 ../lib/window.rb:405
 msgid "Hieroglyphic"
+msgstr ""
+
+#: ../data/org.rubygtkproject.Hieroglyphic.desktop.in:3
+msgid "Search through over 1000 different LaTeX symbols by sketching"
+msgstr ""
+
+#. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
+#: ../data/org.rubygtkproject.Hieroglyphic.desktop.in:9
+msgid "GTK;Tools;LaTeX;TeX;Symbols;Typst;Math;"
+msgstr ""
+
+#. Translators: nudge means here a gentle prompt, i.e. the colored dot on the button
+#: ../data/schemas/org.rubygtkproject.Hieroglyphic.gschema.xml:7
+msgid "Whether to show a small nudge towards the contribution dialog"
+msgstr ""
+
+#: ../data/schemas/org.rubygtkproject.Hieroglyphic.gschema.xml:11
+msgid "Whether to contribute recognized strokes"
+msgstr ""
+
+#. Translators: the name of the markup language (latex, typst) for which symbols are suggested
+#: ../data/schemas/org.rubygtkproject.Hieroglyphic.gschema.xml:21
+msgid "Markup language to suggest symbols for"
+msgstr ""
+
+#: ../data/org.rubygtkproject.Hieroglyphic.metainfo.xml.in:9
+msgid "Find LaTeX and Typst symbols"
+msgstr ""
+
+#: ../data/org.rubygtkproject.Hieroglyphic.metainfo.xml.in:18
+msgid "If you work with LaTeX or Typst, you know it's difficult to memorize the names of all the symbols. Hieroglyphic allows you to search through over 1000 different symbols by sketching."
+msgstr ""
+
+#: ../data/org.rubygtkproject.Hieroglyphic.metainfo.xml.in:30
+msgid "Symbol selection for LaTeX symbols"
+msgstr ""
+
+#: ../data/org.rubygtkproject.Hieroglyphic.metainfo.xml.in:34
+msgid "Symbol selection for Typst symbols"
+msgstr ""
+
+#: ../data/org.rubygtkproject.Hieroglyphic.metainfo.xml.in:38
+msgid "Placeholder"
 msgstr ""
 
 #: ../lib/about.rb:55

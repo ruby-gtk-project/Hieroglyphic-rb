@@ -6,8 +6,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: hieroglyphic\n"
-"Report-Msgid-Bugs-To: https://github.com/FineFindus/Hieroglyphic/issues\n"
-"POT-Creation-Date: 2026-11-06 21:30+0000\n"
+"Report-Msgid-Bugs-To: https://github.com/ruby-gtk-project/Hieroglyphic-rb/"
+"issues\n"
+"POT-Creation-Date: 2026-11-07 03:16+0000\n"
 "PO-Revision-Date: 2024-09-30 21:43+0200\n"
 "Last-Translator: Brage <bragefuglseth@gnome.org>\n"
 "Language-Team: \n"
@@ -17,9 +18,64 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 3.4.4\n"
 
-#: ../lib/about.rb:47 ../lib/window.rb:177 ../lib/window.rb:405
+#: ../data/org.rubygtkproject.Hieroglyphic.desktop.in:2
+#: ../data/org.rubygtkproject.Hieroglyphic.metainfo.xml.in:8 ../lib/about.rb:47
+#: ../lib/window.rb:177 ../lib/window.rb:405
 msgid "Hieroglyphic"
 msgstr "Hieroglyphic"
+
+#: ../data/org.rubygtkproject.Hieroglyphic.desktop.in:3
+msgid "Search through over 1000 different LaTeX symbols by sketching"
+msgstr "Finn riktig spesialtegn"
+
+#. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
+#: ../data/org.rubygtkproject.Hieroglyphic.desktop.in:9
+#, fuzzy
+msgid "GTK;Tools;LaTeX;TeX;Symbols;Typst;Math;"
+msgstr "LaTeX;tegn;spesialtegn;symbol;sett inn;innsetting;TeX;"
+
+#. Translators: nudge means here a gentle prompt, i.e. the colored dot on the button
+#: ../data/schemas/org.rubygtkproject.Hieroglyphic.gschema.xml:7
+msgid "Whether to show a small nudge towards the contribution dialog"
+msgstr "Om knappen til bidragsdialogen skal fremheves"
+
+#: ../data/schemas/org.rubygtkproject.Hieroglyphic.gschema.xml:11
+msgid "Whether to contribute recognized strokes"
+msgstr "Om gjenkjente tegninger skal sendes inn"
+
+#. Translators: the name of the markup language (latex, typst) for which symbols are suggested
+#: ../data/schemas/org.rubygtkproject.Hieroglyphic.gschema.xml:21
+msgid "Markup language to suggest symbols for"
+msgstr ""
+
+#: ../data/org.rubygtkproject.Hieroglyphic.metainfo.xml.in:9
+#, fuzzy
+msgid "Find LaTeX and Typst symbols"
+msgstr "Finn riktig spesialtegn"
+
+#: ../data/org.rubygtkproject.Hieroglyphic.metainfo.xml.in:18
+#, fuzzy
+msgid ""
+"If you work with LaTeX or Typst, you know it's difficult to memorize the "
+"names of all the symbols. Hieroglyphic allows you to search through over "
+"1000 different symbols by sketching."
+msgstr ""
+"Hieroglyphic lar deg jobbe med LaTeX uten å måtte pugge en endeløs rekke med "
+"navn. Bare strek opp tegnet du trenger på skjermen, og la Hieroglyphic søke "
+"etter det i en imponerende samling på over 1000 forskjellige spesialtegn."
+
+#: ../data/org.rubygtkproject.Hieroglyphic.metainfo.xml.in:30
+#, fuzzy
+msgid "Symbol selection for LaTeX symbols"
+msgstr "Finn riktig spesialtegn"
+
+#: ../data/org.rubygtkproject.Hieroglyphic.metainfo.xml.in:34
+msgid "Symbol selection for Typst symbols"
+msgstr ""
+
+#: ../data/org.rubygtkproject.Hieroglyphic.metainfo.xml.in:38
+msgid "Placeholder"
+msgstr "Plassholder"
 
 #: ../lib/about.rb:55
 msgid "translator-credits"
@@ -87,40 +143,26 @@ msgstr "_Tøm"
 msgid "Main Menu"
 msgstr ""
 
-#~ msgid "Search through over 1000 different LaTeX symbols by sketching"
-#~ msgstr "Finn riktig spesialtegn"
-#~ msgid "GTK;Tools;LaTeX;TeX;Symbols;"
-#~ msgstr "LaTeX;tegn;spesialtegn;symbol;sett inn;innsetting;TeX;"
-#~ msgid "Whether to show a small nudge towards the contribution dialog"
-#~ msgstr "Om knappen til bidragsdialogen skal fremheves"
-#~ msgid "Whether to contribute recognized strokes"
-#~ msgstr "Om gjenkjente tegninger skal sendes inn"
-#~ msgid "Find LaTeX symbols"
-#~ msgstr "Finn riktig spesialtegn"
-#~ msgid ""
-#~ "If you work with LaTeX, you know it's difficult to memorize the names of all t"
-#~ "he symbols. Hieroglyphic allows you to search through over 1000 different LaTe"
-#~ "X symbols by sketching."
-#~ msgstr ""
-#~ "Hieroglyphic lar deg jobbe med LaTeX uten å måtte pugge en endeløs rekke med n"
-#~ "avn. Bare strek opp tegnet du trenger på skjermen, og la Hieroglyphic søke ett"
-#~ "er det i en imponerende samling på over 1000 forskjellige spesialtegn."
 #~ msgid "Main Window"
 #~ msgstr "Hovedvindu"
-#~ msgid "Placeholder"
-#~ msgstr "Plassholder"
+
 #~ msgid "Copied “{}”"
 #~ msgstr "«{}» kopiert til utklippstavlen"
+
 #~ msgid ""
 #~ "Help improve Hieroglyphic by automatically contributing recognized symbols"
 #~ msgstr ""
 #~ "Bli med å gjøre Hieroglyphic enda smartere ved å automatisk sende inn "
 #~ "tegningene dine av gjenkjente symboler"
+
 #~ msgid "FineFindus"
 #~ msgstr "FineFindus"
+
 #~ msgid "Initial release"
 #~ msgstr "Første utgivelse"
+
 #~ msgid "Main Window (Adwaita-Dark)"
 #~ msgstr "Hovedvindu i mørk modus"
+
 #~ msgid "About"
 #~ msgstr "Om Hieroglyphic"

@@ -6,8 +6,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: hieroglyphic main\n"
-"Report-Msgid-Bugs-To: https://github.com/FineFindus/Hieroglyphic/issues\n"
-"POT-Creation-Date: 2026-11-06 21:30+0000\n"
+"Report-Msgid-Bugs-To: https://github.com/ruby-gtk-project/Hieroglyphic-rb/"
+"issues\n"
+"POT-Creation-Date: 2026-11-07 03:16+0000\n"
 "PO-Revision-Date: 2026-02-22 19:57+0200\n"
 "Last-Translator: Jiri Grönroos <jiri.gronroos+l10n@iki.fi>\n"
 "Language-Team: Finnish <Finnish>\n"
@@ -18,9 +19,61 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Poedit 3.8\n"
 
-#: ../lib/about.rb:47 ../lib/window.rb:177 ../lib/window.rb:405
+#: ../data/org.rubygtkproject.Hieroglyphic.desktop.in:2
+#: ../data/org.rubygtkproject.Hieroglyphic.metainfo.xml.in:8 ../lib/about.rb:47
+#: ../lib/window.rb:177 ../lib/window.rb:405
 msgid "Hieroglyphic"
 msgstr "Hieroglyphic"
+
+#: ../data/org.rubygtkproject.Hieroglyphic.desktop.in:3
+msgid "Search through over 1000 different LaTeX symbols by sketching"
+msgstr "Etsi yli 1000 eri LaTeX-symbolin joukosta piirtämällä"
+
+#. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
+#: ../data/org.rubygtkproject.Hieroglyphic.desktop.in:9
+#, fuzzy
+msgid "GTK;Tools;LaTeX;TeX;Symbols;Typst;Math;"
+msgstr "GTK;Tools;LaTeX;TeX;Symbols;symbolit;"
+
+#. Translators: nudge means here a gentle prompt, i.e. the colored dot on the button
+#: ../data/schemas/org.rubygtkproject.Hieroglyphic.gschema.xml:7
+msgid "Whether to show a small nudge towards the contribution dialog"
+msgstr ""
+
+#: ../data/schemas/org.rubygtkproject.Hieroglyphic.gschema.xml:11
+msgid "Whether to contribute recognized strokes"
+msgstr ""
+
+#. Translators: the name of the markup language (latex, typst) for which symbols are suggested
+#: ../data/schemas/org.rubygtkproject.Hieroglyphic.gschema.xml:21
+msgid "Markup language to suggest symbols for"
+msgstr "Merkintäkieli, jolle symboleja ehdotetaan"
+
+#: ../data/org.rubygtkproject.Hieroglyphic.metainfo.xml.in:9
+msgid "Find LaTeX and Typst symbols"
+msgstr "Löydä LaTeX- ja Typst-symboleja"
+
+#: ../data/org.rubygtkproject.Hieroglyphic.metainfo.xml.in:18
+msgid ""
+"If you work with LaTeX or Typst, you know it's difficult to memorize the "
+"names of all the symbols. Hieroglyphic allows you to search through over "
+"1000 different symbols by sketching."
+msgstr ""
+"Jos työskentelet käyttäen LaTeXia tai Typstia, tiedät että kaikkien "
+"symbolien nimien muistaminen on vaikeaa. Hieroglyphic mahdollistaa hakemisen "
+"yli 1000 eri symbolin joukosta piirtämällä."
+
+#: ../data/org.rubygtkproject.Hieroglyphic.metainfo.xml.in:30
+msgid "Symbol selection for LaTeX symbols"
+msgstr "LaTeX-symbolien valinta"
+
+#: ../data/org.rubygtkproject.Hieroglyphic.metainfo.xml.in:34
+msgid "Symbol selection for Typst symbols"
+msgstr "Typst-symbolien valinta"
+
+#: ../data/org.rubygtkproject.Hieroglyphic.metainfo.xml.in:38
+msgid "Placeholder"
+msgstr ""
 
 #: ../lib/about.rb:55
 msgid "translator-credits"
@@ -33,7 +86,8 @@ msgstr "Auta parantamaan Hieroglyphicia"
 
 #: ../lib/contribution_dialog.rb:112
 msgid "Help make Hieroglyphic better at identifying symbols for everyone"
-msgstr "Auta ja tee Hieroglyphicistä parempi kaikille symbolien tunnistamisessa"
+msgstr ""
+"Auta ja tee Hieroglyphicistä parempi kaikille symbolien tunnistamisessa"
 
 #: ../lib/contribution_dialog.rb:127
 msgid "Contribute Symbols"
@@ -87,31 +141,14 @@ msgstr "_Tyhjennä"
 msgid "Main Menu"
 msgstr "Päävalikko"
 
-#~ msgid "Search through over 1000 different LaTeX symbols by sketching"
-#~ msgstr "Etsi yli 1000 eri LaTeX-symbolin joukosta piirtämällä"
-#~ msgid "GTK;Tools;LaTeX;TeX;Symbols;"
-#~ msgstr "GTK;Tools;LaTeX;TeX;Symbols;symbolit;"
-#~ msgid "Markup language to suggest symbols for"
-#~ msgstr "Merkintäkieli, jolle symboleja ehdotetaan"
-#~ msgid "Find LaTeX and Typst symbols"
-#~ msgstr "Löydä LaTeX- ja Typst-symboleja"
 #~ msgid ""
-#~ "If you work with LaTeX or Typst, you know it's difficult to memorize the names"
-#~ " of all the symbols. Hieroglyphic allows you to search through over 1000 diffe"
-#~ "rent symbols by sketching."
+#~ "No personal identifiable information is collected. <a href=\"https://"
+#~ "github.com/FineFindus/Hieroglyphic/blob/main/PRIVACY_POLICY.md\">Privacy "
+#~ "policy</a>"
 #~ msgstr ""
-#~ "Jos työskentelet käyttäen LaTeXia tai Typstia, tiedät että kaikkien symbolien "
-#~ "nimien muistaminen on vaikeaa. Hieroglyphic mahdollistaa hakemisen yli 1000 er"
-#~ "i symbolin joukosta piirtämällä."
-#~ msgid "Symbol selection for LaTeX symbols"
-#~ msgstr "LaTeX-symbolien valinta"
-#~ msgid "Symbol selection for Typst symbols"
-#~ msgstr "Typst-symbolien valinta"
-#~ msgid ""
-#~ "No personal identifiable information is collected. <a href=\"https://github.com"
-#~ "/FineFindus/Hieroglyphic/blob/main/PRIVACY_POLICY.md\">Privacy policy</a>"
-#~ msgstr ""
-#~ "Henkilöön yhdistettävää tietoa ei kerätä. <a href=\"https://github.com/FineFind"
-#~ "us/Hieroglyphic/blob/main/PRIVACY_POLICY.md\">Tietosuojakäytäntö</a>"
+#~ "Henkilöön yhdistettävää tietoa ei kerätä. <a href=\"https://github.com/"
+#~ "FineFindus/Hieroglyphic/blob/main/PRIVACY_POLICY.md\">Tietosuojakäytäntö</"
+#~ "a>"
+
 #~ msgid "Copied “{}”"
 #~ msgstr "Kopioitu “{}”"

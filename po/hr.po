@@ -6,8 +6,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: hieroglyphic\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-06 21:30+0000\n"
+"Report-Msgid-Bugs-To: https://github.com/ruby-gtk-project/Hieroglyphic-rb/"
+"issues\n"
+"POT-Creation-Date: 2026-11-07 03:16+0000\n"
 "PO-Revision-Date: 2024-06-30 12:51+0200\n"
 "Last-Translator: Milo Ivir <mail@mivirtype.de>\n"
 "Language-Team: \n"
@@ -17,9 +18,64 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 3.4.4\n"
 
-#: ../lib/about.rb:47 ../lib/window.rb:177 ../lib/window.rb:405
+#: ../data/org.rubygtkproject.Hieroglyphic.desktop.in:2
+#: ../data/org.rubygtkproject.Hieroglyphic.metainfo.xml.in:8 ../lib/about.rb:47
+#: ../lib/window.rb:177 ../lib/window.rb:405
 msgid "Hieroglyphic"
 msgstr "Hieroglyphic"
+
+#: ../data/org.rubygtkproject.Hieroglyphic.desktop.in:3
+msgid "Search through over 1000 different LaTeX symbols by sketching"
+msgstr "Pretražite više od 1000 različitih LaTeX znakova skiciranjem"
+
+#. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
+#: ../data/org.rubygtkproject.Hieroglyphic.desktop.in:9
+#, fuzzy
+msgid "GTK;Tools;LaTeX;TeX;Symbols;Typst;Math;"
+msgstr "GTK;alati;LaTeX;TeX;znakovi;"
+
+#. Translators: nudge means here a gentle prompt, i.e. the colored dot on the button
+#: ../data/schemas/org.rubygtkproject.Hieroglyphic.gschema.xml:7
+msgid "Whether to show a small nudge towards the contribution dialog"
+msgstr ""
+
+#: ../data/schemas/org.rubygtkproject.Hieroglyphic.gschema.xml:11
+msgid "Whether to contribute recognized strokes"
+msgstr ""
+
+#. Translators: the name of the markup language (latex, typst) for which symbols are suggested
+#: ../data/schemas/org.rubygtkproject.Hieroglyphic.gschema.xml:21
+msgid "Markup language to suggest symbols for"
+msgstr ""
+
+#: ../data/org.rubygtkproject.Hieroglyphic.metainfo.xml.in:9
+#, fuzzy
+msgid "Find LaTeX and Typst symbols"
+msgstr "Pronađi LaTeX znakove"
+
+#: ../data/org.rubygtkproject.Hieroglyphic.metainfo.xml.in:18
+#, fuzzy
+msgid ""
+"If you work with LaTeX or Typst, you know it's difficult to memorize the "
+"names of all the symbols. Hieroglyphic allows you to search through over "
+"1000 different symbols by sketching."
+msgstr ""
+"Korisnici LaTeX-a znaju da je teško zapamtiti imena svih znakova. "
+"Hieroglyphic omogućuje pretraživanje preko 1000 različitih LaTeX znakova "
+"skiciranjem."
+
+#: ../data/org.rubygtkproject.Hieroglyphic.metainfo.xml.in:30
+#, fuzzy
+msgid "Symbol selection for LaTeX symbols"
+msgstr "Pronađi LaTeX znakove"
+
+#: ../data/org.rubygtkproject.Hieroglyphic.metainfo.xml.in:34
+msgid "Symbol selection for Typst symbols"
+msgstr ""
+
+#: ../data/org.rubygtkproject.Hieroglyphic.metainfo.xml.in:38
+msgid "Placeholder"
+msgstr "Mjesto za crtanje"
 
 #: ../lib/about.rb:55
 msgid "translator-credits"
@@ -90,40 +146,35 @@ msgstr "_Izbriši"
 msgid "Main Menu"
 msgstr ""
 
-#~ msgid "Search through over 1000 different LaTeX symbols by sketching"
-#~ msgstr "Pretražite više od 1000 različitih LaTeX znakova skiciranjem"
-#~ msgid "GTK;Tools;LaTeX;TeX;Symbols;"
-#~ msgstr "GTK;alati;LaTeX;TeX;znakovi;"
-#~ msgid "Find LaTeX symbols"
-#~ msgstr "Pronađi LaTeX znakove"
 #~ msgid "FineFindus"
 #~ msgstr "FineFindus"
-#~ msgid ""
-#~ "If you work with LaTeX, you know it's difficult to memorize the names of all t"
-#~ "he symbols. Hieroglyphic allows you to search through over 1000 different LaTe"
-#~ "X symbols by sketching."
-#~ msgstr ""
-#~ "Korisnici LaTeX-a znaju da je teško zapamtiti imena svih znakova. Hieroglyphic"
-#~ " omogućuje pretraživanje preko 1000 različitih LaTeX znakova skiciranjem."
+
 #~ msgid "Main Window"
 #~ msgstr "Glavni prozor"
-#~ msgid "Placeholder"
-#~ msgstr "Mjesto za crtanje"
+
 #~ msgid "This update refines the user interface:"
 #~ msgstr "Ova verzija poboljšava korisničko sučelje:"
+
 #~ msgid "New icon"
 #~ msgstr "Nova ikona"
+
 #~ msgid "Updated to the latest GNOME components"
 #~ msgstr "Ažurirano na najnovije GNOME komponente"
+
 #~ msgid "Improved recognition speed and overall application responsiveness"
 #~ msgstr "Poboljšana brzina prepoznavanja i ukupna reakcija aplikacije"
+
 #~ msgid "Shortcut to quickly delete the drawn symbol"
 #~ msgstr "Prečac za brzo brisanje nacrtanog simbola"
+
 #~ msgid "Various minor UI improvements and tweaks"
 #~ msgstr "Razna manja poboljšanja i podešavanja korisničkog sučelja"
+
 #~ msgid "Fixed failing appstream metadata"
 #~ msgstr "Popravljeni appstream metapodaci"
+
 #~ msgid "Initial release"
 #~ msgstr "Prvo izdanje"
+
 #~ msgid "Copied “{}”"
 #~ msgstr "„{}“ kopirano"

@@ -6,8 +6,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"Report-Msgid-Bugs-To: https://github.com/FineFindus/Hieroglyphic/issues\n"
-"POT-Creation-Date: 2026-11-06 21:30+0000\n"
+"Report-Msgid-Bugs-To: https://github.com/ruby-gtk-project/Hieroglyphic-rb/"
+"issues\n"
+"POT-Creation-Date: 2026-11-07 03:16+0000\n"
 "PO-Revision-Date: 2026-04-20 16:53+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -19,9 +20,61 @@ msgstr ""
 "X-Generator: Poedit 3.6\n"
 "X-DamnedLies-Scope: partial\n"
 
-#: ../lib/about.rb:47 ../lib/window.rb:177 ../lib/window.rb:405
+#: ../data/org.rubygtkproject.Hieroglyphic.desktop.in:2
+#: ../data/org.rubygtkproject.Hieroglyphic.metainfo.xml.in:8 ../lib/about.rb:47
+#: ../lib/window.rb:177 ../lib/window.rb:405
 msgid "Hieroglyphic"
 msgstr "Jeroglífic"
+
+#: ../data/org.rubygtkproject.Hieroglyphic.desktop.in:3
+msgid "Search through over 1000 different LaTeX symbols by sketching"
+msgstr ""
+"Cerqueu entre més de 1000 símbols diferents de LaTeX a través de dibuixos"
+
+#. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
+#: ../data/org.rubygtkproject.Hieroglyphic.desktop.in:9
+msgid "GTK;Tools;LaTeX;TeX;Symbols;Typst;Math;"
+msgstr "GTK;Eines;LaTeX;TeX;Símbols;Typst;Metemàtiques;"
+
+#. Translators: nudge means here a gentle prompt, i.e. the colored dot on the button
+#: ../data/schemas/org.rubygtkproject.Hieroglyphic.gschema.xml:7
+msgid "Whether to show a small nudge towards the contribution dialog"
+msgstr "Si s'ha de mostrar un petit moviment cap al diàleg de contribució"
+
+#: ../data/schemas/org.rubygtkproject.Hieroglyphic.gschema.xml:11
+msgid "Whether to contribute recognized strokes"
+msgstr "Si s'han de contribuir els traços reconeguts"
+
+#. Translators: the name of the markup language (latex, typst) for which symbols are suggested
+#: ../data/schemas/org.rubygtkproject.Hieroglyphic.gschema.xml:21
+msgid "Markup language to suggest symbols for"
+msgstr "Llenguatge de marques per suggerir símbols"
+
+#: ../data/org.rubygtkproject.Hieroglyphic.metainfo.xml.in:9
+msgid "Find LaTeX and Typst symbols"
+msgstr "Trobeu símbols de LaTeX i Typst"
+
+#: ../data/org.rubygtkproject.Hieroglyphic.metainfo.xml.in:18
+msgid ""
+"If you work with LaTeX or Typst, you know it's difficult to memorize the "
+"names of all the symbols. Hieroglyphic allows you to search through over "
+"1000 different symbols by sketching."
+msgstr ""
+"Si treballeu amb LaTeX o Typst, sabeu que és difícil memoritzar els noms de "
+"tots els símbols. El Jeroglífic us permet cercar més de 1000 símbols "
+"diferents dibuixant."
+
+#: ../data/org.rubygtkproject.Hieroglyphic.metainfo.xml.in:30
+msgid "Symbol selection for LaTeX symbols"
+msgstr "Selecció de símbols per als símbols de LaTeX"
+
+#: ../data/org.rubygtkproject.Hieroglyphic.metainfo.xml.in:34
+msgid "Symbol selection for Typst symbols"
+msgstr "Selecció de símbols per als símbols de Typst"
+
+#: ../data/org.rubygtkproject.Hieroglyphic.metainfo.xml.in:38
+msgid "Placeholder"
+msgstr "Marcador"
 
 #: ../lib/about.rb:55
 msgid "translator-credits"
@@ -34,7 +87,8 @@ msgstr "Milloreu el Jeroglífic"
 
 #: ../lib/contribution_dialog.rb:112
 msgid "Help make Hieroglyphic better at identifying symbols for everyone"
-msgstr "Ajudeu a fer que el Jeroglífic sigui millor identificant símbols per a tothom"
+msgstr ""
+"Ajudeu a fer que el Jeroglífic sigui millor identificant símbols per a tothom"
 
 #: ../lib/contribution_dialog.rb:127
 msgid "Contribute Symbols"
@@ -88,40 +142,17 @@ msgstr "_Neteja"
 msgid "Main Menu"
 msgstr "Menú principal"
 
-#~ msgid "Search through over 1000 different LaTeX symbols by sketching"
-#~ msgstr "Cerqueu entre més de 1000 símbols diferents de LaTeX a través de dibuixos"
-#~ msgid "GTK;Tools;LaTeX;TeX;Symbols;Typst;Math;"
-#~ msgstr "GTK;Eines;LaTeX;TeX;Símbols;Typst;Metemàtiques;"
-#~ msgid "Whether to show a small nudge towards the contribution dialog"
-#~ msgstr "Si s'ha de mostrar un petit moviment cap al diàleg de contribució"
-#~ msgid "Whether to contribute recognized strokes"
-#~ msgstr "Si s'han de contribuir els traços reconeguts"
-#~ msgid "Markup language to suggest symbols for"
-#~ msgstr "Llenguatge de marques per suggerir símbols"
-#~ msgid "Find LaTeX and Typst symbols"
-#~ msgstr "Trobeu símbols de LaTeX i Typst"
 #~ msgid ""
-#~ "If you work with LaTeX or Typst, you know it's difficult to memorize the names"
-#~ " of all the symbols. Hieroglyphic allows you to search through over 1000 diffe"
-#~ "rent symbols by sketching."
+#~ "No personal identifiable information is collected. <a href=\"https://"
+#~ "github.com/FineFindus/Hieroglyphic/blob/main/PRIVACY_POLICY.md\">Privacy "
+#~ "policy</a>"
 #~ msgstr ""
-#~ "Si treballeu amb LaTeX o Typst, sabeu que és difícil memoritzar els noms de to"
-#~ "ts els símbols. El Jeroglífic us permet cercar més de 1000 símbols diferents d"
-#~ "ibuixant."
-#~ msgid "Symbol selection for LaTeX symbols"
-#~ msgstr "Selecció de símbols per als símbols de LaTeX"
-#~ msgid "Symbol selection for Typst symbols"
-#~ msgstr "Selecció de símbols per als símbols de Typst"
-#~ msgid "Placeholder"
-#~ msgstr "Marcador"
-#~ msgid ""
-#~ "No personal identifiable information is collected. <a href=\"https://github.com"
-#~ "/FineFindus/Hieroglyphic/blob/main/PRIVACY_POLICY.md\">Privacy policy</a>"
-#~ msgstr ""
-#~ "No es recull cap informació personal identificable. <a href=\"https://github.co"
-#~ "m/FineFindus/Hieroglyphic/blob/main/PRIVACY_POLICY.md\">Política de privadesa</"
-#~ "a>"
+#~ "No es recull cap informació personal identificable. <a href=\"https://"
+#~ "github.com/FineFindus/Hieroglyphic/blob/main/PRIVACY_POLICY.md\">Política "
+#~ "de privadesa</a>"
+
 #~ msgid "Copied “{}”"
 #~ msgstr "S'ha copiat «{}»"
+
 #~ msgid "Main Window"
 #~ msgstr "Finestra principal"

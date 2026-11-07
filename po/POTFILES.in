@@ -1,3 +1,6 @@
+data/org.rubygtkproject.Hieroglyphic.desktop.in
+data/schemas/org.rubygtkproject.Hieroglyphic.gschema.xml
+data/org.rubygtkproject.Hieroglyphic.metainfo.xml.in
 lib/about.rb
 lib/contribution_dialog.rb
 lib/primary_menu.rb

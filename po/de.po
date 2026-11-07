@@ -6,8 +6,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Hieroglyphic\n"
-"Report-Msgid-Bugs-To: https://github.com/FineFindus/Hieroglyphic/issues\n"
-"POT-Creation-Date: 2026-11-06 21:30+0000\n"
+"Report-Msgid-Bugs-To: https://github.com/ruby-gtk-project/Hieroglyphic-rb/"
+"issues\n"
+"POT-Creation-Date: 2026-11-07 03:16+0000\n"
 "PO-Revision-Date: 2025-05-20 19:43+0200\n"
 "Last-Translator: Jürgen Benvenuti <gastornis@posteo.org>\n"
 "Language-Team: German <gnome-de@gnome.org>\n"
@@ -17,9 +18,65 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 3.6\n"
 
-#: ../lib/about.rb:47 ../lib/window.rb:177 ../lib/window.rb:405
+#: ../data/org.rubygtkproject.Hieroglyphic.desktop.in:2
+#: ../data/org.rubygtkproject.Hieroglyphic.metainfo.xml.in:8 ../lib/about.rb:47
+#: ../lib/window.rb:177 ../lib/window.rb:405
 msgid "Hieroglyphic"
 msgstr "Hieroglyphic"
+
+#: ../data/org.rubygtkproject.Hieroglyphic.desktop.in:3
+msgid "Search through over 1000 different LaTeX symbols by sketching"
+msgstr "Über 1000 verschiedene LaTeX-Symbole durch Skizzieren durchsuchen"
+
+#. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
+#: ../data/org.rubygtkproject.Hieroglyphic.desktop.in:9
+#, fuzzy
+msgid "GTK;Tools;LaTeX;TeX;Symbols;Typst;Math;"
+msgstr "GTK;Tools;LaTeX;TeX;Symbols;Hilfsprogramme;Symbole;"
+
+#. Translators: nudge means here a gentle prompt, i.e. the colored dot on the button
+#: ../data/schemas/org.rubygtkproject.Hieroglyphic.gschema.xml:7
+msgid "Whether to show a small nudge towards the contribution dialog"
+msgstr ""
+"Legt fest, ob ein kleiner Stupser in Richtung Beitragen-Dialog angezeigt wird"
+
+#: ../data/schemas/org.rubygtkproject.Hieroglyphic.gschema.xml:11
+msgid "Whether to contribute recognized strokes"
+msgstr "Legt fest, ob erkannte Striche beigetragen werden"
+
+#. Translators: the name of the markup language (latex, typst) for which symbols are suggested
+#: ../data/schemas/org.rubygtkproject.Hieroglyphic.gschema.xml:21
+msgid "Markup language to suggest symbols for"
+msgstr ""
+
+#: ../data/org.rubygtkproject.Hieroglyphic.metainfo.xml.in:9
+#, fuzzy
+msgid "Find LaTeX and Typst symbols"
+msgstr "LaTeX-Symbole finden"
+
+#: ../data/org.rubygtkproject.Hieroglyphic.metainfo.xml.in:18
+#, fuzzy
+msgid ""
+"If you work with LaTeX or Typst, you know it's difficult to memorize the "
+"names of all the symbols. Hieroglyphic allows you to search through over "
+"1000 different symbols by sketching."
+msgstr ""
+"LaTeX-Nutzer wissen, wie herausfordernd es sein kann, sich die Namen aller "
+"Symbole zu merken. Mit Hieroglyphic ist es möglich, in über 1000 "
+"verschiedenen LaTeX-Symbolen durch Skizzieren zu suchen."
+
+#: ../data/org.rubygtkproject.Hieroglyphic.metainfo.xml.in:30
+#, fuzzy
+msgid "Symbol selection for LaTeX symbols"
+msgstr "LaTeX-Symbole finden"
+
+#: ../data/org.rubygtkproject.Hieroglyphic.metainfo.xml.in:34
+msgid "Symbol selection for Typst symbols"
+msgstr ""
+
+#: ../data/org.rubygtkproject.Hieroglyphic.metainfo.xml.in:38
+msgid "Placeholder"
+msgstr "Platzhalter"
 
 #: ../lib/about.rb:55
 msgid "translator-credits"
@@ -34,7 +91,8 @@ msgstr "Hieroglyphic verbessern"
 
 #: ../lib/contribution_dialog.rb:112
 msgid "Help make Hieroglyphic better at identifying symbols for everyone"
-msgstr "Helfen Sie mit, dass Hieroglyphic Symbole für alle besser identifiziert"
+msgstr ""
+"Helfen Sie mit, dass Hieroglyphic Symbole für alle besser identifiziert"
 
 #: ../lib/contribution_dialog.rb:127
 msgid "Contribute Symbols"
@@ -88,58 +146,51 @@ msgstr "_Leeren"
 msgid "Main Menu"
 msgstr ""
 
-#~ msgid "Search through over 1000 different LaTeX symbols by sketching"
-#~ msgstr "Über 1000 verschiedene LaTeX-Symbole durch Skizzieren durchsuchen"
-#~ msgid "GTK;Tools;LaTeX;TeX;Symbols;"
-#~ msgstr "GTK;Tools;LaTeX;TeX;Symbols;Hilfsprogramme;Symbole;"
-#~ msgid "Whether to show a small nudge towards the contribution dialog"
-#~ msgstr "Legt fest, ob ein kleiner Stupser in Richtung Beitragen-Dialog angezeigt wird"
-#~ msgid "Whether to contribute recognized strokes"
-#~ msgstr "Legt fest, ob erkannte Striche beigetragen werden"
-#~ msgid "Find LaTeX symbols"
-#~ msgstr "LaTeX-Symbole finden"
-#~ msgid ""
-#~ "If you work with LaTeX, you know it's difficult to memorize the names of all t"
-#~ "he symbols. Hieroglyphic allows you to search through over 1000 different LaTe"
-#~ "X symbols by sketching."
-#~ msgstr ""
-#~ "LaTeX-Nutzer wissen, wie herausfordernd es sein kann, sich die Namen aller Sym"
-#~ "bole zu merken. Mit Hieroglyphic ist es möglich, in über 1000 verschiedenen La"
-#~ "TeX-Symbolen durch Skizzieren zu suchen."
 #~ msgid "Main Window"
 #~ msgstr "Hauptfenster"
-#~ msgid "Placeholder"
-#~ msgstr "Platzhalter"
+
 #~ msgid "Copied “{}”"
 #~ msgstr "»{}« kopiert"
+
 #~ msgid ""
 #~ "Help improve Hieroglyphic by automatically contributing recognized symbols"
 #~ msgstr ""
 #~ "Helfen Sie, Hieroglyphic zu verbessern, indem Sie automatisch erkannte "
 #~ "Symbole beitragen"
+
 #~ msgid "FineFindus"
 #~ msgstr "FineFindus"
+
 #~ msgid "This update refines the user interface:"
 #~ msgstr "Mit dieser Aktualisierung wird die Benutzeroberfläche verbessert:"
+
 #~ msgid "New icon"
 #~ msgstr "Neues Icon"
+
 #~ msgid "Updated to the latest GNOME components"
 #~ msgstr "Aktualisiert auf die neuesten GNOME-Komponenten"
+
 #~ msgid "Improved recognition speed and overall application responsiveness"
 #~ msgstr ""
 #~ "Verbesserte Erkennungsgeschwindigkeit und allgemeine Reaktionsfähigkeit "
 #~ "der Anwendung"
+
 #~ msgid "Shortcut to quickly delete the drawn symbol"
 #~ msgstr "Tastenkürzel zum schnellen Löschen des gezeichneten Symbols"
+
 #~ msgid "Various minor UI improvements and tweaks"
 #~ msgstr ""
 #~ "Verschiedene kleinere Verbesserungen und Optimierungen der "
 #~ "Benutzeroberfläche"
+
 #~ msgid "Fixed failing appstream metadata"
 #~ msgstr "Fehlerhafte Appstream-Metadaten behoben"
+
 #~ msgid "Initial release"
 #~ msgstr "Erste Veröffentlichung"
+
 #~ msgid "Main Window (Adwaita-Dark)"
 #~ msgstr "Hauptfenster (Dunkel)"
+
 #~ msgid "About"
 #~ msgstr "Info"

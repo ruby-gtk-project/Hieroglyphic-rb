@@ -6,8 +6,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: hieroglyphic main\n"
-"Report-Msgid-Bugs-To: https://github.com/FineFindus/Hieroglyphic/issues\n"
-"POT-Creation-Date: 2026-11-06 21:30+0000\n"
+"Report-Msgid-Bugs-To: https://github.com/ruby-gtk-project/Hieroglyphic-rb/"
+"issues\n"
+"POT-Creation-Date: 2026-11-07 03:16+0000\n"
 "PO-Revision-Date: 2025-10-10 15:35+0500\n"
 "Last-Translator: Baxrom Raxmatov <https://t.me/bahrom04>\n"
 "Language-Team: Uzbek (Latin) <Uzbek>\n"
@@ -17,9 +18,64 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 3.5\n"
 
-#: ../lib/about.rb:47 ../lib/window.rb:177 ../lib/window.rb:405
+#: ../data/org.rubygtkproject.Hieroglyphic.desktop.in:2
+#: ../data/org.rubygtkproject.Hieroglyphic.metainfo.xml.in:8 ../lib/about.rb:47
+#: ../lib/window.rb:177 ../lib/window.rb:405
 msgid "Hieroglyphic"
 msgstr "Iyeroglifik"
+
+#: ../data/org.rubygtkproject.Hieroglyphic.desktop.in:3
+msgid "Search through over 1000 different LaTeX symbols by sketching"
+msgstr "Chizma orqali 1000 dan ortiq turli Latex belgilarini eskizlash"
+
+#. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
+#: ../data/org.rubygtkproject.Hieroglyphic.desktop.in:9
+#, fuzzy
+msgid "GTK;Tools;LaTeX;TeX;Symbols;Typst;Math;"
+msgstr "GTK;Asboblar;LaTeX;TeX;Belgilar;"
+
+#. Translators: nudge means here a gentle prompt, i.e. the colored dot on the button
+#: ../data/schemas/org.rubygtkproject.Hieroglyphic.gschema.xml:7
+msgid "Whether to show a small nudge towards the contribution dialog"
+msgstr "Hissalar muloqot oynasiga kichik turtki ko‘rsatilsinmi"
+
+#: ../data/schemas/org.rubygtkproject.Hieroglyphic.gschema.xml:11
+msgid "Whether to contribute recognized strokes"
+msgstr "Aniqlangan shtrixlarga hissa qo‘shish/qoʻshmaslik"
+
+#. Translators: the name of the markup language (latex, typst) for which symbols are suggested
+#: ../data/schemas/org.rubygtkproject.Hieroglyphic.gschema.xml:21
+msgid "Markup language to suggest symbols for"
+msgstr ""
+
+#: ../data/org.rubygtkproject.Hieroglyphic.metainfo.xml.in:9
+#, fuzzy
+msgid "Find LaTeX and Typst symbols"
+msgstr "LaTeX belgilarini topish"
+
+#: ../data/org.rubygtkproject.Hieroglyphic.metainfo.xml.in:18
+#, fuzzy
+msgid ""
+"If you work with LaTeX or Typst, you know it's difficult to memorize the "
+"names of all the symbols. Hieroglyphic allows you to search through over "
+"1000 different symbols by sketching."
+msgstr ""
+"Agar siz Latex bilan ishlayotgan bo‘lsangiz, barcha belgilarning nomlarini "
+"eslab qolish qiyinligini bilasiz. Iyeroglifik eskizlash orqali 1000 dan "
+"ortiq turli Latex belgilarini qidirish imkonini beradi."
+
+#: ../data/org.rubygtkproject.Hieroglyphic.metainfo.xml.in:30
+#, fuzzy
+msgid "Symbol selection for LaTeX symbols"
+msgstr "LaTeX belgilarini topish"
+
+#: ../data/org.rubygtkproject.Hieroglyphic.metainfo.xml.in:34
+msgid "Symbol selection for Typst symbols"
+msgstr ""
+
+#: ../data/org.rubygtkproject.Hieroglyphic.metainfo.xml.in:38
+msgid "Placeholder"
+msgstr "To‘ldirgich"
 
 #: ../lib/about.rb:55
 msgid "translator-credits"
@@ -33,8 +89,8 @@ msgstr "Iyeroglifni yaxshilash"
 #: ../lib/contribution_dialog.rb:112
 msgid "Help make Hieroglyphic better at identifying symbols for everyone"
 msgstr ""
-"Iyeroglifik yozish uslubini aniqlash qobiliyatini hamma uchun yaxshilashga o‘z"
-" hissangizni qo‘shing"
+"Iyeroglifik yozish uslubini aniqlash qobiliyatini hamma uchun yaxshilashga "
+"o‘z hissangizni qo‘shing"
 
 #: ../lib/contribution_dialog.rb:127
 msgid "Contribute Symbols"
@@ -88,33 +144,17 @@ msgstr "Tozalash"
 msgid "Main Menu"
 msgstr ""
 
-#~ msgid "Search through over 1000 different LaTeX symbols by sketching"
-#~ msgstr "Chizma orqali 1000 dan ortiq turli Latex belgilarini eskizlash"
-#~ msgid "GTK;Tools;LaTeX;TeX;Symbols;"
-#~ msgstr "GTK;Asboblar;LaTeX;TeX;Belgilar;"
-#~ msgid "Whether to show a small nudge towards the contribution dialog"
-#~ msgstr "Hissalar muloqot oynasiga kichik turtki ko‘rsatilsinmi"
-#~ msgid "Whether to contribute recognized strokes"
-#~ msgstr "Aniqlangan shtrixlarga hissa qo‘shish/qoʻshmaslik"
-#~ msgid "Find LaTeX symbols"
-#~ msgstr "LaTeX belgilarini topish"
-#~ msgid ""
-#~ "If you work with LaTeX, you know it's difficult to memorize the names of all t"
-#~ "he symbols. Hieroglyphic allows you to search through over 1000 different LaTe"
-#~ "X symbols by sketching."
-#~ msgstr ""
-#~ "Agar siz Latex bilan ishlayotgan bo‘lsangiz, barcha belgilarning nomlarini esl"
-#~ "ab qolish qiyinligini bilasiz. Iyeroglifik eskizlash orqali 1000 dan ortiq tur"
-#~ "li Latex belgilarini qidirish imkonini beradi."
 #~ msgid "Main Window"
 #~ msgstr "Asosiy oyna"
-#~ msgid "Placeholder"
-#~ msgstr "To‘ldirgich"
+
 #~ msgid ""
-#~ "No personal identifiable information is collected. <a href=\"https://github.com"
-#~ "/FineFindus/Hieroglyphic/blob/main/PRIVACY_POLICY.md\">Privacy policy</a>"
+#~ "No personal identifiable information is collected. <a href=\"https://"
+#~ "github.com/FineFindus/Hieroglyphic/blob/main/PRIVACY_POLICY.md\">Privacy "
+#~ "policy</a>"
 #~ msgstr ""
-#~ "Shaxsni tasdiqlovchi ma’lumotlar olinmaydi. <a href=\"https://github.com/FineFi"
-#~ "ndus/Hieroglyphic/blob/main/PRIVACY_POLICY.md\">Maxfiylik siyosati</a>"
+#~ "Shaxsni tasdiqlovchi ma’lumotlar olinmaydi. <a href=\"https://github.com/"
+#~ "FineFindus/Hieroglyphic/blob/main/PRIVACY_POLICY.md\">Maxfiylik siyosati</"
+#~ "a>"
+
 #~ msgid "Copied “{}”"
 #~ msgstr "Nusxalangan \"{}\""

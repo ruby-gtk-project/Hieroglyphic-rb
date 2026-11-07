@@ -5,8 +5,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: hieroglyphic main\n"
-"Report-Msgid-Bugs-To: https://github.com/FineFindus/Hieroglyphic/issues\n"
-"POT-Creation-Date: 2026-11-06 21:30+0000\n"
+"Report-Msgid-Bugs-To: https://github.com/ruby-gtk-project/Hieroglyphic-rb/"
+"issues\n"
+"POT-Creation-Date: 2026-11-07 03:16+0000\n"
 "PO-Revision-Date: 2026-07-27 16:37+0500\n"
 "Last-Translator: Baurzhan Muftakhidinov <baurthefirst@gmail.com>\n"
 "Language-Team: Kazakh <Kazakh>\n"
@@ -16,9 +17,60 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 3.9\n"
 
-#: ../lib/about.rb:47 ../lib/window.rb:177 ../lib/window.rb:405
+#: ../data/org.rubygtkproject.Hieroglyphic.desktop.in:2
+#: ../data/org.rubygtkproject.Hieroglyphic.metainfo.xml.in:8 ../lib/about.rb:47
+#: ../lib/window.rb:177 ../lib/window.rb:405
 msgid "Hieroglyphic"
 msgstr "Hieroglyphic"
+
+#: ../data/org.rubygtkproject.Hieroglyphic.desktop.in:3
+msgid "Search through over 1000 different LaTeX symbols by sketching"
+msgstr "1000-нан астам әртүрлі LaTeX таңбаларын сурет салу арқылы іздеу"
+
+#. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
+#: ../data/org.rubygtkproject.Hieroglyphic.desktop.in:9
+msgid "GTK;Tools;LaTeX;TeX;Symbols;Typst;Math;"
+msgstr "GTK;Tools;LaTeX;TeX;Symbols;Typst;Math;Саймандар;Таңбалар;Математика;"
+
+#. Translators: nudge means here a gentle prompt, i.e. the colored dot on the button
+#: ../data/schemas/org.rubygtkproject.Hieroglyphic.gschema.xml:7
+msgid "Whether to show a small nudge towards the contribution dialog"
+msgstr "Үлес қосу сұхбат терезесіне шағын нұсқау көрсету не көрсетпеу"
+
+#: ../data/schemas/org.rubygtkproject.Hieroglyphic.gschema.xml:11
+msgid "Whether to contribute recognized strokes"
+msgstr "Танылған штрихтармен бөлісу не бөліспеу"
+
+#. Translators: the name of the markup language (latex, typst) for which symbols are suggested
+#: ../data/schemas/org.rubygtkproject.Hieroglyphic.gschema.xml:21
+msgid "Markup language to suggest symbols for"
+msgstr "Таңбалар ұсынылатын белгілеу тілі"
+
+#: ../data/org.rubygtkproject.Hieroglyphic.metainfo.xml.in:9
+msgid "Find LaTeX and Typst symbols"
+msgstr "LaTeX және Typst таңбаларын табу"
+
+#: ../data/org.rubygtkproject.Hieroglyphic.metainfo.xml.in:18
+msgid ""
+"If you work with LaTeX or Typst, you know it's difficult to memorize the "
+"names of all the symbols. Hieroglyphic allows you to search through over "
+"1000 different symbols by sketching."
+msgstr ""
+"Егер сіз LaTeX немесе Typst-пен жұмыс істесеңіз, барлық таңбалардың атауын "
+"есте сақтау қиын екенін білесіз. Hieroglyphic сізге 1000-нан астам әртүрлі "
+"таңбаны сурет салу арқылы іздеуге мүмкіндік береді."
+
+#: ../data/org.rubygtkproject.Hieroglyphic.metainfo.xml.in:30
+msgid "Symbol selection for LaTeX symbols"
+msgstr "LaTeX таңбалары үшін таңбаларды таңдау"
+
+#: ../data/org.rubygtkproject.Hieroglyphic.metainfo.xml.in:34
+msgid "Symbol selection for Typst symbols"
+msgstr "Typst таңбалары үшін таңбаларды таңдау"
+
+#: ../data/org.rubygtkproject.Hieroglyphic.metainfo.xml.in:38
+msgid "Placeholder"
+msgstr "Толтырғыш"
 
 #: ../lib/about.rb:55
 msgid "translator-credits"
@@ -85,39 +137,17 @@ msgstr "_Тазарту"
 msgid "Main Menu"
 msgstr "Басты мәзір"
 
-#~ msgid "Search through over 1000 different LaTeX symbols by sketching"
-#~ msgstr "1000-нан астам әртүрлі LaTeX таңбаларын сурет салу арқылы іздеу"
-#~ msgid "GTK;Tools;LaTeX;TeX;Symbols;Typst;Math;"
-#~ msgstr "GTK;Tools;LaTeX;TeX;Symbols;Typst;Math;Саймандар;Таңбалар;Математика;"
-#~ msgid "Whether to show a small nudge towards the contribution dialog"
-#~ msgstr "Үлес қосу сұхбат терезесіне шағын нұсқау көрсету не көрсетпеу"
-#~ msgid "Whether to contribute recognized strokes"
-#~ msgstr "Танылған штрихтармен бөлісу не бөліспеу"
-#~ msgid "Markup language to suggest symbols for"
-#~ msgstr "Таңбалар ұсынылатын белгілеу тілі"
-#~ msgid "Find LaTeX and Typst symbols"
-#~ msgstr "LaTeX және Typst таңбаларын табу"
 #~ msgid "FineFindus"
 #~ msgstr "FineFindus"
+
 #~ msgid ""
-#~ "If you work with LaTeX or Typst, you know it's difficult to memorize the names"
-#~ " of all the symbols. Hieroglyphic allows you to search through over 1000 diffe"
-#~ "rent symbols by sketching."
+#~ "No personal identifiable information is collected. <a href=\"https://"
+#~ "github.com/FineFindus/Hieroglyphic/blob/main/PRIVACY_POLICY.md\">Privacy "
+#~ "policy</a>"
 #~ msgstr ""
-#~ "Егер сіз LaTeX немесе Typst-пен жұмыс істесеңіз, барлық таңбалардың атауын ест"
-#~ "е сақтау қиын екенін білесіз. Hieroglyphic сізге 1000-нан астам әртүрлі таңбан"
-#~ "ы сурет салу арқылы іздеуге мүмкіндік береді."
-#~ msgid "Symbol selection for LaTeX symbols"
-#~ msgstr "LaTeX таңбалары үшін таңбаларды таңдау"
-#~ msgid "Symbol selection for Typst symbols"
-#~ msgstr "Typst таңбалары үшін таңбаларды таңдау"
-#~ msgid "Placeholder"
-#~ msgstr "Толтырғыш"
-#~ msgid ""
-#~ "No personal identifiable information is collected. <a href=\"https://github.com"
-#~ "/FineFindus/Hieroglyphic/blob/main/PRIVACY_POLICY.md\">Privacy policy</a>"
-#~ msgstr ""
-#~ "Ешқандай жеке басты анықтайтын ақпарат жиналмайды. <a href=\"https://github.com"
-#~ "/FineFindus/Hieroglyphic/blob/main/PRIVACY_POLICY.md\">Жекелік саясаты</a>"
+#~ "Ешқандай жеке басты анықтайтын ақпарат жиналмайды. <a href=\"https://"
+#~ "github.com/FineFindus/Hieroglyphic/blob/main/PRIVACY_POLICY.md\">Жекелік "
+#~ "саясаты</a>"
+
 #~ msgid "Copied “{}”"
 #~ msgstr "“{}” көшірілді"

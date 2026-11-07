@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright 2024 FineFindus -->
+<component type="desktop-application">
+  <id>org.rubygtkproject.Hieroglyphic</id>
+  <metadata_license>CC0</metadata_license>
+  <project_license>GPL-3.0</project_license>
+
+  <name>Hieroglyphic</name>
+  <summary>Find LaTeX and Typst symbols</summary>
+  <!-- developer_name tag deprecated with Appstream 1.0 -->
+  <developer_name translate="no">FineFindus</developer_name>
+  <developer id="io.github.finefindus">
+      <name translate="no">FineFindus</name>
+  </developer>
+  <update_contact>finefindus@proton.me</update_contact>
+
+  <description>
+    <p>If you work with LaTeX or Typst, you know it's difficult to memorize the names of all the symbols. Hieroglyphic allows you to search through over 1000 different symbols by sketching.</p>
+  </description>
+
+  <categories>
+    <category>Math</category>
+    <category>Science</category>
+    <category>Utility</category>
+  </categories>
+
+  <screenshots>
+    <screenshot type="default">
+        <image>https://raw.githubusercontent.com/FineFindus/Hieroglyphic/main/data/resources/screenshots/window_latex.png</image>
+        <caption>Symbol selection for LaTeX symbols</caption>
+    </screenshot>
+    <screenshot>
+        <image>https://raw.githubusercontent.com/FineFindus/Hieroglyphic/main/data/resources/screenshots/window_typst.png</image>
+        <caption>Symbol selection for Typst symbols</caption>
+    </screenshot>
+    <screenshot>
+        <image>https://raw.githubusercontent.com/FineFindus/Hieroglyphic/main/data/resources/screenshots/placeholder.png</image>
+        <caption>Placeholder</caption>
+    </screenshot>
+  </screenshots>
+
+  <url type="homepage">https://apps.gnome.org/Hieroglyphic/</url>
+  <url type="bugtracker">https://github.com/FineFindus/Hieroglyphic/issues</url>
+  <url type="help">https://github.com/FineFindus/Hieroglyphic/issues</url>
+  <url type="vcs-browser">https://github.com/ruby-gtk-project/Hieroglyphic-rb</url>
+  <url type="contribute">https://github.com/FineFindus/Hieroglyphic#contributing</url>
+  <url type="translate">https://github.com/FineFindus/Hieroglyphic#translation</url>
+
+  <content_rating type="oars-1.1" />
+
+  <releases>
+    <release version="2.3.0" date="2026-04-07">
+      <description>
+        <ul>
+          <li>Support Typst symbols</li>
+          <li>Use hardware-acceleration (NPUs) when available</li>
+          <li>Updated to newest GNOME styling</li>
+        </ul>
+      </description>
+    </release>
+    <release version="2.2.0" date="2025-10-01">
+      <description>
+        <p>This update brings a adaptive redesign, improving the app on mobile devices.</p>
+        <ul>
+          <li>Added blackboard bold (mathbb) symbols</li>
+          <li>Accessibility improvements</li>
+          <li>Updated to newest GNOME styling</li>
+        </ul>
+      </description>
+    </release>
+    <release version="2.1.0" date="2025-01-25">
+      <description>
+        <p>This updates improves symbols classification, as fixing some bugs.</p>
+        <ul>
+          <li>Updates the drawing area to use GPU rendering</li>
+          <li>Shortcuts to clear the drawing area should now work again</li>
+          <li>Updated translations</li>
+          <li>Improved metadata for app stores</li>
+        </ul>
+      </description>
+    </release>
+    <release version="2.0.0" date="2024-10-08">
+      <description>
+        <p>This update brings significant improvements to the classification system:</p>
+        <ul>
+          <li>Powered by a new machine learning model</li>
+          <li>Faster classification speed</li>
+          <li>Reduced application size</li>
+          <li>Improved overall accuracy</li>
+          <li>Option to contribute recognized symbols to improve future model performance</li>
+        </ul>
+      </description>
+    </release>
+    <release version="1.1.0" date="2024-04-24">
+      <description>
+        <p>This update refines the user interface:</p>
+        <ul>
+          <li>New icon</li>
+          <li>Updated to the latest GNOME components</li>
+          <li>Improved recognition speed and overall application responsiveness</li>
+          <li>Shortcut to quickly delete the drawn symbol</li>
+          <li>Various minor UI improvements and tweaks</li>
+        </ul>
+      </description>
+    </release>
+    <release version="1.0.1" date="2024-03-13">
+      <description>
+        <p>Fixed failing appstream metadata</p>
+      </description>
+    </release>
+    <release version="1.0.0" date="2024-03-13">
+      <description>
+        <p>Initial release</p>
+      </description>
+    </release>
+  </releases>
+
+  <kudos>
+    <!--
+    GNOME Software kudos:
+    https://gitlab.gnome.org/GNOME/gnome-software/blob/master/doc/kudos.md
+    -->
+    <kudo>ModernToolkit</kudo>
+    <kudo>HiDpiIcon</kudo>
+  </kudos>
+  <translation type="gettext">hieroglyphic</translation>
+  <launchable type="desktop-id">org.rubygtkproject.Hieroglyphic.desktop</launchable>
+
+  <provides>
+    <binary>hieroglyphic</binary>
+  </provides>
+
+  <supports>
+    <!-- works without internet, but cannot upload stroke data-->
+    <internet>offline-only</internet>
+  </supports>
+
+  <recommends>
+    <control>keyboard</control>
+    <control>pointing</control>
+    <control>touch</control>
+    <control>tablet</control>
+  </recommends>
+
+  <requires>
+    <display_length compare="ge">360</display_length>
+  </requires>
+
+  <custom>
+    <value key="GnomeSoftware::key-colors">[(126, 224, 180)]</value>
+  </custom>
+
+  <branding>
+    <color type="primary" scheme_preference="light">#f7f29d</color>
+    <color type="primary" scheme_preference="dark">#865e3c</color>
+  </branding>
+
+</component>

@@ -6,8 +6,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: hieroglyphic\n"
-"Report-Msgid-Bugs-To: https://github.com/FineFindus/Hieroglyphic/issues\n"
-"POT-Creation-Date: 2026-11-06 21:30+0000\n"
+"Report-Msgid-Bugs-To: https://github.com/ruby-gtk-project/Hieroglyphic-rb/"
+"issues\n"
+"POT-Creation-Date: 2026-11-07 03:16+0000\n"
 "PO-Revision-Date: 2026-03-01 19:25+0100\n"
 "Last-Translator: twlvnn kraftwerk <kraft_werk@tutanota.com>\n"
 "Language-Team: Bulgarian <dict-notifications@fsa-bg.org>\n"
@@ -18,22 +19,74 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Poedit 3.8\n"
 
-#: ../lib/about.rb:47 ../lib/window.rb:177 ../lib/window.rb:405
+#: ../data/org.rubygtkproject.Hieroglyphic.desktop.in:2
+#: ../data/org.rubygtkproject.Hieroglyphic.metainfo.xml.in:8 ../lib/about.rb:47
+#: ../lib/window.rb:177 ../lib/window.rb:405
 msgid "Hieroglyphic"
 msgstr "Йероглиф"
+
+#: ../data/org.rubygtkproject.Hieroglyphic.desktop.in:3
+msgid "Search through over 1000 different LaTeX symbols by sketching"
+msgstr "Търсете в над 1000 различни знака на „LaTeX“ като ги изчертаете"
+
+#. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
+#: ../data/org.rubygtkproject.Hieroglyphic.desktop.in:9
+#, fuzzy
+msgid "GTK;Tools;LaTeX;TeX;Symbols;Typst;Math;"
+msgstr "гтк;инструменти;знаци;символи;тех;текс;латех;латекс;gtk;tools;latex;tex;symbols;"
+
+#. Translators: nudge means here a gentle prompt, i.e. the colored dot on the button
+#: ../data/schemas/org.rubygtkproject.Hieroglyphic.gschema.xml:7
+msgid "Whether to show a small nudge towards the contribution dialog"
+msgstr "Дали да се подканя към прозорчето за допринасяне"
+
+#: ../data/schemas/org.rubygtkproject.Hieroglyphic.gschema.xml:11
+msgid "Whether to contribute recognized strokes"
+msgstr "Дали да се допринася с разпознатите знаци"
+
+#. Translators: the name of the markup language (latex, typst) for which symbols are suggested
+#: ../data/schemas/org.rubygtkproject.Hieroglyphic.gschema.xml:21
+msgid "Markup language to suggest symbols for"
+msgstr "Маркиращ език за предлагане на знаци за"
+
+#: ../data/org.rubygtkproject.Hieroglyphic.metainfo.xml.in:9
+msgid "Find LaTeX and Typst symbols"
+msgstr "Търсене на знаци в „LaTeX“ и „Typst“"
+
+#: ../data/org.rubygtkproject.Hieroglyphic.metainfo.xml.in:18
+msgid ""
+"If you work with LaTeX or Typst, you know it's difficult to memorize the "
+"names of all the symbols. Hieroglyphic allows you to search through over "
+"1000 different symbols by sketching."
+msgstr ""
+"Ако работите с „LaTeX“ или „Typst“, знаете, че е трудно да се запомнят "
+"имената на всички знаци. „Йероглиф“ ви позволява да търсите в над 1000 "
+"различни знака чрез изчертаване."
+
+#: ../data/org.rubygtkproject.Hieroglyphic.metainfo.xml.in:30
+msgid "Symbol selection for LaTeX symbols"
+msgstr "Избор на знаци в „LaTeX“"
+
+#: ../data/org.rubygtkproject.Hieroglyphic.metainfo.xml.in:34
+msgid "Symbol selection for Typst symbols"
+msgstr "Избор на знаци в „Typst“"
+
+#: ../data/org.rubygtkproject.Hieroglyphic.metainfo.xml.in:38
+msgid "Placeholder"
+msgstr "Заместител"
 
 #: ../lib/about.rb:55
 msgid "translator-credits"
 msgstr ""
-"Twlvnn Kraftwerk &lt;<a href='mailto:kraft_werk@tutanota.com'>kraft_werk@tutan"
-"ota.com</a>&gt;\n"
+"Twlvnn Kraftwerk &lt;<a "
+"href='mailto:kraft_werk@tutanota.com'>kraft_werk@tutanota.com</a>&gt;\n"
 "\n"
 "\n"
 "Проектът за превод на GNOME има нужда от подкрепа.\n"
-"Научете повече за нас на <a href='https://fsa-bg.org/project/gtp'>уеб сайта</a"
-"> ни.\n"
-"Докладвайте за грешки в превода в <a href='https://fsa-bg.org/project/gtp/newt"
-"icket'>съответния раздел</a>."
+"Научете повече за нас на <a href='https://fsa-bg.org/project/gtp'>уеб сайта</"
+"a> ни.\n"
+"Докладвайте за грешки в превода в <a href='https://fsa-bg.org/project/gtp/"
+"newticket'>съответния раздел</a>."
 
 #: ../lib/contribution_dialog.rb:57 ../lib/contribution_dialog.rb:102
 #: ../lib/window.rb:411
@@ -96,40 +149,14 @@ msgstr "_Изчистване"
 msgid "Main Menu"
 msgstr "Основно меню"
 
-#~ msgid "Search through over 1000 different LaTeX symbols by sketching"
-#~ msgstr "Търсете в над 1000 различни знака на „LaTeX“ като ги изчертаете"
-#~ msgid "GTK;Tools;LaTeX;TeX;Symbols;"
-#~ msgstr ""
-#~ "гтк;инструменти;знаци;символи;тех;текс;латех;латекс;gtk;tools;latex;tex;symbol"
-#~ "s;"
-#~ msgid "Whether to show a small nudge towards the contribution dialog"
-#~ msgstr "Дали да се подканя към прозорчето за допринасяне"
-#~ msgid "Whether to contribute recognized strokes"
-#~ msgstr "Дали да се допринася с разпознатите знаци"
-#~ msgid "Markup language to suggest symbols for"
-#~ msgstr "Маркиращ език за предлагане на знаци за"
-#~ msgid "Find LaTeX and Typst symbols"
-#~ msgstr "Търсене на знаци в „LaTeX“ и „Typst“"
 #~ msgid ""
-#~ "If you work with LaTeX or Typst, you know it's difficult to memorize the names"
-#~ " of all the symbols. Hieroglyphic allows you to search through over 1000 diffe"
-#~ "rent symbols by sketching."
+#~ "No personal identifiable information is collected. <a href=\"https://"
+#~ "github.com/FineFindus/Hieroglyphic/blob/main/PRIVACY_POLICY.md\">Privacy "
+#~ "policy</a>"
 #~ msgstr ""
-#~ "Ако работите с „LaTeX“ или „Typst“, знаете, че е трудно да се запомнят имената"
-#~ " на всички знаци. „Йероглиф“ ви позволява да търсите в над 1000 различни знака"
-#~ " чрез изчертаване."
-#~ msgid "Symbol selection for LaTeX symbols"
-#~ msgstr "Избор на знаци в „LaTeX“"
-#~ msgid "Symbol selection for Typst symbols"
-#~ msgstr "Избор на знаци в „Typst“"
-#~ msgid "Placeholder"
-#~ msgstr "Заместител"
-#~ msgid ""
-#~ "No personal identifiable information is collected. <a href=\"https://github.com"
-#~ "/FineFindus/Hieroglyphic/blob/main/PRIVACY_POLICY.md\">Privacy policy</a>"
-#~ msgstr ""
-#~ "Не се събира лична информация, която може да идентифицира потребителя. <a href"
-#~ "='https://github.com/FineFindus/Hieroglyphic/blob/main/PRIVACY_POLICY.md'>Наст"
-#~ "ройки за лични данни</a>"
+#~ "Не се събира лична информация, която може да идентифицира потребителя. <a "
+#~ "href='https://github.com/FineFindus/Hieroglyphic/blob/main/"
+#~ "PRIVACY_POLICY.md'>Настройки за лични данни</a>"
+
 #~ msgid "Copied “{}”"
 #~ msgstr "„{}“ е копирано"
