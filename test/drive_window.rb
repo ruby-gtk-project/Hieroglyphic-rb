@@ -154,7 +154,14 @@ GtkDriver.drive(app, shots: "tmp/shots") do |d, _app|
 
   d.step("the sheet is open") do
     d.check("sheet open") { app.window.bottom_sheet.open? }
-    d.shot("08-sheet-open")
+  end
+
+  # The sheet's content is reparented on the tick it opens, so it has not been
+  # laid out again yet - a shot taken the same tick gets no render node at all.
+  # One more tick lets it settle before the screenshot looks at it.
+  d.step("the open sheet renders") { d.shot("08-sheet-open") }
+
+  d.step("closing the sheet and returning to the wide layout") do
     app.window.all_symbols_button.active = false
     app.window.layout_view.layout_name = "sidebar"
   end
@@ -191,6 +198,113 @@ GtkDriver.drive(app, shots: "tmp/shots") do |d, _app|
     d.check("debug info names the app") { app.about.dialog.debug_info.include?("Hieroglyphic") }
     d.check("debug info names GTK") { app.about.dialog.debug_info.include?("GTK:") }
     d.shot("10-about", app.window.window.visible_dialog)
+  end
+
+  # Every remaining literal upstream's about.rs sets, read back off the
+  # dialog it built - not just the two substrings checked above.
+  d.step("the about dialog carries upstream's remaining literals") do
+    app.about.dialog.then do |dialog|
+      d.check("its application icon is the application id") do
+        dialog.application_icon == Hieroglyphic::About::APP_ID
+      end
+      d.check("its copyright is upstream's") { dialog.copyright == Hieroglyphic::About::COPYRIGHT }
+      d.check("its developer name is upstream's") do
+        dialog.developer_name == Hieroglyphic::About::DEVELOPER_NAME
+      end
+      d.check("its developers are upstream's") { dialog.developers == Hieroglyphic::About::DEVELOPERS }
+      d.check("its designers are upstream's") { dialog.designers == Hieroglyphic::About::DESIGNERS }
+      d.check("its artists are upstream's") { dialog.artists == Hieroglyphic::About::ARTISTS }
+      d.check("its licence is GPL-3.0") { dialog.license_type == :gpl_3_0 }
+      d.check("its website is upstream's") { dialog.website == Hieroglyphic::About::WEBSITE }
+      d.check("its issue tracker is upstream's") { dialog.issue_url == Hieroglyphic::About::ISSUE_TRACKER }
+      # Not a fixed literal: en_GB.po fills in real names for this msgid, and
+      # the environment this runs in is en_GB, so the correct value is
+      # whatever gettext resolves it to right now - the same call about.rb
+      # makes - not the untranslated "translator-credits" string.
+      d.check("its translator credits came from gettext, not a heredoc") do
+        dialog.translator_credits == _("translator-credits")
+      end
+    end
     app.window.window.visible_dialog.close
+  end
+
+  d.step("the header bar's menu button carries the primary menu") do
+    app.window.menu_button.then do |button|
+      d.check("it is a Gtk::MenuButton") { button.is_a?(Gtk::MenuButton) }
+      d.check("its icon is the hamburger") { button.icon_name == "open-menu-symbolic" }
+      button.menu_model.then do |model|
+        d.check("the model is a Gio::Menu") { model.is_a?(Gio::Menu) }
+        d.check("it carries two sections, as upstream's primary-menu does") { model.n_items == 2 }
+      end
+    end
+  end
+
+  d.step("the menu's language section is a two-item radio group") do
+    Hieroglyphic::PrimaryMenu.new.build.then do |menu|
+      menu.get_item_link(0, "section").then do |language_section|
+        d.check("two language items") { language_section.n_items == 2 }
+        d.check("both target win.markup-language-mode") do
+          (0...language_section.n_items).all? do |index|
+            language_section.get_item_attribute_value(index, "action", nil) ==
+              "win.markup-language-mode"
+          end
+        end
+        d.check("LaTeX and Typst, in that order") do
+          (0...language_section.n_items).map do |index|
+            language_section.get_item_attribute_value(index, "target", nil).to_s
+          end == ["latex", "typst"]
+        end
+      end
+      menu.get_item_link(1, "section").then do |about_section|
+        d.check("one about item") { about_section.n_items == 1 }
+        d.check("it opens the about dialog") do
+          about_section.get_item_attribute_value(0, "action", nil) == "app.about"
+        end
+      end
+    end
+  end
+
+  # Compared as parsed key combinations: Gtk hands accelerators back in their
+  # own canonical spelling, which need not match the literal upstream wrote.
+  d.step("the application registered upstream's accelerators") do
+    Hieroglyphic::Application::ACCELS.each do |action, accels|
+      d.check("#{action} is #{accels.first}") do
+        app.app.get_accels_for_action(action).map { |accel| Gtk.accelerator_parse(accel) } ==
+          accels.map { |accel| Gtk.accelerator_parse(accel) }
+      end
+    end
+  end
+
+  d.step("the app-wide actions exist and are enabled") do
+    d.check("app.quit is a Gio::SimpleAction") { app.quit_action.is_a?(Gio::SimpleAction) }
+    d.check("and it is enabled") { app.quit_action.enabled? }
+    d.check("app.about is a Gio::SimpleAction") { app.about_action.is_a?(Gio::SimpleAction) }
+    d.check("and it is enabled") { app.about_action.enabled? }
+  end
+
+  d.step("the window-level actions upstream wires are all registered") do
+    %w[clear show-contribution-dialog copy-symbol markup-language-mode].each do |name|
+      d.check("win.#{name} exists") { !app.window.window.lookup_action(name).nil? }
+    end
+  end
+
+  # src/main.rs: --show-only restricts display to the named symbol ids, so a
+  # drawing can be checked against one symbol during development. This never
+  # runs inside the activated app above (ARGV there is the test's own), so a
+  # fresh window reads a stubbed ARGV instead.
+  d.step("--show-only restricts the symbol filter to the named ids") do
+    stashed_argv = ARGV.dup
+    begin
+      ARGV.replace([Hieroglyphic::Application::SHOW_ONLY_FLAG, "foo-OT1-_bar"])
+      Hieroglyphic::Application.new.symbol_filter.then do |filter|
+        d.check("the filter is read from --show-only") { filter.is_a?(Array) }
+      end
+      ARGV.replace([])
+      Hieroglyphic::Application.new.symbol_filter.then do |filter|
+        d.check("with no --show-only, nothing is filtered") { filter.empty? }
+      end
+    ensure
+      ARGV.replace(stashed_argv)
+    end
   end
 end

@@ -56,6 +56,21 @@ module Hieroglyphic
       @settings = settings
       @symbol_filter = []
       @symbol_strokes = []
+      # The Symbols currently on display, in list order - the source of
+      # truth `copy_symbol_at` and `displayed_ids` read from.
+      #
+      # Not `symbol_store.get_item(position).symbol`: a SymbolObject's
+      # `symbol` lives only in a plain Ruby ivar on its Ruby wrapper, and
+      # ruby-gnome does not guarantee that wrapper survives once nothing
+      # Ruby-side still references it. The Gio::ListStore keeps the
+      # underlying GObject alive, but Ruby's GC is free to collect the
+      # wrapper object in between, and a wrapper handed back by a later
+      # `get_item` is then a fresh one with its ivars unset. That is a
+      # starvation bug, not a logic bug: it reproduces under `GC.start`
+      # between an append and a read, and reproduced here as an
+      # intermittent `undefined method 'command' for nil` while driving
+      # the list the classifier just filled in.
+      @displayed_symbols = []
     end
 
     def build
@@ -118,8 +133,9 @@ module Hieroglyphic
           end
         end
 
+        @displayed_symbols = symbols.take(DISPLAYED_SYMBOLS)
         symbol_store.remove_all
-        symbols.take(DISPLAYED_SYMBOLS).each { |symbol| symbol_store.append(SymbolObject.new(symbol)) }
+        @displayed_symbols.each { |symbol| symbol_store.append(SymbolObject.new(symbol)) }
         # scroll to top after updating symbols, so that the likeliest symbols
         # are visible first
         symbol_scroller.vadjustment.value = 0.0
@@ -562,9 +578,9 @@ module Hieroglyphic
       end
 
       def copy_symbol_at(position)
-        symbol_store.get_item(position).then do |object|
-          if object
-            copy_symbol(object.symbol)
+        @displayed_symbols[position].then do |symbol|
+          if symbol
+            copy_symbol(symbol)
           end
         end
       end
@@ -590,7 +606,7 @@ module Hieroglyphic
       end
 
       def displayed_ids
-        symbol_store.n_items.times.map { |position| symbol_store.get_item(position).symbol.id }
+        @displayed_symbols.map(&:id)
       end
 
       # Shows a basic toast with the given text, replacing any toast already
