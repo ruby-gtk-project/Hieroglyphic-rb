@@ -3,7 +3,63 @@
 | | |
 |---|---|
 | Upstream | `main` @ `246926e` |
-| Port | `ruby` @ `4dc877f` |
+| Port | `ruby` @ `d5d7c8c` |
+
+## Headline finding this pass — fabricated translations presented as confirmed
+
+This is the most serious finding across all five reports this round, and it
+is a false green of exactly the shape this skill exists to catch: **it does
+not use any excuse language at all.** No comment, commit message, or report
+line says "translated" or "ported" about this string. It simply *looks*
+translated to every mechanical check — the catalogue diff, `languages_missing:
+[]`, `domain_matches: true` — because the `.po` files themselves were edited
+to carry a confirmed-looking `msgstr`, in all 36 languages, for a msgid that
+reworded upstream's `Copied "{}"` to `Copied "%{command}"`
+(`lib/window.rb:159`). Full detail and the `.po` excerpts are in
+`.reports/translation-parity.md`; the accountability angle is this: **a
+`.po` file with a non-fuzzy `msgstr` is the strongest possible signal
+gettext has that a human reviewed and approved a translation.** Setting
+that signal by mechanical find-and-replace on an old approved string,
+without a human reviewing the new one, is indistinguishable downstream from
+a real translation — until someone opens the file and reads what the
+`msgstr` is actually a translation *of*. No one did, before this pass. This
+is reported here, in addition to `translation-parity.md`, because
+`find-excuses.sh`-style pattern matching over prose **cannot catch it at
+all** — there is no sentence to grep for. The only way to find it was to
+open `.po` files and compare them against what `msgmerge` actually does
+versus what these files actually contain. That gap in this skill's own
+method is worth stating plainly: a laundered gap needs excuse language to
+hide behind, but a fabricated artifact needs none, and this skill's grep-based
+tooling has no row for that in its hit list.
+
+## Re-verified against current HEAD (`d5d7c8c`, five commits past `4dc877f`)
+
+Three of the four previously-open gaps are now closed, confirmed by running
+things rather than trusting commit messages:
+
+- **The 13 unported upstream unit tests / empty `spec/` — closed.** `d5a9dfb`
+  added `spec/{point,rect,stroke,symbol}_spec.rb`. Re-run this pass:
+  `nix develop --command xvfb-run -a ruby -e '…RSpec::Core::Runner.run(…)'`
+  → `19 examples, 0 failures`. This was last pass's "most serious candidate
+  for a false-green reading" (a working-looking `0 examples, 0 failures`);
+  it no longer reads that way because there are now real examples running.
+- **Devel-profile upload suppression — closed.** `dc72d34` added
+  `!devel_profile?` to `upload_allowed?`. Read in full this pass, not
+  assumed from the commit title: it is the fourth condition in the
+  `&&` chain, matching upstream's separate `config::PROFILE == "Devel"`
+  check in `try_upload_data`.
+- **Privacy-policy label unmarked — closed.** `5a2094a` wrapped it in `_()`.
+
+One previously-open gap remains, and it is the one that grew into the
+headline finding above:
+
+- **The Typst alias table (421/1124 symbols, 37%) is still incomplete.**
+  Still named plainly in `lib/symbol.rb`'s own class comment ("symbols whose
+  only Typst spelling came from there have none here and are skipped in
+  Typst mode exactly as an unmapped symbol is") and in
+  `.reports/component-parity.md`. No excuse language around it — it reads as
+  what it is, an open gap caused by upstream depending on two Rust crates'
+  compile-time data that has no Ruby equivalent.
 
 Ran `.claude/skills/accountability-ensurance/scripts/find-excuses.sh` over
 the full tree, plus manual `grep -rniE "TODO|FIXME|not implemented|for
@@ -129,17 +185,25 @@ re-running `nix develop --command xvfb-run -a ruby test/drive_window.rb`
 reproduces 61/61, DRIVE OK — the same number, not a rubber-stamped repeat.
 None of the four open gaps (three carried over, one new) has been closed.
 
-## Verdict
+## Verdict (updated this pass — supersedes the paragraph above)
 
 No construction from the skill's hit list ("dropped deliberately",
 "intentionally omitted", "not applicable", "out of scope", "by design",
 "simplified", "the bindings do not support it", "upstream does this too") was
 found anywhere in `lib/`, `exe/`, or `.reports/` describing a skipped port
-obligation. The real open gaps in this port — the Typst alias table, the two
-reworded/unmarked translation strings, the thirteen unported upstream unit
-tests, and (new this pass) the Devel-profile upload suppression that
-`4dc877f` left half-ported — are each stated as open gaps in their
-respective ledgers, not excused. This report finds **no accountability
-violation to rewrite**, which is a narrower and more useful claim than "the
-port is finished": the gaps above are real, sized, and not hidden. `clean:
-true` is not warranted — four open gaps remain, one of them newly found.
+obligation, this pass included. But this pass also found something the hit
+list has no row for: **36 translations that read as confirmed and are not**
+— the headline finding above. That is not excuse language; it is an
+artifact that passes every mechanical check this skill and
+`translation-parity.md` run, and it is the more serious failure mode,
+because a reader has no sentence to notice and discount. `clean: true` is
+not warranted. Open gaps this round, read from source rather than carried
+over: the fabricated "Copied" translations (36 languages, new headline
+finding), the "Copied" msgid rewording underneath them (carried over), the
+Typst alias table (carried over, 37% coverage), the About dialog's dropped
+`Profile:` debug line and renamed attachment filename (new,
+`component-identification.md`), two dropped `accessible-role` attributes
+(new, `component-parity.md`), and the `Application#build` reactivation
+guard (new, `component-identification.md`). Three previously-open gaps are
+confirmed closed this pass: the 13 unported unit tests, the Devel-profile
+upload suppression, and the unmarked privacy-policy label.

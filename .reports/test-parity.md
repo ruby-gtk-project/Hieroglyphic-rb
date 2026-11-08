@@ -3,11 +3,64 @@
 | | |
 |---|---|
 | Upstream | `main` @ `246926e` |
-| Port | `ruby` @ `4dc877f` |
+| Port | `ruby` @ `d5d7c8c` |
 | Upstream tests | 13 |
-| Ported | 0 |
-| Gaps | 13 |
+| Ported | 13 |
+| Gaps | 0 |
 | Test command | `ruby -e 'require "rspec/core"; exit RSpec::Core::Runner.run(["--format", "progress", "--require", "spec_helper", "spec"])'` (printed by the dev shell banner) |
+
+## Re-verified against current HEAD (`d5d7c8c`, five commits past `4dc877f`)
+
+**The gap this report originally found is closed.** `d5a9dfb` ("Port classify
+unit tests") added `spec/point_spec.rb`, `spec/rect_spec.rb`,
+`spec/stroke_spec.rb` and `spec/symbol_spec.rb`; `d5d7c8c` ("Fix spec suite:
+add missing lib/hieroglyphic/rb.rb entrypoint and tolerate missing
+kettle-test") fixed a load error in that same suite. Both were actually run
+this pass, not just read:
+
+```
+$ nix develop --command xvfb-run -a ruby -e 'require "rspec/core"; exit RSpec::Core::Runner.run(["--format", "progress", "--require", "spec_helper", "spec"])'
+NOTE: kettle-test isn't installed; running with plain RSpec.
+.................. (19 examples)
+Finished in 0.17566 seconds
+19 examples, 0 failures
+```
+
+19 RSpec examples cover the 13 upstream `#[test]` functions one-for-one, plus
+six extra negative/edge cases upstream's inline tests do not have (an
+`approx_eq?` false case, an `encompass_point` no-op case, an unknown-id case,
+an empty-stroke `ArgumentError` case, a short-stroke-`smooth` no-op case). Every
+one of the 13 original gap rows below now resolves:
+
+| Upstream test | Port spec | State |
+|---|---|---|
+| `point.rs:test_add_points` | `spec/point_spec.rb` `#+` | **ported** |
+| `point.rs:test_sub_points` | `spec/point_spec.rb` `#-` | **ported** |
+| `point.rs:test_mul_point` | `spec/point_spec.rb` `#*` | **ported** |
+| `point.rs:test_approx_eq_vec` | `spec/point_spec.rb` `#approx_eq?` (tolerant case) | **ported** |
+| `rect.rs:test_rect_point` | `spec/rect_spec.rb` `.from_point` | **ported** |
+| `rect.rs:test_width_height` | `spec/rect_spec.rb` `#width and #height` | **ported** |
+| `rect.rs:test_encompass` | `spec/rect_spec.rb` `#encompass_point` | **ported** |
+| `stroke.rs:test_bounding_box` | `spec/stroke_spec.rb` `#bounding_box` | **ported** |
+| `stroke.rs:test_refit` | `spec/stroke_spec.rb` `#refit (private)` (both the single-point and two-point cases) | **ported** |
+| `stroke.rs:test_smooth` | `spec/stroke_spec.rb` `#smooth` | **ported** |
+| `symbol.rs:test_from_id` | `spec/symbol_spec.rb` `.from_id` | **ported** |
+| `symbol.rs:test_iterate_symbols` | `spec/symbol_spec.rb` `.count` (1124, matches) | **ported** |
+| `symbol.rs:test_id_get_id` | `spec/symbol_spec.rb` "the from_id/id round trip" (all 1124 entries) | **ported** |
+
+`test/drive_window.rb` was also re-run this pass (not assumed from the last
+report): **61 of 61 checks passed, DRIVE OK**, matching the runtime gate this
+round. This is the same driver described below — it still exercises the
+assembled GUI and is a complement to, not a substitute for, the geometry/table
+unit tests above.
+
+**13/13 upstream tests are now ported and running. 0 gaps remain on this
+axis.** The paragraphs below are kept as the historical record of the gap
+this pass closed — do not read them as the current state.
+
+---
+
+## Historical finding (closed this pass, kept for the record)
 
 Re-verified against current HEAD (two commits past the pass this report was
 written for: `b379a3e`, inventory-only, and `4dc877f`, the devel-profile CSS

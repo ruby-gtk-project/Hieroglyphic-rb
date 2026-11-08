@@ -3,7 +3,7 @@
 | | |
 |---|---|
 | Upstream | `main` @ `246926e` |
-| Port | `ruby` @ `4dc877f` |
+| Port | `ruby` @ `d5d7c8c` |
 
 This report does not re-derive the full per-widget inventory from scratch —
 `.reports/component-inventory.md` already carries that (one `## <file>`
@@ -76,3 +76,59 @@ present). This is the earlier survey going stale, not a hidden gap — if
 anything it under-claims — but a reader skimming that line would conclude the
 upload is unbuilt when it is built. Flagged here so the next pass fixes the
 wording rather than re-investigating the feature.
+
+## Re-verified against current HEAD (`d5d7c8c`, five commits past `4dc877f`)
+
+Previously-open findings re-checked, not assumed:
+
+- **Devel-profile upload suppression (`component-parity.md`'s "new gap found
+  this pass" for `4dc877f`) is closed.** `dc72d34` ("Skip strokes upload in
+  devel profile") added `!devel_profile?` to `lib/window.rb`'s
+  `upload_allowed?`, matching upstream's second `config::PROFILE == "Devel"`
+  check in `try_upload_data`. Confirmed by reading both sides; the gate now
+  has all three of upstream's conditions plus the devel check.
+- **The 13-unported-test / empty-`spec/` finding is closed.** `d5a9dfb` added
+  `spec/{point,rect,stroke,symbol}_spec.rb`; re-run this pass (19 examples, 0
+  failures — see `.reports/test-parity.md` for the row-by-row mapping).
+- **Privacy-policy label gap is closed.** `5a2094a` wrapped it in `_()`. See
+  `.reports/translation-parity.md`.
+
+### New findings this pass, not previously identified
+
+- **`About`'s debug-info blob drops upstream's `Profile:` line.** Upstream
+  `src/widgets/about.rs:43`: `information.push_str(&format!("Profile: {}\n",
+  config::PROFILE));`, immediately after the app-id/version line. Port
+  `lib/about.rb#debug_info` has no `Profile:` entry anywhere in its array —
+  checked by reading the method's literal list, not by inference. This is a
+  real line of the "attach this when filing a bug" blob that the port
+  silently drops; a bug reporter's debug info never says whether they are
+  running a Devel or stable build.
+- **`About`'s debug-info filename differs from upstream's.** Upstream:
+  `.debug_info_filename("tex_match_debug")` (`src/widgets/about.rs:33`).
+  Port: `about.debug_info_filename = "hieroglyphic_debug"`
+  (`lib/about.rb:62`). Cosmetic — it only changes what the saved attachment
+  is called — but it is a literal upstream names explicitly and the port
+  changed without comment, so it is recorded rather than assumed harmless.
+- **`accessible-role="GTK_ACCESSIBLE_ROLE_PRESENTATION"` is dropped on two
+  decorative images.** Upstream sets it on the `GtkPicture` in
+  `data/resources/ui/contribution-dialog.ui` and the `GtkImage` in
+  `data/resources/ui/symbol-item.ui` — both purely decorative, and the
+  attribute is what keeps a screen reader from announcing them. Port
+  `lib/contribution_dialog.rb#illustration` and `lib/symbol_item.rb#image`
+  build the same widgets with no accessible-role set at all. Small,
+  consistent across two files, and an accessibility regression a visual
+  screenshot comparison would never catch (confirmed: `test/drive_window.rb`
+  never asserts on either widget's accessible role).
+- **`Application#build`'s `activate` handler always rebuilds the window.**
+  Upstream's `activate()` (`src/application.rs`) checks `self.window.get()`
+  first and, when a window already exists, only presents it — it never
+  re-runs the window's construction on a second activation (e.g. a second
+  launch of a single-instance app, which GTK delivers as another `activate`
+  signal to the same primary process rather than a new process). Port
+  `lib/hieroglyphic/application.rb#build`'s `app.signal_connect("activate")`
+  block calls `win.build` unconditionally every time, with no guard. `window`
+  itself is memoized, so this re-runs `build` — which calls `win.add_action`
+  four times and `win.add_breakpoint` once — on the *same* already-built
+  window object. Not exercised by `test/drive_window.rb` (which activates the
+  app once per process) and not caught by any report before this pass;
+  flagged in `.reports/component-parity.md` as an open component gap.
