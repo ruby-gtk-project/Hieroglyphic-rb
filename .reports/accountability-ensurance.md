@@ -3,7 +3,7 @@
 | | |
 |---|---|
 | Upstream | `main` @ `246926e` |
-| Port | `ruby` @ `b0a35e3` |
+| Port | `ruby` @ `4dc877f` |
 
 Ran `.claude/skills/accountability-ensurance/scripts/find-excuses.sh` over
 the full tree, plus manual `grep -rniE "TODO|FIXME|not implemented|for
@@ -93,6 +93,42 @@ to prevent a false green:
   is why it is called out here explicitly rather than left to the reader to
   notice that `0/0` is not `13/13`.
 
+## Re-run against current HEAD (`4dc877f`)
+
+The tree moved two commits past the `b0a35e3` pass this report was first
+written against: `b379a3e` (inventory rewrite only) and `4dc877f` (devel-
+profile CSS class). Re-grepping `lib/`, `exe/`, `.reports/` for the same
+pattern list on `4dc877f` turns up nothing new in that category — `4dc877f`
+adds a `devel_profile?` predicate with no excuse language anywhere near it.
+
+But reading what `4dc877f` actually does, rather than trusting its own
+commit message, surfaces a real gap no report had caught yet: upstream's
+Devel-profile check has two effects (CSS class + nudge, **and** suppressing
+uploads as a stated anti-accident measure); the port's commit ports only the
+first. This is not an excuse — nothing in the commit message, code comments,
+or `.reports/` claims the upload-suppression half was out of scope, skipped,
+or deferred. It is a plain miss, caught by comparing the two
+`config::PROFILE == "Devel"` call sites in `src/window.rs` against the one
+call site `devel_profile?` has in the port. Filed in full in
+`.reports/component-parity.md` ("New gap found this pass — Devel profile
+does not suppress uploads"). It belongs in this report too because it is
+exactly the shape this skill watches for in miniature: a correction that
+reads as "fully built" (the earlier `component-identification.md`
+correction, re-asserted without re-checking after `4dc877f` landed) when a
+new code path has since made that claim incomplete. The claim itself used no
+excuse language, but it went unrevisited, which is how a false green forms
+without anyone writing one on purpose.
+
+The three previously-identified open gaps (Typst alias table, two
+translation-text mismatches, 13 unported upstream unit tests / empty
+`spec/`) were re-checked against `4dc877f` directly rather than assumed
+still current: `grep -n "Copied" lib/window.rb` and `grep -n "Privacy
+policy" lib/contribution_dialog.rb` both still show the same unfixed text,
+`find spec -type f` still returns only `spec_helper.rb` and `README.md`, and
+re-running `nix develop --command xvfb-run -a ruby test/drive_window.rb`
+reproduces 61/61, DRIVE OK — the same number, not a rubber-stamped repeat.
+None of the four open gaps (three carried over, one new) has been closed.
+
 ## Verdict
 
 No construction from the skill's hit list ("dropped deliberately",
@@ -100,8 +136,10 @@ No construction from the skill's hit list ("dropped deliberately",
 "simplified", "the bindings do not support it", "upstream does this too") was
 found anywhere in `lib/`, `exe/`, or `.reports/` describing a skipped port
 obligation. The real open gaps in this port — the Typst alias table, the two
-reworded/unmarked translation strings, and the thirteen unported upstream
-unit tests — are each stated as open gaps in their respective ledgers, not
-excused. This report finds **no accountability violation to rewrite**, which
-is a narrower and more useful claim than "the port is finished": the gaps
-above are real, sized, and not hidden.
+reworded/unmarked translation strings, the thirteen unported upstream unit
+tests, and (new this pass) the Devel-profile upload suppression that
+`4dc877f` left half-ported — are each stated as open gaps in their
+respective ledgers, not excused. This report finds **no accountability
+violation to rewrite**, which is a narrower and more useful claim than "the
+port is finished": the gaps above are real, sized, and not hidden. `clean:
+true` is not warranted — four open gaps remain, one of them newly found.

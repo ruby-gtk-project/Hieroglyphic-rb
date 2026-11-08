@@ -3,11 +3,18 @@
 | | |
 |---|---|
 | Upstream | `main` @ `246926e` |
-| Port | `ruby` @ `b0a35e3` |
+| Port | `ruby` @ `4dc877f` |
 | Upstream tests | 13 |
 | Ported | 0 |
 | Gaps | 13 |
 | Test command | `ruby -e 'require "rspec/core"; exit RSpec::Core::Runner.run(["--format", "progress", "--require", "spec_helper", "spec"])'` (printed by the dev shell banner) |
+
+Re-verified against current HEAD (two commits past the pass this report was
+written for: `b379a3e`, inventory-only, and `4dc877f`, the devel-profile CSS
+class). Neither touches `spec/` or `test/`. Re-running `find spec -type f`
+and `nix develop --command xvfb-run -a ruby test/drive_window.rb` reproduces
+the same findings below unchanged: still 0 spec files, still 61/61 on the
+driver. Nothing in this report is stale.
 
 **The test command above has never had anything to run.** `spec/` contains
 exactly `spec_helper.rb` (gem-scaffold boilerplate: SimpleCov wiring, RSpec

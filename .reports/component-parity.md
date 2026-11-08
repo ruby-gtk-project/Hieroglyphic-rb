@@ -3,7 +3,7 @@
 | | |
 |---|---|
 | Upstream | `main` @ `246926e` |
-| Port | `ruby` @ `b0a35e3` |
+| Port | `ruby` @ `4dc877f` |
 | Units checked | 2 / 21 (window+drawing+dialogs cluster, symbol table) |
 | Runtime gate | `test/drive_window.rb`: 61/61 checks, DRIVE OK (re-run this pass) |
 
@@ -28,6 +28,7 @@ rather than rounded up.
 | `Adw.AboutDialog` + debug info | 1 | 1 | — | — | ✓ | parity (driven: steps 25-27, checks every upstream literal: icon, copyright, developer, developers, designers, artists, licence, website, issue tracker, translator-credits) |
 | accels (`app.quit`, `window.close`, `win.clear`) | 3 | 3 | — | — | — | parity (driven: step 30, parsed-combination comparison) |
 | `win.markup-language-mode` Typst branch | 1 | 1 | — | fires | — | **gap** — see Symbol table unit below; the action exists and switches state (driven, step 10-11) but the content it switches to is 63% incomplete |
+| Devel-profile upload suppression | 1 | 0 | — | — | — | **gap** — see below; new since the `b0a35e3` pass, introduced by `4dc877f` only partially |
 
 **Text-axis gaps found, both real and both open in `.reports/translation-parity.md`:**
 
@@ -51,6 +52,41 @@ rather than rounded up.
    only checks "a dialog is showing" / "nudge dot is gone" — it never asserts
    on this label's text, so a screenshot and the existing 61/61 drive result
    both pass with this gap present.
+
+**New gap found this pass — Devel profile does not suppress uploads.**
+Upstream `src/window.rs:138-146` (`constructed`, `config::PROFILE == "Devel"`)
+adds the `devel` CSS class *and* force-enables `show-contribution-nudge`, but
+upstream's `try_upload_data` (`src/window.rs:401-403`) has its own, separate
+Devel-profile check: `if … || config::PROFILE == "Devel" { … return; }`,
+with the comment "skip uploads always on debug mode, to avoid accidental
+uploads". Two independent effects, both gated on the same compile-time flag.
+
+Commit `4dc877f` ("Port the devel-profile 'devel' CSS class") ported the
+first effect only: `lib/window.rb:487-489` (`devel_profile?`) is read at
+`lib/window.rb:116-119` to add the `devel` CSS class and pre-enable
+`show_contribution_nudge`, matching upstream's `constructed`. But
+`lib/window.rb:647-652` (`upload_allowed?`) checks only `!strokes.empty?`,
+`contribute_data?`, `network_metered?` and `power_saver_enabled?` —
+`devel_profile?` is never referenced anywhere near the upload path
+(confirmed: `grep -n devel_profile lib/window.rb` returns only the two
+`constructed`-path lines). A checkout run with `HIEROGLYPHIC_PROFILE=Devel`
+set — which is exactly the state the port's own `devel_profile?` exists to
+detect — will now upload drawn strokes to the live
+`hieroglyphic-server.apps.openshift.gnome.org` endpoint on every copy,
+which is precisely the "accidental upload" upstream's comment says this
+check exists to prevent. This is a regression risk, not a cosmetic gap: it
+is the one condition upstream calls out by name as a safety rail, and the
+port now has the flag that should trip it without the wire that it does
+anything.
+
+Fix: add `&& !devel_profile?` (or equivalent) to `upload_allowed?`.
+
+The earlier `component-identification.md` "correction" (and this report's
+previous pass) asserted the upload gate "implement[s] the full gate
+(setting, network, power)" — true as far as it went, but it was written
+before `devel_profile?` existed and was never revisited against the new
+method once `4dc877f` landed. Recorded here rather than left for a future
+pass to rediscover.
 
 ## Unit: symbol table / Typst half — `src/classify/symbol.rs` + `symbols.yaml` + `typst-aliases.yaml` + `unicode_to_latex.yaml` → `lib/symbol.rb`
 

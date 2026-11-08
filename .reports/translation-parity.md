@@ -3,7 +3,7 @@
 | | |
 |---|---|
 | Upstream | `main` @ `246926e` |
-| Port | `ruby` @ `b0a35e3` |
+| Port | `ruby` @ `4dc877f` |
 | Domain | `hieroglyphic` (confirmed: upstream's `.pot`/meson and the port's `po/*.pot` agree, `domain_matches: true`) |
 | Upstream messages | 28 |
 | Ported | 26 |
@@ -22,6 +22,12 @@ an `origin/main` worktree and the `ruby` tree, then
 `catalogue.rb --compare`. Raw YAML kept at `/tmp/hiero-worktrees/{upstream,port}-catalogue.yaml`
 and `translation-parity.yaml` for this run (not committed — regenerate rather
 than trust a stale copy).
+
+Re-verified against current HEAD: the two commits since the pass this report
+covers (`b379a3e`, `4dc877f`) add no `_()`/`N_()` call and no new `.ui`
+label (confirmed: `git show 4dc877f | grep '_('` is empty — the only change
+is a CSS class name and an `ENV` read, neither user-visible text). Numbers
+below are unchanged and current.
 
 ## Scanner artifact — read before trusting the "extra: 160" number
 

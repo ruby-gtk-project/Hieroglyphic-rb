@@ -3,7 +3,7 @@
 | | |
 |---|---|
 | Upstream | `main` @ `246926e` |
-| Port | `ruby` @ `b0a35e3` |
+| Port | `ruby` @ `4dc877f` |
 
 This report does not re-derive the full per-widget inventory from scratch —
 `.reports/component-inventory.md` already carries that (one `## <file>`
@@ -11,6 +11,19 @@ section per upstream component, with widget type, count, CSS and signal
 columns, written by an earlier pass of this skill). What follows is this
 pass's verification of that inventory against the actual trees, plus the
 units it does not cover.
+
+## Re-verified against current HEAD
+
+Two commits landed since this report's original pass: `b379a3e` (rewrote
+`.reports/component-inventory.md` only) and `4dc877f` (added
+`devel_profile?`/`DEVEL_PROFILE` to `lib/window.rb`, porting upstream's
+`config::PROFILE == "Devel"` CSS-class and nudge-preenable behaviour). The
+latter is a genuinely new unit of behaviour and is scored in
+`.reports/component-parity.md`'s window/drawing/dialogs table — it is
+**not** full parity: the commit ports the CSS class and nudge pre-enable but
+misses the other half of upstream's same `Devel` check, which also
+suppresses uploads. See that report for the gap in full; it is the
+headline new finding of this pass.
 
 ## Verified against source
 
