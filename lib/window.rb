@@ -647,6 +647,7 @@ module Hieroglyphic
       def upload_allowed?(strokes)
         !strokes.empty? &&
           @settings.contribute_data? &&
+          !devel_profile? &&
           !Gio::NetworkMonitor.default.network_metered? &&
           !power_saver_enabled?
       end
