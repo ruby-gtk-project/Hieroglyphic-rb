@@ -14,7 +14,6 @@ module Hieroglyphic
   # illustration from the shipped file rather than from a GResource.
   class ContributionDialog
     ILLUSTRATION = File.expand_path("../data/illustrations/pen-broadcast.svg", __dir__)
-    PRIVACY_POLICY_URL = "https://github.com/FineFindus/Hieroglyphic/blob/main/PRIVACY_POLICY.md"
 
     def initialize(settings)
       @settings = settings
@@ -132,8 +131,10 @@ module Hieroglyphic
     def privacy_label
       @privacy_label ||= Gtk::Label.new.tap do |label|
         label.use_markup = true
-        label.label = "No personal identifiable information is collected. " \
-          "<a href=\"#{PRIVACY_POLICY_URL}\">Privacy policy</a>"
+        label.label = _(
+          "No personal identifiable information is collected. " \
+          "<a href=\"https://github.com/FineFindus/Hieroglyphic/blob/main/PRIVACY_POLICY.md\">Privacy policy</a>",
+        )
         label.margin_top = 12
         label.add_css_class("dim-label")
         label.add_css_class("caption")
