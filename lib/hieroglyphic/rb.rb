@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require_relative "rb/version"
-
 # The part of Hieroglyphic that loads without a display.
 #
 # This file exists because `require "gtk4"` initialises GTK at require time
@@ -23,3 +21,4 @@ require_relative "../point"
 require_relative "../rect"
 require_relative "../stroke"
 require_relative "../symbol"
+require_relative "rb/version"
